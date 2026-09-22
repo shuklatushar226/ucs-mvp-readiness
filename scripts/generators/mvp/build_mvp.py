@@ -164,6 +164,8 @@ def main() -> None:
         "provenance": S.git_provenance(REPO_ROOT) if hasattr(S, "git_provenance") else None,
         "capabilities": [
             {k: c[k] for k in ("id", "label", "description", "weight")}
+            # `short` is the matrix column header; falls back so it is optional.
+            | {"short": c.get("short", c["label"])}
             | {"signal": c["signal"], "confidence": c.get("confidence", "proven")}
             for c in caps
         ],

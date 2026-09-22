@@ -2,24 +2,41 @@ import { Link, useLocation } from "react-router-dom";
 import { T } from "../theme";
 import mvpData from "../data/mvp.json";
 
-// mvp.json (114 KB) rather than connectors.json (1,657 KB): the shared layout
-// pulled the larger file into every route just to print two integers, and its
-// 110-connector count contradicted the 108 shown everywhere else.
+// mvp.json (~100 KB) rather than connectors.json (1,657 KB): the shared layout
+// pulled the larger file into every route just to print two integers.
 const CONNECTOR_COUNT = (mvpData as { connectors: unknown[] }).connectors.length;
 const CAPABILITY_COUNT = (mvpData as { capabilities: unknown[] }).capabilities.length;
 
 const SIDEBAR_WIDTH = 240;
 
+// Inline SVG rather than emoji: emoji are rendered by the OS, so they change
+// shape per platform, ignore the theme colour, and read as a hobby page.
+const Icon = {
+  matrix: (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x="3" y="3" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.7" />
+      <rect x="14" y="3" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.7" />
+      <rect x="3" y="14" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.7" />
+      <rect x="14" y="14" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  ),
+  metrics: (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  ),
+};
+
 interface NavItem {
   id: string;
   label: string;
-  icon: string;
+  icon: JSX.Element;
   path: string;
 }
 
 const NAV_ITEMS: NavItem[] = [
-  { id: "mvp", label: "MVP Readiness", icon: "🎯", path: "/mvp" },
-  { id: "mvp-metrics", label: "MVP Metrics", icon: "📊", path: "/mvp/metrics" },
+  { id: "mvp", label: "MVP Readiness", icon: Icon.matrix, path: "/mvp" },
+  { id: "mvp-metrics", label: "MVP Metrics", icon: Icon.metrics, path: "/mvp/metrics" },
 ];
 
 export function NavigationSidebar() {
@@ -48,56 +65,39 @@ export function NavigationSidebar() {
         zIndex: 10,
       }}
     >
-      {/* Header */}
-      <div
-        style={{
-          padding: "22px 20px 18px",
-          borderBottom: `1px solid ${T.border}`,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+      <div style={{ padding: "22px 20px 18px", borderBottom: `1px solid ${T.border}` }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
           <div
             style={{
-              width: 34,
-              height: 34,
-              borderRadius: 10,
-              background: `linear-gradient(135deg, ${T.accent}, #c97a45)`,
+              width: 32,
+              height: 32,
+              borderRadius: 9,
+              background: T.accent,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#fff",
-              fontWeight: 700,
-              fontSize: 15,
-              boxShadow: "0 2px 6px rgba(160, 82, 45, 0.25)",
+              flexShrink: 0,
             }}
           >
-            U
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <circle cx="12" cy="12" r="8.4" stroke="#fff" strokeWidth="2.4" />
+              <path d="M12 3.6a8.4 8.4 0 0 1 0 16.8" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" />
+            </svg>
           </div>
-          <div>
-            <div
-              style={{
-                fontSize: 15,
-                fontWeight: 700,
-                color: T.text,
-                lineHeight: 1.2,
-              }}
-            >
+          <div style={{ minWidth: 0 }}>
+            <div style={{ fontSize: 14.5, fontWeight: 700, color: T.text, letterSpacing: T.tight, lineHeight: 1.2 }}>
               UCS MVP
             </div>
-            <div style={{ fontSize: 10, color: T.textMuted, marginTop: 2 }}>
-              connector readiness
-            </div>
+            <div style={{ fontSize: 10.5, color: T.textSubtle, marginTop: 2 }}>connector readiness</div>
           </div>
         </div>
       </div>
 
-      {/* Navigation Items */}
       <nav style={{ flex: 1, padding: "16px 12px" }}>
         {NAV_ITEMS.map((item) => {
-          const isActive = currentPath === item.path;
           // Longest matching path wins, so a nested item (/mvp/metrics) does not
           // also light up its parent (/mvp).
-          const isActiveOrChild = item.path === activePath;
+          const isActive = item.path === activePath;
           return (
             <Link
               key={item.id}
@@ -105,47 +105,35 @@ export function NavigationSidebar() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
-                padding: "12px 16px",
+                gap: 11,
+                padding: "9px 12px",
+                marginBottom: 3,
                 borderRadius: 8,
-                marginBottom: 4,
                 textDecoration: "none",
-                color: isActiveOrChild ? T.text : T.textMuted,
-                background: isActiveOrChild ? T.accentSoft : "transparent",
-                borderLeft: isActiveOrChild ? `3px solid ${T.accent}` : "3px solid transparent",
-                fontWeight: isActiveOrChild ? 600 : 500,
-                fontSize: 14,
-                transition: "all 150ms ease",
+                fontSize: 13,
+                fontWeight: isActive ? 600 : 500,
+                color: isActive ? T.text : T.textMuted,
+                background: isActive ? T.accentSoft : "transparent",
+                boxShadow: isActive ? `inset 0 0 0 1px ${T.border}` : undefined,
+                transition: "background 120ms ease, color 120ms ease",
               }}
               onMouseEnter={(e) => {
-                if (!isActiveOrChild) {
-                  e.currentTarget.style.background = T.bgElev;
-                }
+                if (!isActive) e.currentTarget.style.background = "rgba(255,255,255,0.04)";
               }}
               onMouseLeave={(e) => {
-                if (!isActiveOrChild) {
-                  e.currentTarget.style.background = "transparent";
-                }
+                if (!isActive) e.currentTarget.style.background = "transparent";
               }}
             >
-              <span style={{ fontSize: 18 }}>{item.icon}</span>
+              <span style={{ display: "flex", color: isActive ? T.accent : T.textSubtle }}>{item.icon}</span>
               <span>{item.label}</span>
             </Link>
           );
         })}
       </nav>
 
-      {/* Footer */}
-      <div
-        style={{
-          padding: "16px 20px",
-          borderTop: `1px solid ${T.border}`,
-          fontSize: 11,
-          color: T.textSubtle,
-        }}
-      >
-        <div>hyperswitch-prism</div>
-        <div style={{ marginTop: 4, opacity: 0.7 }}>
+      <div style={{ padding: "16px 20px", borderTop: `1px solid ${T.border}`, fontSize: 11, color: T.textSubtle }}>
+        <div style={{ color: T.textMuted, fontWeight: 500 }}>hyperswitch-prism</div>
+        <div style={{ marginTop: 4 }}>
           {`${CONNECTOR_COUNT} connectors · ${CAPABILITY_COUNT} capabilities`}
         </div>
       </div>
@@ -155,7 +143,7 @@ export function NavigationSidebar() {
 
 export function SidebarLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ display: "flex", minHeight: "100vh" }}>
+    <div style={{ display: "flex", minHeight: "100vh", background: T.bg }}>
       <NavigationSidebar />
       <main
         style={{

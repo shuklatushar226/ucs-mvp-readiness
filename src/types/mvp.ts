@@ -26,6 +26,8 @@ export interface MvpCapability {
   confidence: "proven" | "best-effort";
   id: string;
   label: string;
+  /** Abbreviated header for the matrix column; full `label` stays in the tooltip. */
+  short: string;
   description: string;
   weight: number;
   signal: Record<string, unknown>;

@@ -118,20 +118,26 @@ export function MvpMetricsPage() {
 
         <header style={{ padding: "20px 32px", borderBottom: `1px solid ${T.border}`, background: T.bgElev, display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 16 }}>
           <div>
-            <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>MVP Metrics</h1>
+            <h1 style={{ margin: 0, fontSize: 23, fontWeight: 700, letterSpacing: T.tight, color: T.text }}>MVP Metrics</h1>
             <span style={{ fontSize: 12, color: T.textMuted }}>
               {m.total} connectors · scored on {scoredFields} proven capabilities from UCS Rust source
             </span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <Link to="/mvp" style={{ fontSize: 12.5, fontWeight: 600, color: T.accent, textDecoration: "none", border: `1px solid ${T.border}`, borderRadius: 6, padding: "8px 14px", background: T.bg }}>
-              ▦ Readiness matrix
+            <Link to="/mvp" style={{ display: "inline-flex", alignItems: "center", gap: 7, fontSize: 12.5, fontWeight: 600, color: T.accent, textDecoration: "none", border: `1px solid ${T.border}`, borderRadius: 8, padding: "8px 14px", background: T.bgElev }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <rect x="3" y="3" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="2" />
+                <rect x="14" y="3" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="2" />
+                <rect x="3" y="14" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="2" />
+                <rect x="14" y="14" width="7" height="7" rx="1.6" stroke="currentColor" strokeWidth="2" />
+              </svg>
+              Readiness matrix
             </Link>
           </div>
         </header>
 
         <div style={{ padding: "20px 32px 40px", display: "flex", flexDirection: "column", gap: 18, minWidth: 0 }}>
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
             <StatCard label="At MVP" value={`${m.atMvp} / ${m.total}`} tone={m.atMvp === 0 ? "bad" : "good"} hint="zero scored gaps" />
             <StatCard label="Average completeness" value={`${m.avg}%`} />
             <StatCard label="Capability gaps" value={m.gaps} tone="warn" hint="cells to close" />
@@ -171,7 +177,7 @@ export function MvpMetricsPage() {
             </Panel>
           </div>
 
-          <Panel title="Capability adoption" subtitle="how many of the 108 connectors implement each rubric item">
+          <Panel title="Capability adoption" subtitle={`how many of the ${m.total} connectors implement each rubric item`}>
             <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
               {m.perCap.map(({ cap, met, gap, na, unknown, alias }) => {
                 if (alias > 0) {

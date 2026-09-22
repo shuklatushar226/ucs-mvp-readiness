@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-22T17:00:31",
+  "generatedAt": "2026-09-22T17:36:38",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "ucs",
@@ -14,6 +14,7 @@
       "label": "CIT",
       "description": "Customer-initiated payment.",
       "weight": 2,
+      "short": "CIT",
       "signal": {
         "type": "flow",
         "flows": [
@@ -28,6 +29,7 @@
       "label": "MIT",
       "description": "Merchant-initiated charge against a stored mandate.",
       "weight": 5,
+      "short": "MIT",
       "signal": {
         "type": "flow",
         "flows": [
@@ -42,6 +44,7 @@
       "label": "Manual capture",
       "description": "Separate authorize then capture.",
       "weight": 1,
+      "short": "Manual capture",
       "signal": {
         "type": "flow",
         "flows": [
@@ -56,6 +59,7 @@
       "label": "$0 Auth",
       "description": "Zero-amount authorization that stores a mandate.",
       "weight": 3,
+      "short": "$0 Auth",
       "signal": {
         "type": "flow",
         "flows": [
@@ -70,6 +74,7 @@
       "label": "Void",
       "description": "Cancel an authorized payment.",
       "weight": 1,
+      "short": "Void",
       "signal": {
         "type": "flow",
         "flows": [
@@ -84,6 +89,7 @@
       "label": "Refunds, partial refunds",
       "description": "Refund execution, full or partial. Deliberately does NOT require RSync: that flow is RefundService.Get ('retrieve refund status from the payment processor'), a separate capability scored in its own column. Adyen, for one, refunds fine and receives the outcome by webhook instead of polling.",
       "weight": 2,
+      "short": "Refunds",
       "signal": {
         "type": "flow",
         "flows": [
@@ -98,6 +104,7 @@
       "label": "Refund sync",
       "description": "Poll refund status from the processor (RefundService.Get). Independent of refunding: a connector whose processor pushes refund outcomes by webhook does not need it.",
       "weight": 1,
+      "short": "Refund sync",
       "signal": {
         "type": "flow",
         "flows": [
@@ -112,6 +119,7 @@
       "label": "External 3DS",
       "description": "Connector accepts a 3DS result authenticated ELSEWHERE: it reads the typed AuthenticationData (eci / cavv / ds_transaction_id) off the request instead of running the challenge itself. A typed field read, so exact.",
       "weight": 8,
+      "short": "Ext 3DS",
       "signal": {
         "type": "external_three_ds"
       },
@@ -122,6 +130,7 @@
       "label": "Payment webhooks",
       "description": "Handles incoming payment webhooks: overrides BOTH get_event_type and process_payment_webhook with real bodies. mode is 'all' on purpose \u2014 get_event_type only classifies an event, so on its own it processes nothing.",
       "weight": 2,
+      "short": "Pay webhooks",
       "signal": {
         "type": "trait",
         "methods": [
@@ -137,6 +146,7 @@
       "label": "Refund webhooks",
       "description": "Overrides process_refund_webhook with a real body. The trait carries an inert default (Err(WebhooksNotImplemented)), so override-vs-default is decidable.",
       "weight": 1,
+      "short": "Refund webhooks",
       "signal": {
         "type": "trait",
         "methods": [
@@ -151,6 +161,7 @@
       "label": "NTID support for MIT",
       "description": "Consumes a network transaction id to authorize a merchant-initiated transaction.",
       "weight": 3,
+      "short": "NTID MIT",
       "signal": {
         "type": "code",
         "pattern": "MandateReferenceId::NetworkMandateId\\([a-z]|get_network_mandate_id\\(\\)",
@@ -163,6 +174,7 @@
       "label": "Chargeback notification",
       "description": "Overrides process_dispute_webhook to surface disputes.",
       "weight": 5,
+      "short": "CB notify",
       "signal": {
         "type": "trait",
         "methods": [
@@ -177,6 +189,7 @@
       "label": "Chargeback proof submission",
       "description": "Submits dispute evidence to the processor.",
       "weight": 5,
+      "short": "CB evidence",
       "signal": {
         "type": "flow",
         "flows": [
@@ -191,6 +204,7 @@
       "label": "3DS (native)",
       "description": "Connector PERFORMS the authentication itself: it implements a PreAuthenticate / Authenticate / PostAuthenticate RPC AND carries real 3DS protocol artifacts. The second condition is required because those RPCs are a generic pre/post-processing channel \u2014 flywire, grabpay, globalpay and kount use them for hosted checkout, charge-init, Confirm Transaction and risk, scoring 0-1 artifacts against 38-370 for every genuine 3DS connector. Connectors that fold 3DS into Authorize with no RPC are deliberately excluded: their artifact counts have no cliff, so any cutoff would be a knob rather than a measurement.",
       "weight": 5,
+      "short": "3DS native",
       "signal": {
         "type": "native_three_ds"
       },
@@ -201,6 +215,7 @@
       "label": "Auto capture",
       "description": "Authorize-and-capture in one call. UCS defaults CaptureMethod to Automatic, so this is the ABSENCE of an explicit refusal rather than a positive confirmation \u2014 read a high count as 'not refused', not as 'verified'.",
       "weight": 1,
+      "short": "Auto capture",
       "signal": {
         "type": "code_unless",
         "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)"
@@ -212,6 +227,7 @@
       "label": "Decrypted wallet, HS creds",
       "description": "Apple Pay / Google Pay decrypted with Hyperswitch-held certificates. Detected from the decrypted-token types the connector consumes. Payment-method parsing is unreliable in general (a naive pass classified stripe as not supporting Card), so this is indicative, not proven.",
       "weight": 5,
+      "short": "Wallet decrypt",
       "signal": {
         "type": "code",
         "pattern": "ApplePayDecryptedData|ApplePayPredecryptData|GooglePayDecryptedData|PazeDecryptedData|ApplePayDecrypt\\b|GooglePayDecrypt\\b",

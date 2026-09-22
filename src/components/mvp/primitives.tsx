@@ -41,8 +41,7 @@ export function Panel({
       style={{
         background: T.bgElev,
         border: `1px solid ${T.border}`,
-        borderRadius: 10,
-        boxShadow: T.shadow,
+        borderRadius: 12,
         overflow: "hidden",
       }}
     >
@@ -58,7 +57,11 @@ export function Panel({
           }}
         >
           <div>
-            {title && <h2 style={{ margin: 0, fontSize: 13, fontWeight: 700 }}>{title}</h2>}
+            {title && (
+              <h2 style={{ margin: 0, fontSize: 13.5, fontWeight: 600, letterSpacing: T.tight, color: T.text }}>
+                {title}
+              </h2>
+            )}
             {subtitle && (
               <div style={{ fontSize: 11, color: T.textMuted, marginTop: 3 }}>{subtitle}</div>
             )}
@@ -89,28 +92,39 @@ export function StatCard({
       style={{
         background: T.bgElev,
         border: `1px solid ${T.border}`,
-        borderRadius: 10,
-        padding: "15px 18px",
-        boxShadow: T.shadow,
+        borderRadius: 12,
+        padding: "17px 20px 19px",
         flex: "1 1 170px",
         minWidth: 150,
       }}
     >
       <div
         style={{
-          fontSize: 10.5,
+          fontSize: 10,
           fontWeight: 700,
-          color: T.textMuted,
+          color: T.textSubtle,
           textTransform: "uppercase",
-          letterSpacing: 0.5,
+          letterSpacing: 0.9,
         }}
       >
         {label}
       </div>
-      <div style={{ fontSize: 27, fontWeight: 700, color, marginTop: 6, lineHeight: 1.1 }}>
+      {/* Oversized numeral under a small uppercase label — the site's own
+          stat treatment ("99.999% Reliability", "2000 TPS"). */}
+      <div
+        style={{
+          fontSize: 38,
+          fontWeight: 700,
+          color,
+          marginTop: 9,
+          lineHeight: 1.05,
+          letterSpacing: T.tighter,
+          fontVariantNumeric: "tabular-nums",
+        }}
+      >
         {value}
       </div>
-      {hint && <div style={{ fontSize: 11, color: T.textSubtle, marginTop: 4 }}>{hint}</div>}
+      {hint && <div style={{ fontSize: 11, color: T.textSubtle, marginTop: 7 }}>{hint}</div>}
     </div>
   );
 }
@@ -156,7 +170,17 @@ export function Donut({
             justifyContent: "center",
           }}
         >
-          <span style={{ fontSize: 26, fontWeight: 700, color: T.text }}>{pct}%</span>
+          <span
+            style={{
+              fontSize: 30,
+              fontWeight: 700,
+              color: T.text,
+              letterSpacing: T.tighter,
+              fontVariantNumeric: "tabular-nums",
+            }}
+          >
+            {pct}%
+          </span>
         </div>
       </div>
       {caption && (
@@ -174,7 +198,7 @@ export function ProgressBar({ pct, width = 84 }: { pct: number; width?: number }
       style={{
         width,
         height: 6,
-        background: T.border,
+        background: "rgba(255,255,255,0.09)",
         borderRadius: 999,
         overflow: "hidden",
         flexShrink: 0,

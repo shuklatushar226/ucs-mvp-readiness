@@ -64,7 +64,8 @@
         "mode": "any"
       },
       "weight": 2,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "CIT"
     },
     {
       "id": "mit",
@@ -78,7 +79,8 @@
         "mode": "any"
       },
       "weight": 5,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "MIT"
     },
     {
       "id": "manual_capture",
@@ -92,7 +94,8 @@
         "mode": "any"
       },
       "weight": 1,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Manual capture"
     },
     {
       "id": "zero_auth",
@@ -106,7 +109,8 @@
         "mode": "any"
       },
       "weight": 3,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "$0 Auth"
     },
     {
       "id": "void",
@@ -120,7 +124,8 @@
         "mode": "any"
       },
       "weight": 1,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Void"
     },
     {
       "id": "refunds",
@@ -134,7 +139,8 @@
         "mode": "any"
       },
       "weight": 2,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Refunds"
     },
     {
       "id": "refund_sync",
@@ -148,7 +154,8 @@
         "mode": "any"
       },
       "weight": 1,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Refund sync"
     },
     {
       "id": "external_three_ds",
@@ -158,7 +165,8 @@
         "type": "external_three_ds"
       },
       "weight": 8,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Ext 3DS"
     },
     {
       "id": "webhooks_payment",
@@ -173,7 +181,8 @@
         "mode": "all"
       },
       "weight": 2,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Pay webhooks"
     },
     {
       "id": "webhooks_refund",
@@ -187,7 +196,8 @@
         "mode": "any"
       },
       "weight": 1,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "Refund webhooks"
     },
     {
       "id": "ntid_mit",
@@ -199,7 +209,8 @@
         "close_unknown": true
       },
       "weight": 3,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "NTID MIT"
     },
     {
       "id": "chargeback_notify",
@@ -213,7 +224,8 @@
         "mode": "any"
       },
       "weight": 5,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "CB notify"
     },
     {
       "id": "chargeback_evidence",
@@ -227,7 +239,8 @@
         "mode": "any"
       },
       "weight": 5,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "CB evidence"
     },
     {
       "id": "three_ds",
@@ -237,7 +250,8 @@
         "type": "native_three_ds"
       },
       "weight": 5,
-      "confidence": "proven"
+      "confidence": "proven",
+      "short": "3DS native"
     },
     {
       "id": "auto_capture",
@@ -248,7 +262,8 @@
         "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)"
       },
       "weight": 1,
-      "confidence": "best-effort"
+      "confidence": "best-effort",
+      "short": "Auto capture"
     },
     {
       "id": "decrypted_wallet",
@@ -260,7 +275,8 @@
         "close_unknown": true
       },
       "weight": 5,
-      "confidence": "best-effort"
+      "confidence": "best-effort",
+      "short": "Wallet decrypt"
     }
   ]
 }

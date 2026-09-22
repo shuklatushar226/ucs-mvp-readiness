@@ -75,16 +75,16 @@ export function MvpReadinessPage() {
           /* The matrix scrolls inside its panel; the page never scrolls sideways,
              which would drag the sticky connector column out of view. */
           body { overflow-x: hidden; }
-          .mvp-scroll::-webkit-scrollbar { height: 10px; width: 10px; }
-          .mvp-scroll::-webkit-scrollbar-thumb { background: ${T.borderStrong}; border-radius: 6px; }
-          .mvp-row:hover td { background: ${T.accentSoft} !important; }
+          .mvp-row td { transition: background 90ms ease; }
+          .mvp-row:hover td { background: rgba(255,255,255,0.045) !important; }
+          .mvp-row:hover td:first-child { background: rgba(34,152,231,0.10) !important; }
         `}</style>
 
         <header
           style={{
-            padding: "20px 32px",
+            padding: "22px 32px",
             borderBottom: `1px solid ${T.border}`,
-            background: T.bgElev,
+            background: T.bg,
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -93,7 +93,7 @@ export function MvpReadinessPage() {
           }}
         >
           <div>
-            <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>MVP Readiness</h1>
+            <h1 style={{ margin: 0, fontSize: 23, fontWeight: 700, letterSpacing: T.tight, color: T.text }}>MVP Readiness</h1>
             <span style={{ fontSize: 12, color: T.textMuted }}>
               {connectors.length} connectors × {capabilities.filter((c) => c.confidence === "proven").length} proven capabilities · derived from UCS Rust source · {capabilities.filter((c) => c.confidence === "best-effort").length} best-effort columns shown but not scored
             </span>
@@ -102,17 +102,23 @@ export function MvpReadinessPage() {
             <Link
               to="/mvp/metrics"
               style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 7,
                 fontSize: 12.5,
                 fontWeight: 600,
                 color: T.accent,
                 textDecoration: "none",
                 border: `1px solid ${T.border}`,
-                borderRadius: 6,
+                borderRadius: 8,
                 padding: "8px 14px",
-                background: T.bg,
+                background: T.bgElev,
               }}
             >
-              📊 Metrics
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+              Metrics
             </Link>
             <input
               value={query}
@@ -134,7 +140,7 @@ export function MvpReadinessPage() {
 
         <div style={{ padding: "20px 32px 40px", display: "flex", flexDirection: "column", gap: 18, minWidth: 0 }}>
           {/* KPI strip */}
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
             <StatCard
               label="At MVP"
               value={`${totals.atMvp} / ${connectors.length}`}
@@ -212,7 +218,7 @@ export function MvpReadinessPage() {
                       ...thBase,
                       left: 0,
                       zIndex: 3,
-                      minWidth: 190,
+                      minWidth: 168,
                       width: "1%",
                       whiteSpace: "nowrap",
                       textAlign: "left",
@@ -221,7 +227,7 @@ export function MvpReadinessPage() {
                   >
                     Connector
                   </th>
-                  <th style={{ ...thBase, zIndex: 2, minWidth: 132, width: "1%", whiteSpace: "nowrap" }}>Readiness</th>
+                  <th style={{ ...thBase, zIndex: 2, minWidth: 116, width: "1%", whiteSpace: "nowrap" }}>Readiness</th>
                   {capabilities.map((cap, i) => (
                     <th
                       key={cap.id}
@@ -233,8 +239,10 @@ export function MvpReadinessPage() {
                       style={{
                         ...thBase,
                         zIndex: 2,
-                        minWidth: 32,
-                        padding: 0,
+                        width: 62,
+                        minWidth: 62,
+                        padding: "9px 6px 10px",
+                        verticalAlign: "bottom",
                         // Mark where provable data ends, so the two tiers are never
                         // read as one scale.
                         borderLeft:
@@ -244,23 +252,23 @@ export function MvpReadinessPage() {
                             : undefined,
                       }}
                     >
+                      {/* Horizontal, two lines, abbreviated. This used to be a
+                          rotated label in a fixed 196px box — a height set by the
+                          single longest heading that every other column paid for,
+                          so the matrix opened behind an empty slab. */}
                       <div
                         style={{
-                          writingMode: "vertical-rl",
-                          transform: "rotate(180deg)",
-                          height: 196,
-                          margin: "0 auto",
-                          fontSize: 11,
+                          fontSize: 10.5,
+                          lineHeight: 1.25,
                           fontWeight: 600,
+                          letterSpacing: "-0.01em",
                           color: cap.confidence === "best-effort" ? T.textSubtle : T.textMuted,
                           fontStyle: cap.confidence === "best-effort" ? "italic" : "normal",
-                          whiteSpace: "nowrap",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          padding: "8px 0",
+                          textAlign: "center",
+                          hyphens: "auto",
                         }}
                       >
-                        {cap.label}
+                        {cap.short}
                       </div>
                     </th>
                   ))}
@@ -524,8 +532,9 @@ const thBase: React.CSSProperties = {
   background: T.bgRightHeader,
   borderBottom: `1px solid ${T.borderStrong}`,
   padding: "8px 10px",
-  fontSize: 11,
-  fontWeight: 700,
+  fontSize: 10.5,
+  fontWeight: 600,
+  letterSpacing: "0.02em",
   color: T.textMuted,
   verticalAlign: "bottom",
   textAlign: "center",

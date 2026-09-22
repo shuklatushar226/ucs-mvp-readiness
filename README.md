@@ -35,7 +35,7 @@ methods.
 
 `.github/workflows/refresh.yml` runs daily at 03:17 UTC: sparse-clones prism
 `main` (~25 MB of the ~160 MB repo), regenerates `src/data/mvp.json`, and commits
-only if the data moved. That push triggers the Netlify build.
+only if the data moved. That push triggers the Netlify build; `netlify.toml` carries the build settings.
 
 No secrets and no manual step — prism is public, and the commit doubles as the
 repository activity that stops GitHub disabling the schedule after 60 days idle.

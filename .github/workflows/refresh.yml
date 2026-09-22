@@ -1,0 +1,63 @@
+name: Refresh MVP data from prism main
+
+# Why commit the data instead of pinging a Netlify build hook: the push IS the
+# repository activity that keeps this schedule alive. GitHub disables scheduled
+# workflows in public repos after 60 days of inactivity, which would be fatal
+# for a repo that otherwise never changes. prism takes ~4 commits/day, so the
+# data moves on most runs and the repo is never idle by construction.
+# workflow_dispatch is the escape hatch if the schedule is ever disabled anyway.
+
+on:
+  schedule:
+    # 03:17 UTC — deliberately off the hour; GitHub drops scheduled jobs at :00
+    # when the queue is busy.
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sparse-clone prism main
+        # Only the three trees the generator reads: ~25 MB instead of ~160 MB.
+        run: |
+          git clone --filter=blob:none --no-checkout --depth=1 --branch main \
+            https://github.com/juspay/hyperswitch-prism.git "$RUNNER_TEMP/ucs"
+          cd "$RUNNER_TEMP/ucs"
+          git sparse-checkout init --cone
+          git sparse-checkout set \
+            crates/integrations/connector-integration/src/connectors \
+            crates/internal/integration-tests/src/connector_specs \
+            data/field_probe
+          git checkout main
+          echo "prism main is $(git rev-parse --short HEAD)"
+
+      - name: Regenerate mvp.json
+        # The generator asserts its own consistency (every flow's impl /
+        # not_implemented / not_supported buckets must account for the whole
+        # fleet, and connector dirs must match specs dirs). A drift it cannot
+        # explain raises here, so the step fails and nothing is committed.
+        env:
+          UCS_ROOT: ${{ runner.temp }}/ucs
+        run: python3 scripts/generators/mvp/build_mvp.py
+
+      - name: Commit if the data moved
+        run: |
+          if git diff --quiet -- src/data/mvp.json; then
+            echo "no change in mvp.json — nothing to deploy"
+            exit 0
+          fi
+          git config user.name  "mvp-refresh[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/mvp.json
+          git commit -m "chore(data): refresh from prism $(cd "$RUNNER_TEMP/ucs" && git rev-parse --short HEAD)"
+          git push

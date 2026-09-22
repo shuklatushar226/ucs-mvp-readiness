@@ -52,8 +52,23 @@ jobs:
 
       - name: Commit if the data moved
         run: |
-          if git diff --quiet -- src/data/mvp.json; then
-            echo "no change in mvp.json — nothing to deploy"
+          # mvp.json carries generatedAt, which changes on every run, so a plain
+          # `git diff --quiet` is never quiet and this would commit daily whether
+          # or not anything moved. Compare everything EXCEPT that timestamp.
+          # provenance.commit stays in the comparison on purpose: when prism
+          # advances, the footer should say so even if no capability changed.
+          if python3 - <<'PY'; then
+          import json, subprocess, sys
+          new = json.load(open("src/data/mvp.json"))
+          old = json.loads(subprocess.run(
+              ["git", "show", "HEAD:src/data/mvp.json"],
+              capture_output=True, text=True, check=True).stdout)
+          for d in (new, old):
+              d.pop("generatedAt", None)
+          sys.exit(0 if new == old else 1)
+          PY
+            echo "only the timestamp moved — nothing to deploy"
+            git checkout -- src/data/mvp.json
             exit 0
           fi
           git config user.name  "mvp-refresh[bot]"

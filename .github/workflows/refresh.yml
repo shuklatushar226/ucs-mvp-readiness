@@ -51,6 +51,7 @@ jobs:
         run: python3 scripts/generators/mvp/build_mvp.py
 
       - name: Commit if the data moved
+        id: commit
         run: |
           # mvp.json carries generatedAt, which changes on every run, so a plain
           # `git diff --quiet` is never quiet and this would commit daily whether
@@ -69,6 +70,7 @@ jobs:
           PY
             echo "only the timestamp moved — nothing to deploy"
             git checkout -- src/data/mvp.json
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name  "mvp-refresh[bot]"
@@ -76,3 +78,29 @@ jobs:
           git add src/data/mvp.json
           git commit -m "chore(data): refresh from prism $(cd "$RUNNER_TEMP/ucs" && git rev-parse --short HEAD)"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # The site is deployed from here rather than from a Netlify git link, so
+      # there is no one-time UI authorization and no build minutes are spent on
+      # Netlify's side. Only runs when the data actually moved.
+      - name: Set up Node
+        if: steps.commit.outputs.changed == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Build
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Netlify
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          npx --yes netlify-cli@latest deploy --prod --dir=dist \
+            --site="${{ secrets.NETLIFY_SITE_ID }}" \
+            --message="prism $(cd "$RUNNER_TEMP/ucs" && git rev-parse --short HEAD)"

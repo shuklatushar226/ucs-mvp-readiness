@@ -33,12 +33,25 @@ methods.
 
 ## Refresh
 
-`.github/workflows/refresh.yml` runs daily at 03:17 UTC: sparse-clones prism
-`main` (~25 MB of the ~160 MB repo), regenerates `src/data/mvp.json`, and commits
-only if the data moved. That push triggers the Netlify build; `netlify.toml` carries the build settings.
+`.github/workflows/refresh.yml` runs daily at 03:17 UTC:
 
-No secrets and no manual step — prism is public, and the commit doubles as the
-repository activity that stops GitHub disabling the schedule after 60 days idle.
+1. sparse-clones prism `main` (~25 MB of the ~160 MB repo),
+2. regenerates `src/data/mvp.json`,
+3. commits **only if the data moved** — `generatedAt` changes every run, so the
+   comparison deliberately ignores it, otherwise the site would rebuild daily
+   whether or not anything changed,
+4. builds and deploys to Netlify.
+
+The commit doubles as the repository activity that stops GitHub disabling the
+schedule after 60 days idle. prism is public, so the clone needs no credentials.
+
+The deploy uses two repo secrets, `NETLIFY_AUTH_TOKEN` and `NETLIFY_SITE_ID`,
+rather than a Netlify↔GitHub link — that avoids the one-time UI authorization
+and keeps the build on GitHub's runners. The workflow triggers on `schedule` and
+`workflow_dispatch` only, never `pull_request`, so a fork PR can never reach
+those secrets. If you would rather hold no token here, link the repo in the
+Netlify UI instead and delete the last three steps; `netlify.toml` already
+carries the build settings.
 
 To run it by hand: **Actions → Refresh MVP data from prism main → Run workflow**.
 

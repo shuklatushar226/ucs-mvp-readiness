@@ -27,6 +27,12 @@
     "                information is useful, EXCLUDED from scoring so it cannot",
     "                contaminate a number presented as provable.",
     "",
+    "A COLUMN MUST MEASURE ITS OWN LABEL. Two did not, and both are fixed:",
+    "  RSync is RefundService.Get (refund STATUS), not refunding. Requiring it inside",
+    "  'Refunds' marked 9 connectors that refund fine as gaps, adyen among them.",
+    "  'Webhooks (payments + refunds)' never consulted process_refund_webhook and used",
+    "  mode 'any', so get_event_type alone \u2014 which only classifies an event \u2014 passed.",
+    "",
     "STILL ABSENT (no honest signal at all):",
     "  Order metadata update, Smart retry \u2014 no such capability exists in UCS.",
     "  Decrypt-token / alternate-PSP      \u2014 proxy_authorize is a vault-alias proxy,",
@@ -119,16 +125,29 @@
     {
       "id": "refunds",
       "label": "Refunds, partial refunds",
-      "description": "Refund execution and refund sync.",
+      "description": "Refund execution, full or partial. Deliberately does NOT require RSync: that flow is RefundService.Get ('retrieve refund status from the payment processor'), a separate capability scored in its own column. Adyen, for one, refunds fine and receives the outcome by webhook instead of polling.",
       "signal": {
         "type": "flow",
         "flows": [
-          "Refund",
-          "RSync"
+          "Refund"
         ],
-        "mode": "all"
+        "mode": "any"
       },
       "weight": 2,
+      "confidence": "proven"
+    },
+    {
+      "id": "refund_sync",
+      "label": "Refund sync",
+      "description": "Poll refund status from the processor (RefundService.Get). Independent of refunding: a connector whose processor pushes refund outcomes by webhook does not need it.",
+      "signal": {
+        "type": "flow",
+        "flows": [
+          "RSync"
+        ],
+        "mode": "any"
+      },
+      "weight": 1,
       "confidence": "proven"
     },
     {
@@ -142,18 +161,32 @@
       "confidence": "proven"
     },
     {
-      "id": "webhooks",
-      "label": "Webhooks (payments + refunds)",
-      "description": "Incoming webhook handling: the connector overrides the inert IncomingWebhook defaults.",
+      "id": "webhooks_payment",
+      "label": "Payment webhooks",
+      "description": "Handles incoming payment webhooks: overrides BOTH get_event_type and process_payment_webhook with real bodies. mode is 'all' on purpose \u2014 get_event_type only classifies an event, so on its own it processes nothing.",
       "signal": {
         "type": "trait",
         "methods": [
           "get_event_type",
           "process_payment_webhook"
         ],
+        "mode": "all"
+      },
+      "weight": 2,
+      "confidence": "proven"
+    },
+    {
+      "id": "webhooks_refund",
+      "label": "Refund webhooks",
+      "description": "Overrides process_refund_webhook with a real body. The trait carries an inert default (Err(WebhooksNotImplemented)), so override-vs-default is decidable.",
+      "signal": {
+        "type": "trait",
+        "methods": [
+          "process_refund_webhook"
+        ],
         "mode": "any"
       },
-      "weight": 3,
+      "weight": 1,
       "confidence": "proven"
     },
     {

@@ -77,7 +77,7 @@ export function MvpMetricsPage() {
 
     const perCap = capabilities
       .map((cap) => {
-        const k = { met: 0, gap: 0, unknown: 0, alias: 0 };
+        const k = { met: 0, gap: 0, na: 0, unknown: 0, alias: 0 };
         for (const c of connectors) k[c.cells[cap.id]]++;
         return { cap, ...k };
       })
@@ -98,8 +98,11 @@ export function MvpMetricsPage() {
 
     const unknownCells = connectors.reduce(
       (s, c) => s + capabilities.filter((cap) => c.cells[cap.id] === "unknown").length, 0);
+    // Cells the processor cannot do. Tracked separately from gaps so the backlog
+    // is not inflated with work that no amount of effort would ever close.
+    const naCells = connectors.reduce((s, c) => s + c.na, 0);
 
-    return { total, atMvp, gaps, effort, avg, perCap, histogram, quickWins, heaviest, topFlows, unknownCells };
+    return { total, atMvp, gaps, effort, avg, perCap, histogram, quickWins, heaviest, topFlows, unknownCells, naCells };
   }, [capabilities, connectors]);
 
   const maxBucket = Math.max(...m.histogram.map((h) => h.count), 1);
@@ -170,7 +173,7 @@ export function MvpMetricsPage() {
 
           <Panel title="Capability adoption" subtitle="how many of the 108 connectors implement each rubric item">
             <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
-              {m.perCap.map(({ cap, met, gap, unknown, alias }) => {
+              {m.perCap.map(({ cap, met, gap, na, unknown, alias }) => {
                 if (alias > 0) {
                   return (
                     <div key={cap.id} title={cap.description} style={{ display: "flex", alignItems: "center", gap: 10, padding: "3px 0" }}>
@@ -187,14 +190,31 @@ export function MvpMetricsPage() {
                     key={cap.id}
                     label={cap.label}
                     value={met}
-                    max={m.total}
-                    suffix={unknown > 0 ? ` / ${m.total} · ${unknown}?` : ` / ${m.total}`}
-                    color={met > m.total * 0.6 ? T.success : met > m.total * 0.2 ? T.warn : T.accent}
-                    title={`${cap.label}\n${cap.description}\n\nimplemented ${met} · not implemented ${gap} · unknown ${unknown}`}
+                    max={Math.max(m.total - na, 1)}
+                    suffix={
+                      // Denominator drops connectors whose processor cannot do
+                      // this at all: "1 / 119" reads as near-total failure when
+                      // the honest figure is "1 of the 45 that could".
+                      ` / ${m.total - na}` +
+                      (na > 0 ? ` · ${na} n/a` : "") +
+                      (unknown > 0 ? ` · ${unknown}?` : "")
+                    }
+                    color={met > (m.total - na) * 0.6 ? T.success : met > (m.total - na) * 0.2 ? T.warn : T.accent}
+                    title={`${cap.label}\n${cap.description}\n\nimplemented ${met} · not implemented ${gap} · not supported ${na} · unknown ${unknown}`}
                   />
                 );
               })}
             </div>
+            {m.naCells > 0 && (
+              <p style={{ fontSize: 11.5, color: T.textMuted, lineHeight: 1.6, marginTop: 14, marginBottom: 0 }}>
+                <strong>{m.naCells} cells are NOT SUPPORTED</strong> — the connector declares the
+                processor has no such capability (the macro&rsquo;s <code style={{ background: T.codeBg, padding: "1px 4px", borderRadius: 3 }}>not_supported</code> list,
+                which raises a different runtime error from <code style={{ background: T.codeBg, padding: "1px 4px", borderRadius: 3 }}>not_implemented</code>).
+                No amount of work closes these, so they are excluded from the score and from effort
+                rather than counted as gaps. Chargeback proof submission alone accounts for most of
+                them: for the majority of processors there is simply no evidence-submission API.
+              </p>
+            )}
             {m.unknownCells > 0 && (
               <p style={{ fontSize: 11.5, color: T.textMuted, lineHeight: 1.6, marginTop: 14, marginBottom: 0 }}>
                 <strong>{m.unknownCells} cells are UNKNOWN</strong> — the UCS source genuinely does not

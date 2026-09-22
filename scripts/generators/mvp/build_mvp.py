@@ -30,17 +30,17 @@ DEFAULT_OUT = DASHBOARD_ROOT / "src/data/mvp.json"
 RUBRIC = Path(__file__).resolve().parent / "mvp-rubric.json"
 PROBE = REPO_ROOT / "data" / "field_probe"
 
-MET, GAP, UNKNOWN, ALIAS = "met", "gap", "unknown", "alias"
-_STATE = {S.YES: MET, S.NO: GAP, S.UNKNOWN: UNKNOWN}
+MET, GAP, UNKNOWN, ALIAS, NA = "met", "gap", "unknown", "alias", "na"
+_STATE = {S.YES: MET, S.NO: GAP, S.UNKNOWN: UNKNOWN, S.NA: NA}
 
 
-def evaluate(cap: dict, flows: dict) -> dict:
+def evaluate(cap: dict, flows: dict, buckets: dict) -> dict:
     """{connector: cell state} for one rubric capability."""
     sig = cap["signal"]
     kind = sig["type"]
 
     if kind == "flow":
-        raw = S.flows_signal(flows, sig["flows"], sig.get("mode", "any"))
+        raw = S.flows_signal(flows, sig["flows"], sig.get("mode", "any"), buckets)
     elif kind == "trait":
         per = [S.trait_override(m) for m in sig["methods"]]
         mode = sig.get("mode", "any")
@@ -119,11 +119,14 @@ def main() -> None:
     assert_no_hyperswitch()
     flows = EF.extract()
     EF.assert_healthy(flows)
+    # The compiler-forced three-way split; flows_signal needs the not_supported
+    # bucket to tell "not built yet" from "the processor cannot do this".
+    buckets = EF.partition()
 
     rubric = json.loads(RUBRIC.read_text())
     caps = rubric["capabilities"]
     probe = probe_secondary()
-    cells = {cap["id"]: evaluate(cap, flows) for cap in caps}
+    cells = {cap["id"]: evaluate(cap, flows, buckets) for cap in caps}
 
     # Only proven fields score. A best-effort signal is shown because the
     # information is useful, but letting it move met/gaps/effort would put an
@@ -135,6 +138,10 @@ def main() -> None:
         row = {cap["id"]: cells[cap["id"]][c] for cap in caps}
         met = sum(1 for cap in scored_caps if row[cap["id"]] == MET)
         gap = sum(1 for cap in scored_caps if row[cap["id"]] == GAP)
+        # not_supported is excluded from the denominator, not counted as a gap:
+        # a connector is not less MVP-ready because its processor has no refund
+        # API. Including it would both understate pct and invent effort.
+        na = sum(1 for cap in scored_caps if row[cap["id"]] == NA)
         effort = sum(cap["weight"] for cap in scored_caps if row[cap["id"]] == GAP)
         scored = met + gap
         rows.append({
@@ -144,6 +151,7 @@ def main() -> None:
             "probe": probe[c],
             "met": met,
             "gaps": gap,
+            "na": na,
             "scored": scored,
             "effort": effort,
             "pct": round(100 * met / scored) if scored else 0,
@@ -168,7 +176,9 @@ def main() -> None:
     print(f"✅ {len(rows)} connectors × {len(caps)} capabilities "
           f"({len(scored_caps)} proven, {len(caps) - len(scored_caps)} best-effort) → {args.out}")
     print(f"   at MVP: {sum(1 for r in rows if r['gaps'] == 0)} · "
-          f"gaps {sum(r['gaps'] for r in rows)} · effort {sum(r['effort'] for r in rows)} pts")
+          f"gaps {sum(r['gaps'] for r in rows)} · "
+          f"n/a {sum(r['na'] for r in rows)} · "
+          f"effort {sum(r['effort'] for r in rows)} pts")
 
 
 if __name__ == "__main__":

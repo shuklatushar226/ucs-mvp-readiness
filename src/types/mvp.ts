@@ -3,12 +3,18 @@
 /**
  * Cell states. Only `met` and `gap` are scored.
  *
+ * `na` is the connector declaring the processor does not support the capability
+ * at all (the macro's `not_supported` list, which raises a different runtime
+ * error from `not_implemented`). It is not a gap — no amount of work closes it —
+ * so it is excluded from the denominator rather than counted against the
+ * connector.
+ *
  * `unknown` is deliberate and distinct from `gap`: "the source does not say"
  * and "the source says no" are different facts. `alias` marks a rubric row that
  * duplicates another (the Relay rows), shown for fidelity to the sheet but
  * never scored.
  */
-export type MvpCellState = "met" | "gap" | "unknown" | "alias";
+export type MvpCellState = "met" | "gap" | "na" | "unknown" | "alias";
 
 export interface MvpCapability {
   /**
@@ -47,7 +53,9 @@ export interface MvpConnector {
   probe: MvpProbe | null;
   met: number;
   gaps: number;
-  /** met + gap — unknown and alias are excluded from the denominator. */
+  /** Capabilities the processor does not support; excluded from `scored`. */
+  na: number;
+  /** met + gap — na, unknown and alias are excluded from the denominator. */
   scored: number;
   effort: number;
   pct: number;

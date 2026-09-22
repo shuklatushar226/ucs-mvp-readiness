@@ -1,0 +1,41 @@
+name: Deploy
+
+# refresh.yml deploys after IT changes the data. This covers the other half:
+# a code change (UI, rubric, generator) pushed by a person, which would
+# otherwise sit in the repo while the live site kept serving the old bundle.
+#
+# These two cannot be merged into one push-triggered workflow: a push made with
+# GITHUB_TOKEN — which is how refresh.yml commits — deliberately does NOT
+# trigger `on: push`, so the refresh would never deploy itself. Hence the
+# deploy step stays inline there, and this handles human pushes.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          npx --yes netlify-cli@latest deploy --prod --dir=dist \
+            --site="${{ secrets.NETLIFY_SITE_ID }}" \
+            --message="${{ github.event.head_commit.message && 'code' || 'manual' }} deploy ${{ github.sha }}"

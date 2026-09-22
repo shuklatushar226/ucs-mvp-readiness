@@ -54,7 +54,7 @@ export function MvpReadinessPage() {
   const presentStates = useMemo(() => {
     const seen = new Set<string>();
     for (const c of connectors) for (const v of Object.values(c.cells)) seen.add(v);
-    return (["met", "gap", "unknown", "alias"] as const).filter((st) => seen.has(st));
+    return (["met", "gap", "na", "unknown", "alias"] as const).filter((st) => seen.has(st));
   }, [connectors]);
 
   const detail = selected ? connectors.find((c) => c.name === selected) ?? null : null;
@@ -379,6 +379,7 @@ export function MvpReadinessPage() {
                 <h2 style={{ margin: 0, fontSize: 16, fontWeight: 700 }}>{titleCase(detail.name)}</h2>
                 <div style={{ fontSize: 12, color: T.textMuted, marginTop: 4, display: "flex", alignItems: "center", gap: 7 }}>
                   {detail.pct}% · {detail.met}/{detail.scored} scored · {detail.effort} effort pts
+                  {detail.na > 0 ? ` · ${detail.na} n/a` : ""}
                 </div>
               </div>
               <button
@@ -442,7 +443,7 @@ export function MvpReadinessPage() {
               </div>
 
 
-              {(["gap", "unknown", "met"] as const).map((state) => {
+              {(["gap", "na", "unknown", "met"] as const).map((state) => {
                 const items = DATA.capabilities.filter((cap) => detail.cells[cap.id] === state);
                 if (items.length === 0) return null;
                 return (
@@ -459,9 +460,11 @@ export function MvpReadinessPage() {
                     >
                       {state === "gap"
                         ? `To reach MVP · ${items.length}`
-                        : state === "unknown"
-                          ? `Unknown · ${items.length}`
-                          : `Implemented · ${items.length}`}
+                        : state === "na"
+                          ? `Not supported by the processor · ${items.length}`
+                          : state === "unknown"
+                            ? `Unknown · ${items.length}`
+                            : `Implemented · ${items.length}`}
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
                       {items.map((cap) => (

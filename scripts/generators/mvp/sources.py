@@ -24,7 +24,7 @@ REPO_ROOT = Path(os.environ.get("UCS_ROOT") or Path(__file__).resolve().parents[
 CONNECTORS = REPO_ROOT / "crates/integrations/connector-integration/src/connectors"
 SPECS = REPO_ROOT / "crates/internal/integration-tests/src/connector_specs"
 
-YES, NO, UNKNOWN = "yes", "no", "unknown"
+YES, NO, UNKNOWN, NA = "yes", "no", "unknown", "na"
 
 
 def connector_set() -> list:
@@ -102,19 +102,44 @@ def code_signal(pattern: str, reject_pattern: str | None = None) -> dict:
     return out
 
 
-def flows_signal(flows: dict, wanted, mode: str = "any") -> dict:
-    """{connector: yes|no} from the extracted flow matrix.
+def flows_signal(flows: dict, wanted, mode: str = "any", buckets: dict | None = None) -> dict:
+    """{connector: yes|no|na} from the extracted flow matrix.
 
-    Flow declarations partition the whole fleet exhaustively — every connector declares
-    not_implemented/not_supported lists — so absence here is a provable NO,
-    not an unknown.
+    Flow declarations partition the whole fleet exhaustively, so absence is a
+    provable answer rather than an unknown. But absence has TWO meanings, and the
+    macro that generates these stubs distinguishes them in its own doc: flows the
+    connector "does not yet implement (not_implemented)" versus ones it "does not
+    support at all (not_supported)". They even raise different runtime errors —
+    connector_flow_not_implemented vs connector_flow_not_supported.
+
+    Only the first is work. The second is the processor lacking the capability, so
+    it is reported NA and excluded from scoring: charging a connector effort for a
+    refund API its processor does not have would make the backlog fiction.
+
+    NA rules follow attainability:
+      mode "any" — NA only if EVERY wanted flow is not_supported. If even one is
+                   merely not_implemented, implementing that one satisfies it.
+      mode "all" — NA if ANY wanted flow is not_supported, since the capability
+                   can then never be completed however much work is done.
     """
     want = [wanted] if isinstance(wanted, str) else list(wanted)
     out = {}
     for c, have in flows.items():
         hit = [w in have for w in want]
-        ok = all(hit) if mode == "all" else any(hit)
-        out[c] = YES if ok else NO
+        if all(hit) if mode == "all" else any(hit):
+            out[c] = YES
+            continue
+        if buckets:
+            unsup = {w: c in buckets.get(w, {}).get("not_sup", ()) for w in want}
+            if mode == "all":
+                blocked = any(unsup.values())
+            else:
+                missing = [w for w in want if w not in have]
+                blocked = bool(missing) and all(unsup[w] for w in missing)
+            if blocked:
+                out[c] = NA
+                continue
+        out[c] = NO
     return out
 
 

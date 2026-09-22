@@ -14,6 +14,9 @@ import type { MvpCellState } from "../../types/mvp";
 export const CELL_STYLE: Record<MvpCellState, { bg: string; fg: string; mark: string; label: string }> = {
   met: { bg: T.successSoft, fg: T.success, mark: "✓", label: "Implemented" },
   gap: { bg: T.warnSoft, fg: T.warn, mark: "⚠", label: "Not implemented" },
+  // The processor does not offer this at all, so it is not work outstanding.
+  // Excluded from the score rather than counted against the connector.
+  na: { bg: T.bgRight, fg: T.textSubtle, mark: "—", label: "Not supported by the processor" },
   // Deliberately distinct from a gap: the source does not say either way.
   unknown: { bg: T.bgRight, fg: T.textMuted, mark: "?", label: "Unknown — source is silent" },
   // A rubric row duplicating another; shown for fidelity, never scored.
@@ -258,7 +261,7 @@ export function Legend({ states }: { states?: MvpCellState[] }) {
   // Only legend the states actually present. Every cell is now a provable
   // met/gap, so advertising "unknown" and "alias" invited the reader to look
   // for grey cells that no longer exist.
-  const shown: MvpCellState[] = states ?? ["met", "gap"];
+  const shown: MvpCellState[] = states ?? ["met", "gap", "na"];
   return (
     <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
       {shown.map((s) => (

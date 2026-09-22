@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-22T11:04:27",
+  "generatedAt": "2026-09-22T16:44:14",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "ucs",
     "branch": "main",
-    "commit": "1eb3769",
+    "commit": "7cb0f5d",
     "committedAt": "2026-09-22",
     "dirty": false
   },
@@ -234,6 +234,7 @@
       },
       "met": 10,
       "gaps": 2,
+      "na": 0,
       "scored": 12,
       "effort": 7,
       "pct": 83
@@ -251,7 +252,7 @@
         "webhooks": "gap",
         "ntid_mit": "met",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -274,10 +275,97 @@
         "probedFlows": 34
       },
       "met": 9,
-      "gaps": 3,
-      "scored": 12,
+      "gaps": 2,
+      "na": 1,
+      "scored": 11,
+      "effort": 8,
+      "pct": 82
+    },
+    {
+      "name": "cybersource",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "met"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "IncrementalAuthorization",
+        "MandateRevoke",
+        "PSync",
+        "PostAuthenticate",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 16,
+        "probedFlows": 34
+      },
+      "met": 9,
+      "gaps": 2,
+      "na": 1,
+      "scored": 11,
+      "effort": 8,
+      "pct": 82
+    },
+    {
+      "name": "novalnet",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "IncrementalAuthorization",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 12,
+        "probedFlows": 34
+      },
+      "met": 9,
+      "gaps": 2,
+      "na": 1,
+      "scored": 11,
       "effort": 13,
-      "pct": 75
+      "pct": 82
     },
     {
       "name": "braintree",
@@ -316,51 +404,7 @@
       },
       "met": 9,
       "gaps": 3,
-      "scored": 12,
-      "effort": 13,
-      "pct": 75
-    },
-    {
-      "name": "cybersource",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "met",
-        "webhooks": "gap",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "met"
-      },
-      "flows": [
-        "Authenticate",
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "IncrementalAuthorization",
-        "MandateRevoke",
-        "PSync",
-        "PostAuthenticate",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 16,
-        "probedFlows": 34
-      },
-      "met": 9,
-      "gaps": 3,
+      "na": 0,
       "scored": 12,
       "effort": 13,
       "pct": 75
@@ -401,6 +445,7 @@
       },
       "met": 9,
       "gaps": 3,
+      "na": 0,
       "scored": 12,
       "effort": 13,
       "pct": 75
@@ -444,47 +489,9 @@
       },
       "met": 9,
       "gaps": 3,
+      "na": 0,
       "scored": 12,
       "effort": 16,
-      "pct": 75
-    },
-    {
-      "name": "novalnet",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "met",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "IncrementalAuthorization",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 12,
-        "probedFlows": 34
-      },
-      "met": 9,
-      "gaps": 3,
-      "scored": 12,
-      "effort": 18,
       "pct": 75
     },
     {
@@ -525,6 +532,7 @@
       },
       "met": 9,
       "gaps": 3,
+      "na": 0,
       "scored": 12,
       "effort": 18,
       "pct": 75
@@ -542,7 +550,7 @@
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -565,10 +573,132 @@
         "probedFlows": 34
       },
       "met": 8,
-      "gaps": 4,
-      "scored": 12,
+      "gaps": 3,
+      "na": 1,
+      "scored": 11,
+      "effort": 11,
+      "pct": 73
+    },
+    {
+      "name": "nmi",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 12,
+        "probedFlows": 34
+      },
+      "met": 8,
+      "gaps": 3,
+      "na": 1,
+      "scored": 11,
       "effort": 16,
-      "pct": 67
+      "pct": 73
+    },
+    {
+      "name": "authorizedotnet",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateConnectorCustomer",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerSessionAuthenticationToken",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 14,
+        "probedFlows": 34
+      },
+      "met": 8,
+      "gaps": 3,
+      "na": 1,
+      "scored": 11,
+      "effort": 18,
+      "pct": 73
+    },
+    {
+      "name": "fiuu",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "decrypted_wallet": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 11,
+        "probedFlows": 34
+      },
+      "met": 8,
+      "gaps": 3,
+      "na": 1,
+      "scored": 11,
+      "effort": 18,
+      "pct": 73
     },
     {
       "name": "paydotcom",
@@ -606,7 +736,47 @@
       },
       "met": 8,
       "gaps": 4,
+      "na": 0,
       "scored": 12,
+      "effort": 16,
+      "pct": 67
+    },
+    {
+      "name": "trustpay",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "na",
+        "zero_auth": "met",
+        "void": "na",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerAuthenticationToken",
+        "SetupMandate"
+      ],
+      "probe": {
+        "buildableFlows": 9,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 3,
+      "na": 3,
+      "scored": 9,
       "effort": 16,
       "pct": 67
     },
@@ -646,6 +816,7 @@
       },
       "met": 8,
       "gaps": 4,
+      "na": 0,
       "scored": 12,
       "effort": 16,
       "pct": 67
@@ -685,6 +856,7 @@
       },
       "met": 8,
       "gaps": 4,
+      "na": 0,
       "scored": 12,
       "effort": 18,
       "pct": 67
@@ -723,6 +895,7 @@
       },
       "met": 8,
       "gaps": 4,
+      "na": 0,
       "scored": 12,
       "effort": 18,
       "pct": 67
@@ -763,126 +936,9 @@
       },
       "met": 8,
       "gaps": 4,
+      "na": 0,
       "scored": 12,
       "effort": 18,
-      "pct": 67
-    },
-    {
-      "name": "nmi",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "met"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 12,
-        "probedFlows": 34
-      },
-      "met": 8,
-      "gaps": 4,
-      "scored": 12,
-      "effort": 21,
-      "pct": 67
-    },
-    {
-      "name": "authorizedotnet",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateConnectorCustomer",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerSessionAuthenticationToken",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 14,
-        "probedFlows": 34
-      },
-      "met": 8,
-      "gaps": 4,
-      "scored": 12,
-      "effort": 23,
-      "pct": 67
-    },
-    {
-      "name": "fiuu",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "decrypted_wallet": "met"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 11,
-        "probedFlows": 34
-      },
-      "met": 8,
-      "gaps": 4,
-      "scored": 12,
-      "effort": 23,
       "pct": 67
     },
     {
@@ -898,7 +954,7 @@
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -920,10 +976,11 @@
         "probedFlows": 34
       },
       "met": 7,
-      "gaps": 5,
-      "scored": 12,
-      "effort": 19,
-      "pct": 58
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 14,
+      "pct": 64
     },
     {
       "name": "paysafe",
@@ -938,7 +995,7 @@
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
         "decrypted_wallet": "met"
@@ -961,10 +1018,251 @@
         "probedFlows": 34
       },
       "met": 7,
-      "gaps": 5,
-      "scored": 12,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 14,
+      "pct": 64
+    },
+    {
+      "name": "fiservcommercehub",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerAuthenticationToken",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 16,
+      "pct": 64
+    },
+    {
+      "name": "worldpay",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "IncrementalAuthorization",
+        "PSync",
+        "PostAuthenticate",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
       "effort": 19,
-      "pct": 58
+      "pct": 64
+    },
+    {
+      "name": "noon",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "MandateRevoke",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 11,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 21,
+      "pct": 64
+    },
+    {
+      "name": "payload",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "CreateConnectorCustomer",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 13,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 21,
+      "pct": 64
+    },
+    {
+      "name": "peachpayments",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 10,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 21,
+      "pct": 64
+    },
+    {
+      "name": "tsys",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 4,
+      "na": 1,
+      "scored": 11,
+      "effort": 21,
+      "pct": 64
     },
     {
       "name": "datatrans",
@@ -1003,87 +1301,9 @@
       },
       "met": 7,
       "gaps": 5,
+      "na": 0,
       "scored": 12,
       "effort": 21,
-      "pct": 58
-    },
-    {
-      "name": "fiservcommercehub",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "met",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerAuthenticationToken",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 7,
-      "gaps": 5,
-      "scored": 12,
-      "effort": 21,
-      "pct": 58
-    },
-    {
-      "name": "worldpay",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "IncrementalAuthorization",
-        "PSync",
-        "PostAuthenticate",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 7,
-      "gaps": 5,
-      "scored": 12,
-      "effort": 24,
       "pct": 58
     },
     {
@@ -1120,6 +1340,7 @@
       },
       "met": 7,
       "gaps": 5,
+      "na": 0,
       "scored": 12,
       "effort": 26,
       "pct": 58
@@ -1162,6 +1383,7 @@
       },
       "met": 7,
       "gaps": 5,
+      "na": 0,
       "scored": 12,
       "effort": 26,
       "pct": 58
@@ -1203,123 +1425,7 @@
       },
       "met": 7,
       "gaps": 5,
-      "scored": 12,
-      "effort": 26,
-      "pct": 58
-    },
-    {
-      "name": "noon",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "MandateRevoke",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 11,
-        "probedFlows": 34
-      },
-      "met": 7,
-      "gaps": 5,
-      "scored": 12,
-      "effort": 26,
-      "pct": 58
-    },
-    {
-      "name": "payload",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "CreateConnectorCustomer",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 13,
-        "probedFlows": 34
-      },
-      "met": 7,
-      "gaps": 5,
-      "scored": 12,
-      "effort": 26,
-      "pct": 58
-    },
-    {
-      "name": "peachpayments",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 10,
-        "probedFlows": 34
-      },
-      "met": 7,
-      "gaps": 5,
+      "na": 0,
       "scored": 12,
       "effort": 26,
       "pct": 58
@@ -1358,6 +1464,7 @@
       },
       "met": 7,
       "gaps": 5,
+      "na": 0,
       "scored": 12,
       "effort": 26,
       "pct": 58
@@ -1399,12 +1506,211 @@
       },
       "met": 7,
       "gaps": 5,
+      "na": 0,
       "scored": 12,
       "effort": 26,
       "pct": 58
     },
     {
-      "name": "tsys",
+      "name": "zift",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "gap",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 18,
+      "pct": 55
+    },
+    {
+      "name": "elavon_pg",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateOrder",
+        "PSync",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 19,
+      "pct": 55
+    },
+    {
+      "name": "getnet",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PaymentMethodToken",
+        "PostAuthenticate",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "ServerAuthenticationToken",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 19,
+      "pct": 55
+    },
+    {
+      "name": "globalpayments_realex",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PostAuthenticate",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 4,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 19,
+      "pct": 55
+    },
+    {
+      "name": "redsys",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 19,
+      "pct": 55
+    },
+    {
+      "name": "billwerk",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1414,11 +1720,211 @@
         "refunds": "met",
         "external_three_ds": "gap",
         "webhooks": "gap",
-        "ntid_mit": "met",
+        "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "imerchantsolutions",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "merchante",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 9,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "nexinets",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 5,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "nuvei",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerSessionAuthenticationToken",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "paybox",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "gap",
         "decrypted_wallet": "gap"
       },
       "flows": [
@@ -1435,11 +1941,128 @@
         "buildableFlows": 8,
         "probedFlows": 34
       },
-      "met": 7,
+      "met": 6,
       "gaps": 5,
-      "scored": 12,
-      "effort": 26,
-      "pct": 58
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "stax",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateConnectorCustomer",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 9,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "trustpayments",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "IncrementalAuthorization",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 10,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 5,
+      "na": 1,
+      "scored": 11,
+      "effort": 24,
+      "pct": 55
+    },
+    {
+      "name": "netcetera",
+      "cells": {
+        "cit": "met",
+        "mit": "na",
+        "manual_capture": "na",
+        "zero_auth": "na",
+        "void": "na",
+        "refunds": "na",
+        "external_three_ds": "met",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "PostAuthenticate",
+        "PreAuthenticate"
+      ],
+      "probe": {
+        "buildableFlows": 0,
+        "probedFlows": 34
+      },
+      "met": 3,
+      "gaps": 3,
+      "na": 6,
+      "scored": 6,
+      "effort": 11,
+      "pct": 50
     },
     {
       "name": "paynearme",
@@ -1475,62 +2098,25 @@
       },
       "met": 6,
       "gaps": 6,
+      "na": 0,
       "scored": 12,
       "effort": 22,
       "pct": 50
     },
     {
-      "name": "trustpay",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "gap",
-        "zero_auth": "met",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "met",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerAuthenticationToken",
-        "SetupMandate"
-      ],
-      "probe": {
-        "buildableFlows": 9,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 23,
-      "pct": 50
-    },
-    {
-      "name": "zift",
+      "name": "aci",
       "cells": {
         "cit": "met",
         "mit": "met",
         "manual_capture": "met",
         "zero_auth": "met",
         "void": "met",
-        "refunds": "gap",
-        "external_three_ds": "met",
+        "refunds": "na",
+        "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -1545,168 +2131,13 @@
         "Void"
       ],
       "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 23,
-      "pct": 50
-    },
-    {
-      "name": "elavon_pg",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "met",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateOrder",
-        "PSync",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
         "buildableFlows": 8,
         "probedFlows": 34
       },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 24,
-      "pct": 50
-    },
-    {
-      "name": "getnet",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "met",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authenticate",
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PaymentMethodToken",
-        "PostAuthenticate",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "ServerAuthenticationToken",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 24,
-      "pct": 50
-    },
-    {
-      "name": "globalpayments_realex",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "met",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authenticate",
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PostAuthenticate",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 4,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 24,
-      "pct": 50
-    },
-    {
-      "name": "redsys",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "met",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authenticate",
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
+      "met": 5,
+      "gaps": 5,
+      "na": 2,
+      "scored": 10,
       "effort": 24,
       "pct": 50
     },
@@ -1743,6 +2174,7 @@
       },
       "met": 6,
       "gaps": 6,
+      "na": 0,
       "scored": 12,
       "effort": 24,
       "pct": 50
@@ -1784,239 +2216,7 @@
       },
       "met": 6,
       "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
-    },
-    {
-      "name": "billwerk",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "PSync",
-        "PaymentMethodToken",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
-    },
-    {
-      "name": "imerchantsolutions",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
-    },
-    {
-      "name": "merchante",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 9,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
-    },
-    {
-      "name": "nexinets",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 5,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
-    },
-    {
-      "name": "nuvei",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerSessionAuthenticationToken",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
-    },
-    {
-      "name": "paybox",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 6,
+      "na": 0,
       "scored": 12,
       "effort": 29,
       "pct": 50
@@ -2055,6 +2255,7 @@
       },
       "met": 6,
       "gaps": 6,
+      "na": 0,
       "scored": 12,
       "effort": 29,
       "pct": 50
@@ -2095,24 +2296,25 @@
       },
       "met": 6,
       "gaps": 6,
+      "na": 0,
       "scored": 12,
       "effort": 29,
       "pct": 50
     },
     {
-      "name": "stax",
+      "name": "bamboraapac",
       "cells": {
         "cit": "met",
         "mit": "met",
         "manual_capture": "met",
         "zero_auth": "met",
-        "void": "met",
+        "void": "gap",
         "refunds": "met",
         "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -2120,39 +2322,75 @@
       "flows": [
         "Authorize",
         "Capture",
-        "CreateConnectorCustomer",
         "PSync",
-        "PaymentMethodToken",
         "RSync",
         "Refund",
         "RepeatPayment",
-        "SetupMandate",
+        "SetupMandate"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 5,
+      "gaps": 6,
+      "na": 1,
+      "scored": 11,
+      "effort": 25,
+      "pct": 45
+    },
+    {
+      "name": "ilixium",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
         "Void"
       ],
       "probe": {
-        "buildableFlows": 9,
+        "buildableFlows": 5,
         "probedFlows": 34
       },
-      "met": 6,
+      "met": 5,
       "gaps": 6,
-      "scored": 12,
-      "effort": 29,
-      "pct": 50
+      "na": 1,
+      "scored": 11,
+      "effort": 27,
+      "pct": 45
     },
     {
-      "name": "trustpayments",
+      "name": "bluesnap",
       "cells": {
         "cit": "met",
-        "mit": "met",
+        "mit": "gap",
         "manual_capture": "met",
-        "zero_auth": "met",
+        "zero_auth": "gap",
         "void": "met",
         "refunds": "met",
         "external_three_ds": "gap",
-        "webhooks": "gap",
+        "webhooks": "met",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -2160,23 +2398,135 @@
       "flows": [
         "Authorize",
         "Capture",
-        "IncrementalAuthorization",
+        "ClientAuthenticationToken",
         "PSync",
         "RSync",
         "Refund",
-        "RepeatPayment",
-        "SetupMandate",
         "Void"
       ],
       "probe": {
         "buildableFlows": 10,
         "probedFlows": 34
       },
-      "met": 6,
+      "met": 5,
       "gaps": 6,
-      "scored": 12,
+      "na": 1,
+      "scored": 11,
       "effort": 29,
-      "pct": 50
+      "pct": 45
+    },
+    {
+      "name": "phonepe",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 5,
+      "gaps": 6,
+      "na": 1,
+      "scored": 11,
+      "effort": 29,
+      "pct": 45
+    },
+    {
+      "name": "tamara",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PaymentMethodEligibility",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 5,
+      "gaps": 6,
+      "na": 1,
+      "scored": 11,
+      "effort": 29,
+      "pct": 45
+    },
+    {
+      "name": "wellsfargo",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 8,
+        "probedFlows": 34
+      },
+      "met": 5,
+      "gaps": 6,
+      "na": 1,
+      "scored": 11,
+      "effort": 29,
+      "pct": 45
     },
     {
       "name": "citigate",
@@ -2210,6 +2560,7 @@
       },
       "met": 5,
       "gaps": 7,
+      "na": 0,
       "scored": 12,
       "effort": 29,
       "pct": 42
@@ -2246,6 +2597,7 @@
       },
       "met": 5,
       "gaps": 7,
+      "na": 0,
       "scored": 12,
       "effort": 29,
       "pct": 42
@@ -2282,119 +2634,9 @@
       },
       "met": 5,
       "gaps": 7,
+      "na": 0,
       "scored": 12,
       "effort": 29,
-      "pct": 42
-    },
-    {
-      "name": "bamboraapac",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
-      "scored": 12,
-      "effort": 30,
-      "pct": 42
-    },
-    {
-      "name": "aci",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "gap",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
-      "scored": 12,
-      "effort": 31,
-      "pct": 42
-    },
-    {
-      "name": "ilixium",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 5,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
-      "scored": 12,
-      "effort": 32,
       "pct": 42
     },
     {
@@ -2431,153 +2673,7 @@
       },
       "met": 5,
       "gaps": 7,
-      "scored": 12,
-      "effort": 34,
-      "pct": 42
-    },
-    {
-      "name": "bluesnap",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 10,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
-      "scored": 12,
-      "effort": 34,
-      "pct": 42
-    },
-    {
-      "name": "phonepe",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
-      "scored": 12,
-      "effort": 34,
-      "pct": 42
-    },
-    {
-      "name": "tamara",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PaymentMethodEligibility",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
-      "scored": 12,
-      "effort": 34,
-      "pct": 42
-    },
-    {
-      "name": "wellsfargo",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 7,
+      "na": 0,
       "scored": 12,
       "effort": 34,
       "pct": 42
@@ -2587,7 +2683,7 @@
       "cells": {
         "cit": "met",
         "mit": "met",
-        "manual_capture": "gap",
+        "manual_capture": "na",
         "zero_auth": "gap",
         "void": "gap",
         "refunds": "met",
@@ -2595,7 +2691,7 @@
         "webhooks": "met",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -2612,10 +2708,11 @@
         "probedFlows": 34
       },
       "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 31,
-      "pct": 33
+      "gaps": 6,
+      "na": 2,
+      "scored": 10,
+      "effort": 25,
+      "pct": 40
     },
     {
       "name": "worldpayraft",
@@ -2630,7 +2727,7 @@
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -2647,10 +2744,11 @@
         "probedFlows": 34
       },
       "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 32,
-      "pct": 33
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 27,
+      "pct": 36
     },
     {
       "name": "elavon",
@@ -2665,7 +2763,7 @@
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "gap",
         "decrypted_wallet": "gap"
@@ -2683,10 +2781,11 @@
         "probedFlows": 34
       },
       "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 33,
-      "pct": 33
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 28,
+      "pct": 36
     },
     {
       "name": "etisalat",
@@ -2701,7 +2800,7 @@
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -2718,10 +2817,11 @@
         "probedFlows": 34
       },
       "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 34,
-      "pct": 33
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 29,
+      "pct": 36
     },
     {
       "name": "maya",
@@ -2736,7 +2836,7 @@
         "webhooks": "met",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -2753,10 +2853,578 @@
         "probedFlows": 34
       },
       "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 35,
-      "pct": 33
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 30,
+      "pct": 36
+    },
+    {
+      "name": "affirm",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 5,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "authipay",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "bambora",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "celero",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "fiserv",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "fiservemea",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "helcim",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "hipay",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "juspay",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "RefreshPaymentMethod",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "mollie",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "payconex",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "payme",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "payu",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "ServerSessionAuthenticationToken",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "pinelabs_online",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "Refund",
+        "ServerAuthenticationToken",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 1,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
+    },
+    {
+      "name": "twoc_twop_paco",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "met",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 0,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 32,
+      "pct": 36
     },
     {
       "name": "razorpay",
@@ -2765,7 +3433,7 @@
         "mit": "gap",
         "manual_capture": "met",
         "zero_auth": "gap",
-        "void": "gap",
+        "void": "na",
         "refunds": "met",
         "external_three_ds": "gap",
         "webhooks": "met",
@@ -2790,9 +3458,47 @@
         "probedFlows": 34
       },
       "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 35,
+      "gaps": 7,
+      "na": 1,
+      "scored": 11,
+      "effort": 34,
+      "pct": 36
+    },
+    {
+      "name": "grabpay",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "na",
+        "void": "na",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "PSync",
+        "RSync",
+        "Refund",
+        "ServerSessionAuthenticationToken"
+      ],
+      "probe": {
+        "buildableFlows": 4,
+        "probedFlows": 34
+      },
+      "met": 3,
+      "gaps": 6,
+      "na": 3,
+      "scored": 9,
+      "effort": 31,
       "pct": 33
     },
     {
@@ -2827,117 +3533,9 @@
       },
       "met": 4,
       "gaps": 8,
+      "na": 0,
       "scored": 12,
       "effort": 35,
-      "pct": 33
-    },
-    {
-      "name": "affirm",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 5,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "authipay",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "bambora",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
       "pct": 33
     },
     {
@@ -2973,115 +3571,7 @@
       },
       "met": 4,
       "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "celero",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "fiserv",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "fiservemea",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
+      "na": 0,
       "scored": 12,
       "effort": 37,
       "pct": 33
@@ -3118,303 +3608,7 @@
       },
       "met": 4,
       "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "helcim",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "hipay",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PaymentMethodToken",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "juspay",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "RefreshPaymentMethod",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "mollie",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "PSync",
-        "PaymentMethodToken",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "payconex",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "payme",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "payu",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "ServerSessionAuthenticationToken",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "pinelabs_online",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "Refund",
-        "ServerAuthenticationToken",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 1,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
+      "na": 0,
       "scored": 12,
       "effort": 37,
       "pct": 33
@@ -3452,6 +3646,7 @@
       },
       "met": 4,
       "gaps": 8,
+      "na": 0,
       "scored": 12,
       "effort": 37,
       "pct": 33
@@ -3488,43 +3683,7 @@
       },
       "met": 4,
       "gaps": 8,
-      "scored": 12,
-      "effort": 37,
-      "pct": 33
-    },
-    {
-      "name": "twoc_twop_paco",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 0,
-        "probedFlows": 34
-      },
-      "met": 4,
-      "gaps": 8,
+      "na": 0,
       "scored": 12,
       "effort": 37,
       "pct": 33
@@ -3563,43 +3722,156 @@
       },
       "met": 4,
       "gaps": 8,
+      "na": 0,
       "scored": 12,
       "effort": 37,
       "pct": 33
     },
     {
-      "name": "netcetera",
+      "name": "boost",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "gap",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "PSync",
+        "RSync",
+        "Refund"
+      ],
+      "probe": {
+        "buildableFlows": 4,
+        "probedFlows": 34
+      },
+      "met": 3,
+      "gaps": 7,
+      "na": 2,
+      "scored": 10,
+      "effort": 30,
+      "pct": 30
+    },
+    {
+      "name": "glomopay",
       "cells": {
         "cit": "met",
         "mit": "gap",
         "manual_capture": "gap",
         "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "external_three_ds": "met",
-        "webhooks": "gap",
+        "void": "na",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
       },
       "flows": [
-        "Authenticate",
         "Authorize",
-        "PostAuthenticate",
-        "PreAuthenticate"
+        "CreateConnectorCustomer",
+        "CreateOrder",
+        "GetConnectorCustomer",
+        "PSync",
+        "RSync",
+        "Refund"
       ],
       "probe": {
-        "buildableFlows": 0,
+        "buildableFlows": 7,
         "probedFlows": 34
       },
       "met": 3,
-      "gaps": 9,
-      "scored": 12,
-      "effort": 28,
-      "pct": 25
+      "gaps": 7,
+      "na": 2,
+      "scored": 10,
+      "effort": 30,
+      "pct": 30
+    },
+    {
+      "name": "truelayer",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "gap",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "PSync",
+        "RSync",
+        "Refund",
+        "ServerAuthenticationToken",
+        "VerifyWebhookSource"
+      ],
+      "probe": {
+        "buildableFlows": 5,
+        "probedFlows": 34
+      },
+      "met": 3,
+      "gaps": 7,
+      "na": 2,
+      "scored": 10,
+      "effort": 30,
+      "pct": 30
+    },
+    {
+      "name": "xendit",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "met",
+        "zero_auth": "gap",
+        "void": "gap",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund"
+      ],
+      "probe": {
+        "buildableFlows": 5,
+        "probedFlows": 34
+      },
+      "met": 3,
+      "gaps": 8,
+      "na": 1,
+      "scored": 11,
+      "effort": 33,
+      "pct": 27
     },
     {
       "name": "tesouro",
@@ -3632,42 +3904,9 @@
       },
       "met": 3,
       "gaps": 9,
+      "na": 0,
       "scored": 12,
       "effort": 33,
-      "pct": 25
-    },
-    {
-      "name": "boost",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "PSync",
-        "RSync",
-        "Refund"
-      ],
-      "probe": {
-        "buildableFlows": 4,
-        "probedFlows": 34
-      },
-      "met": 3,
-      "gaps": 9,
-      "scored": 12,
-      "effort": 36,
       "pct": 25
     },
     {
@@ -3701,115 +3940,7 @@
       },
       "met": 3,
       "gaps": 9,
-      "scored": 12,
-      "effort": 36,
-      "pct": 25
-    },
-    {
-      "name": "glomopay",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "CreateConnectorCustomer",
-        "CreateOrder",
-        "GetConnectorCustomer",
-        "PSync",
-        "RSync",
-        "Refund"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 3,
-      "gaps": 9,
-      "scored": 12,
-      "effort": 36,
-      "pct": 25
-    },
-    {
-      "name": "grabpay",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authenticate",
-        "Authorize",
-        "PSync",
-        "RSync",
-        "Refund",
-        "ServerSessionAuthenticationToken"
-      ],
-      "probe": {
-        "buildableFlows": 4,
-        "probedFlows": 34
-      },
-      "met": 3,
-      "gaps": 9,
-      "scored": 12,
-      "effort": 36,
-      "pct": 25
-    },
-    {
-      "name": "truelayer",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "PSync",
-        "RSync",
-        "Refund",
-        "ServerAuthenticationToken",
-        "VerifyWebhookSource"
-      ],
-      "probe": {
-        "buildableFlows": 5,
-        "probedFlows": 34
-      },
-      "met": 3,
-      "gaps": 9,
+      "na": 0,
       "scored": 12,
       "effort": 36,
       "pct": 25
@@ -3846,41 +3977,7 @@
       },
       "met": 3,
       "gaps": 9,
-      "scored": 12,
-      "effort": 38,
-      "pct": 25
-    },
-    {
-      "name": "xendit",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund"
-      ],
-      "probe": {
-        "buildableFlows": 5,
-        "probedFlows": 34
-      },
-      "met": 3,
-      "gaps": 9,
+      "na": 0,
       "scored": 12,
       "effort": 38,
       "pct": 25
@@ -3889,16 +3986,16 @@
       "name": "jpmorganorbital",
       "cells": {
         "cit": "met",
-        "mit": "gap",
+        "mit": "na",
         "manual_capture": "gap",
-        "zero_auth": "gap",
+        "zero_auth": "na",
         "void": "gap",
         "refunds": "gap",
         "external_three_ds": "met",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -3912,10 +4009,177 @@
         "probedFlows": 34
       },
       "met": 2,
-      "gaps": 10,
-      "scored": 12,
-      "effort": 33,
-      "pct": 17
+      "gaps": 7,
+      "na": 3,
+      "scored": 9,
+      "effort": 20,
+      "pct": 22
+    },
+    {
+      "name": "cashtocode",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "na",
+        "refunds": "gap",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize"
+      ],
+      "probe": {
+        "buildableFlows": 2,
+        "probedFlows": 34
+      },
+      "met": 2,
+      "gaps": 7,
+      "na": 3,
+      "scored": 9,
+      "effort": 31,
+      "pct": 22
+    },
+    {
+      "name": "cryptopay",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "na",
+        "refunds": "gap",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "PSync"
+      ],
+      "probe": {
+        "buildableFlows": 3,
+        "probedFlows": 34
+      },
+      "met": 2,
+      "gaps": 7,
+      "na": 3,
+      "scored": 9,
+      "effort": 31,
+      "pct": 22
+    },
+    {
+      "name": "iatapay",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "na",
+        "refunds": "met",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "PSync",
+        "RSync",
+        "Refund",
+        "ServerAuthenticationToken"
+      ],
+      "probe": {
+        "buildableFlows": 4,
+        "probedFlows": 34
+      },
+      "met": 2,
+      "gaps": 7,
+      "na": 3,
+      "scored": 9,
+      "effort": 32,
+      "pct": 22
+    },
+    {
+      "name": "absa_sanlam",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "gap",
+        "zero_auth": "gap",
+        "void": "na",
+        "refunds": "gap",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize"
+      ],
+      "probe": {
+        "buildableFlows": 2,
+        "probedFlows": 34
+      },
+      "met": 2,
+      "gaps": 8,
+      "na": 2,
+      "scored": 10,
+      "effort": 32,
+      "pct": 20
+    },
+    {
+      "name": "calida",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "na",
+        "refunds": "gap",
+        "external_three_ds": "gap",
+        "webhooks": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "PSync"
+      ],
+      "probe": {
+        "buildableFlows": 3,
+        "probedFlows": 34
+      },
+      "met": 2,
+      "gaps": 8,
+      "na": 2,
+      "scored": 10,
+      "effort": 36,
+      "pct": 20
     },
     {
       "name": "hyperswitch",
@@ -3930,7 +4194,7 @@
         "webhooks": "met",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -3944,13 +4208,14 @@
         "probedFlows": 34
       },
       "met": 2,
-      "gaps": 10,
-      "scored": 12,
-      "effort": 35,
-      "pct": 17
+      "gaps": 9,
+      "na": 1,
+      "scored": 11,
+      "effort": 30,
+      "pct": 18
     },
     {
-      "name": "absa_sanlam",
+      "name": "trustly",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3962,98 +4227,37 @@
         "webhooks": "met",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize"
-      ],
-      "probe": {
-        "buildableFlows": 2,
-        "probedFlows": 34
-      },
-      "met": 2,
-      "gaps": 10,
-      "scored": 12,
-      "effort": 38,
-      "pct": 17
-    },
-    {
-      "name": "calida",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "gap",
         "decrypted_wallet": "gap"
       },
       "flows": [
         "Authorize",
-        "PSync"
-      ],
-      "probe": {
-        "buildableFlows": 3,
-        "probedFlows": 34
-      },
-      "met": 2,
-      "gaps": 10,
-      "scored": 12,
-      "effort": 38,
-      "pct": 17
-    },
-    {
-      "name": "cashtocode",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize"
+        "Refund"
       ],
       "probe": {
         "buildableFlows": 2,
         "probedFlows": 34
       },
       "met": 2,
-      "gaps": 10,
-      "scored": 12,
-      "effort": 38,
-      "pct": 17
+      "gaps": 9,
+      "na": 1,
+      "scored": 11,
+      "effort": 33,
+      "pct": 18
     },
     {
-      "name": "cryptopay",
+      "name": "razorpayv2",
       "cells": {
         "cit": "met",
         "mit": "gap",
         "manual_capture": "gap",
         "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
+        "void": "na",
+        "refunds": "met",
         "external_three_ds": "gap",
-        "webhooks": "met",
+        "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
         "chargeback_evidence": "gap",
@@ -4063,17 +4267,21 @@
       },
       "flows": [
         "Authorize",
-        "PSync"
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "Refund"
       ],
       "probe": {
-        "buildableFlows": 3,
+        "buildableFlows": 6,
         "probedFlows": 34
       },
       "met": 2,
-      "gaps": 10,
-      "scored": 12,
+      "gaps": 9,
+      "na": 1,
+      "scored": 11,
       "effort": 38,
-      "pct": 17
+      "pct": 18
     },
     {
       "name": "payhere",
@@ -4104,38 +4312,7 @@
       },
       "met": 2,
       "gaps": 10,
-      "scored": 12,
-      "effort": 38,
-      "pct": 17
-    },
-    {
-      "name": "trustly",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "external_three_ds": "gap",
-        "webhooks": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Refund"
-      ],
-      "probe": {
-        "buildableFlows": 2,
-        "probedFlows": 34
-      },
-      "met": 2,
-      "gaps": 10,
+      "na": 0,
       "scored": 12,
       "effort": 38,
       "pct": 17
@@ -4170,6 +4347,7 @@
       },
       "met": 2,
       "gaps": 10,
+      "na": 0,
       "scored": 12,
       "effort": 39,
       "pct": 17
@@ -4204,6 +4382,7 @@
       },
       "met": 2,
       "gaps": 10,
+      "na": 0,
       "scored": 12,
       "effort": 39,
       "pct": 17
@@ -4238,41 +4417,7 @@
       },
       "met": 2,
       "gaps": 10,
-      "scored": 12,
-      "effort": 39,
-      "pct": 17
-    },
-    {
-      "name": "iatapay",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "PSync",
-        "RSync",
-        "Refund",
-        "ServerAuthenticationToken"
-      ],
-      "probe": {
-        "buildableFlows": 4,
-        "probedFlows": 34
-      },
-      "met": 2,
-      "gaps": 10,
+      "na": 0,
       "scored": 12,
       "effort": 39,
       "pct": 17
@@ -4308,59 +4453,63 @@
       },
       "met": 2,
       "gaps": 10,
+      "na": 0,
       "scored": 12,
       "effort": 39,
       "pct": 17
     },
     {
-      "name": "razorpayv2",
+      "name": "qwikcilver",
       "cells": {
         "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "met",
+        "mit": "na",
+        "manual_capture": "na",
+        "zero_auth": "na",
+        "void": "na",
+        "refunds": "gap",
         "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
       },
       "flows": [
         "Authorize",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "Refund"
+        "CreatePaymentMethod",
+        "GetPaymentMethod",
+        "PaymentMethodEligibility",
+        "Recharge",
+        "Refund",
+        "ServerAuthenticationToken"
       ],
       "probe": {
-        "buildableFlows": 6,
+        "buildableFlows": 1,
         "probedFlows": 34
       },
-      "met": 2,
-      "gaps": 10,
-      "scored": 12,
-      "effort": 39,
-      "pct": 17
+      "met": 1,
+      "gaps": 6,
+      "na": 5,
+      "scored": 7,
+      "effort": 26,
+      "pct": 14
     },
     {
       "name": "gigadat",
       "cells": {
         "cit": "met",
         "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
+        "manual_capture": "na",
+        "zero_auth": "na",
+        "void": "na",
+        "refunds": "na",
         "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -4375,25 +4524,61 @@
         "probedFlows": 34
       },
       "met": 1,
-      "gaps": 11,
-      "scored": 12,
-      "effort": 41,
-      "pct": 8
+      "gaps": 6,
+      "na": 5,
+      "scored": 7,
+      "effort": 29,
+      "pct": 14
+    },
+    {
+      "name": "volt",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "na",
+        "zero_auth": "gap",
+        "void": "gap",
+        "refunds": "na",
+        "external_three_ds": "gap",
+        "webhooks": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "PSync",
+        "Refund",
+        "ServerAuthenticationToken"
+      ],
+      "probe": {
+        "buildableFlows": 3,
+        "probedFlows": 34
+      },
+      "met": 1,
+      "gaps": 8,
+      "na": 3,
+      "scored": 9,
+      "effort": 33,
+      "pct": 11
     },
     {
       "name": "loonio",
       "cells": {
         "cit": "met",
         "mit": "gap",
-        "manual_capture": "gap",
+        "manual_capture": "na",
         "zero_auth": "gap",
-        "void": "gap",
+        "void": "na",
         "refunds": "gap",
         "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -4407,25 +4592,26 @@
         "probedFlows": 34
       },
       "met": 1,
-      "gaps": 11,
-      "scored": 12,
-      "effort": 41,
-      "pct": 8
+      "gaps": 8,
+      "na": 3,
+      "scored": 9,
+      "effort": 34,
+      "pct": 11
     },
     {
       "name": "mifinity",
       "cells": {
         "cit": "met",
         "mit": "gap",
-        "manual_capture": "gap",
+        "manual_capture": "na",
         "zero_auth": "gap",
-        "void": "gap",
+        "void": "na",
         "refunds": "gap",
         "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -4439,10 +4625,11 @@
         "probedFlows": 34
       },
       "met": 1,
-      "gaps": 11,
-      "scored": 12,
-      "effort": 41,
-      "pct": 8
+      "gaps": 8,
+      "na": 3,
+      "scored": 9,
+      "effort": 34,
+      "pct": 11
     },
     {
       "name": "paytm",
@@ -4473,77 +4660,7 @@
       },
       "met": 1,
       "gaps": 11,
-      "scored": 12,
-      "effort": 41,
-      "pct": 8
-    },
-    {
-      "name": "qwikcilver",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "CreatePaymentMethod",
-        "GetPaymentMethod",
-        "PaymentMethodEligibility",
-        "Recharge",
-        "Refund",
-        "ServerAuthenticationToken"
-      ],
-      "probe": {
-        "buildableFlows": 1,
-        "probedFlows": 34
-      },
-      "met": 1,
-      "gaps": 11,
-      "scored": 12,
-      "effort": 41,
-      "pct": 8
-    },
-    {
-      "name": "volt",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "external_three_ds": "gap",
-        "webhooks": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "PSync",
-        "Refund",
-        "ServerAuthenticationToken"
-      ],
-      "probe": {
-        "buildableFlows": 3,
-        "probedFlows": 34
-      },
-      "met": 1,
-      "gaps": 11,
+      "na": 0,
       "scored": 12,
       "effort": 41,
       "pct": 8
@@ -4553,15 +4670,15 @@
       "cells": {
         "cit": "gap",
         "mit": "gap",
-        "manual_capture": "gap",
+        "manual_capture": "na",
         "zero_auth": "gap",
-        "void": "gap",
+        "void": "na",
         "refunds": "gap",
         "external_three_ds": "gap",
         "webhooks": "gap",
         "ntid_mit": "gap",
         "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
         "decrypted_wallet": "gap"
@@ -4574,9 +4691,10 @@
         "probedFlows": 34
       },
       "met": 0,
-      "gaps": 12,
-      "scored": 12,
-      "effort": 43,
+      "gaps": 9,
+      "na": 3,
+      "scored": 9,
+      "effort": 36,
       "pct": 0
     },
     {
@@ -4610,6 +4728,7 @@
       },
       "met": 0,
       "gaps": 12,
+      "na": 0,
       "scored": 12,
       "effort": 43,
       "pct": 0

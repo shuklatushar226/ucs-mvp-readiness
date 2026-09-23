@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-22T17:36:38",
+  "generatedAt": "2026-09-23T08:35:37",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "ucs",
-    "branch": "HEAD",
-    "commit": "1eb3769",
-    "committedAt": "2026-09-22",
+    "branch": "main",
+    "commit": "17ea7a6",
+    "committedAt": "2026-09-23",
     "dirty": false
   },
   "capabilities": [
@@ -282,6 +282,48 @@
       "na": 0,
       "scored": 14,
       "effort": 6,
+      "pct": 86
+    },
+    {
+      "name": "checkout",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 13,
+        "probedFlows": 34
+      },
+      "met": 12,
+      "gaps": 2,
+      "na": 0,
+      "scored": 14,
+      "effort": 10,
       "pct": 86
     },
     {
@@ -933,48 +975,6 @@
       "na": 0,
       "scored": 14,
       "effort": 16,
-      "pct": 64
-    },
-    {
-      "name": "checkout",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PaymentMethodToken",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 11,
-        "probedFlows": 34
-      },
-      "met": 9,
-      "gaps": 5,
-      "na": 0,
-      "scored": 14,
-      "effort": 18,
       "pct": 64
     },
     {

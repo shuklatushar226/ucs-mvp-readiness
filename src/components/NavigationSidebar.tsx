@@ -25,6 +25,12 @@ const Icon = {
       <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
     </svg>
   ),
+  tracker: (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x="3" y="5" width="18" height="16" rx="2.2" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+    </svg>
+  ),
 };
 
 interface NavItem {
@@ -37,6 +43,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { id: "mvp", label: "MVP Readiness", icon: Icon.matrix, path: "/mvp" },
   { id: "mvp-metrics", label: "MVP Metrics", icon: Icon.metrics, path: "/mvp/metrics" },
+  { id: "tracker", label: "Weekly Tracker", icon: Icon.tracker, path: "/tracker" },
 ];
 
 export function NavigationSidebar() {

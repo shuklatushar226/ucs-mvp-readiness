@@ -28,6 +28,9 @@ export interface TrackerData {
   ledger: { runId: string | null; updatedAt: string | null; rows: TrackerLedgerRow[] } | null;
   /** false when a GitHub query failed — the PR columns are then not trustworthy. */
   prsOk: boolean;
+  /** The GitHub label that marks a PR blocked. */
+  blockedLabel: string;
+  blockedPrs: TrackerPr[];
   warnings: string[];
   inReview: TrackerPr[];
   merged: TrackerPr[];

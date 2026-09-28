@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """PR tracker: what the pipeline has in flight, in review, and landed.
 
-Four columns:
+Five columns, from two different places:
 
-  in progress  the run ledger — connectors queued or running
-  blocked      the run ledger — connectors stopped and needing a human
-  in review    OPEN PRs labelled GRACE-auto
-  merged       MERGED PRs labelled GRACE-auto
+  in progress   the run ledger — connectors queued or running
+  blocked runs  the run ledger — a run stopped before it raised a PR
+  blocked PRs   GitHub — OPEN PRs labelled GRACE-blocked
+  in review     GitHub — OPEN PRs labelled GRACE-auto, not blocked
+  merged        GitHub — MERGED PRs labelled GRACE-auto
+
+"Blocked runs" and "blocked PRs" are deliberately separate. A blocked run never
+got as far as a PR; a blocked PR exists and is stuck. Merging them would hide
+which half of the pipeline is actually jammed.
 
 Every PR column filters on GRACE-auto. This tracker follows the pipeline's own
 work, not the repository's overall throughput.
@@ -60,6 +65,15 @@ def gh(args):
 
 
 GRACE_LABEL = "GRACE-auto"
+BLOCKED_LABEL = "GRACE-blocked"
+
+
+def has_label(pr, name):
+    return any(l.get("name") == name for l in pr.get("labels") or [])
+
+
+def is_blocked(pr):
+    return has_label(pr, BLOCKED_LABEL)
 
 
 def is_grace(pr):
@@ -70,7 +84,7 @@ def is_grace(pr):
     the deliberate marker: 2.8_pr_run.md now applies it on every PR the pipeline
     raises, so it is authoritative going forward rather than a manual habit.
     """
-    return any(l.get("name") == GRACE_LABEL for l in pr.get("labels") or [])
+    return has_label(pr, GRACE_LABEL)
 
 
 def connector_of(pr):
@@ -143,7 +157,11 @@ def main():
     prs_ok = open_prs is not None and merged is not None
     open_prs, merged = open_prs or [], merged or []
 
-    in_review = [slim(p) for p in open_prs if is_grace(p)]
+    # A blocked PR belongs in one place only: listing it under review too would
+    # double-count it and make the queue look healthier than it is.
+    blocked_prs = [slim(p) for p in open_prs if is_blocked(p)]
+    blocked_prs.sort(key=lambda p: p.get("updatedAt") or "", reverse=True)
+    in_review = [slim(p) for p in open_prs if is_grace(p) and not is_blocked(p)]
     in_review.sort(key=lambda p: p.get("updatedAt") or "", reverse=True)
     merged_rows = [slim(p) for p in merged if is_grace(p)]
     merged_rows.sort(key=lambda p: p.get("mergedAt") or "", reverse=True)
@@ -153,6 +171,8 @@ def main():
         "repo": a.repo,
         "ledger": read_ledger(a.ledger),
         "prsOk": prs_ok,
+        "blockedLabel": BLOCKED_LABEL,
+        "blockedPrs": blocked_prs,
         "warnings": WARNINGS,
         "inReview": in_review,
         "merged": merged_rows,
@@ -170,7 +190,8 @@ def main():
     else:
         progress = "— (no ledger on this machine)"
     print(f"✅ {a.out}")
-    print(f"   {progress} · in review {len(in_review)} · merged {len(merged_rows)}"
+    print(f"   {progress} · blocked PRs {len(blocked_prs)} · "
+          f"in review {len(in_review)} · merged {len(merged_rows)}"
           f"   (PR columns: label {GRACE_LABEL} only)")
 
 

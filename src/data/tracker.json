@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2026-09-28T22:48:14",
+  "generatedAt": "2026-09-29T00:45:05",
   "repo": "juspay/hyperswitch-prism",
   "ledger": null,
   "prsOk": true,
+  "blockedLabel": "GRACE-blocked",
+  "blockedPrs": [],
   "warnings": [],
   "inReview": [
     {

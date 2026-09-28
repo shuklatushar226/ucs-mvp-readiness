@@ -66,7 +66,7 @@ function Empty({ note }: { note: string }) {
 }
 
 export function PrTrackerPage() {
-  const { ledger, inReview, merged } = data;
+  const { ledger, inReview, merged, blockedPrs, blockedLabel } = data;
   const rows = ledger?.rows ?? [];
   // Blocked is not a kind of failure — it is work that stopped needing compute
   // and started needing a person. It gets its own column so it cannot hide.
@@ -143,10 +143,16 @@ export function PrTrackerPage() {
             hint={ledger ? `run ${ledger.runId ?? "?"}` : "no run ledger on the builder"}
           />
           <StatCard
-            label="Blocked"
+            label="Blocked runs"
             value={ledger ? blocked.length : "—"}
             tone={blocked.length ? "bad" : "default"}
-            hint="stopped, needs a person"
+            hint="stopped before raising a PR"
+          />
+          <StatCard
+            label="Blocked PRs"
+            value={blockedPrs.length}
+            tone={blockedPrs.length ? "bad" : "default"}
+            hint={`labelled ${blockedLabel}`}
           />
           <StatCard label="In review" value={inReview.length} hint="open, labelled GRACE-auto" />
           <StatCard label="Merged" value={merged.length} tone="good" hint="labelled GRACE-auto" />
@@ -186,7 +192,7 @@ export function PrTrackerPage() {
         </Panel>
 
         {blocked.length > 0 && (
-          <Panel title="Blocked" subtitle="stopped and waiting on a person — not retried automatically">
+          <Panel title="Blocked runs" subtitle="a run stopped before it raised a PR — not retried automatically">
             {blocked.map((r) => (
               <div
                 key={r.connector}
@@ -200,7 +206,18 @@ export function PrTrackerPage() {
           </Panel>
         )}
 
-        <Panel title="In review" subtitle="open PRs labelled GRACE-auto">
+        <Panel
+          title="Blocked PRs"
+          subtitle={`open pull requests labelled ${blockedLabel}`}
+        >
+          {blockedPrs.length === 0 ? (
+            <Empty note={`No open pull request carries the ${blockedLabel} label.`} />
+          ) : (
+            blockedPrs.map((p) => <PrRow key={p.number} pr={p} />)
+          )}
+        </Panel>
+
+        <Panel title="In review" subtitle={`open PRs labelled GRACE-auto, excluding those marked ${blockedLabel}`}>
           {inReview.length === 0 ? <Empty note="No open GRACE pull requests." /> : inReview.map((p) => <PrRow key={p.number} pr={p} />)}
         </Panel>
 

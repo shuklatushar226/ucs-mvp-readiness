@@ -7,10 +7,10 @@ Three columns, three sources:
   in review    OPEN PRs this pipeline raised
   merged       PRs merged since Monday 00:00 local
 
-"In review" deliberately unions three selectors. `GRACE-auto` is applied by
-hand today and sits on 10 PRs where `GRACE` sits on 274, so the label alone
-under-counts while the label alone over-counts; author `10xGRACE` and the
-`feat/grace-*` branch glob are what GRACE's own review tooling already keys on.
+"In review" and the GRACE slice of "merged" both select on the `GRACE-auto`
+label and nothing else. `2.8_pr_run.md` applies it on every PR this pipeline
+raises, so it marks intent rather than inference — a `feat/grace-*` branch
+someone pushed by hand is not a tracked run.
 
 The ledger is gitignored and lives on the machine that ran the batch, so in CI
 it is simply absent. That is reported as `ledger: null`, never as "nothing in
@@ -57,12 +57,18 @@ def week_start():
     return t - datetime.timedelta(days=t.weekday())
 
 
+GRACE_LABEL = "GRACE-auto"
+
+
 def is_grace(pr):
-    return (
-        any(l.get("name") == "GRACE-auto" for l in pr.get("labels") or [])
-        or (pr.get("author") or {}).get("login") == "10xGRACE"
-        or (pr.get("headRefName") or "").startswith("feat/grace-")
-    )
+    """Label only, by operator decision.
+
+    Author 10xGRACE and the feat/grace-* branch glob would widen this from 10
+    PRs to 36, but they also sweep in runs nobody chose to track. The label is
+    the deliberate marker: 2.8_pr_run.md now applies it on every PR the pipeline
+    raises, so it is authoritative going forward rather than a manual habit.
+    """
+    return any(l.get("name") == GRACE_LABEL for l in pr.get("labels") or [])
 
 
 def connector_of(pr):
@@ -144,7 +150,7 @@ def main():
         "warnings": WARNINGS,
         "inReview": in_review,
         "merged": merged_rows,
-        "mergedGrace": [p for p in merged_rows if p["branch"] and p["branch"].startswith("feat/grace-")],
+        "mergedGrace": [slim(p) for p in merged if is_grace(p)],
     }
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(payload, indent=2) + "\n")
@@ -155,7 +161,7 @@ def main():
     print(f"✅ week {payload['weekStart']} → {payload['weekEnd']} → {a.out}")
     print(f"   in progress {len(led['rows']) if led else '— (no ledger on this machine)'} · "
           f"in review {len(in_review)} · merged {len(merged_rows)} "
-          f"({len(payload['mergedGrace'])} from GRACE)")
+          f"({len(payload['mergedGrace'])} labelled {GRACE_LABEL})")
 
 
 if __name__ == "__main__":

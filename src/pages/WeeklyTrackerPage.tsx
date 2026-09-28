@@ -138,9 +138,9 @@ export function WeeklyTrackerPage() {
             value={ledger ? inProgress.length : "—"}
             hint={ledger ? `run ${ledger.runId ?? "?"}` : "no run ledger on the builder"}
           />
-          <StatCard label="In review" value={inReview.length} hint="open GRACE pull requests" />
+          <StatCard label="In review" value={inReview.length} hint="open, labelled GRACE-auto" />
           <StatCard label="Merged" value={merged.length} tone="good" hint="this week, all authors" />
-          <StatCard label="Merged from GRACE" value={mergedGrace.length} hint="feat/grace-* branches" />
+          <StatCard label="Merged from GRACE" value={mergedGrace.length} hint="labelled GRACE-auto" />
         </div>
 
         <Panel title="In progress" subtitle="connectors the batch ledger still has queued or running">
@@ -165,7 +165,7 @@ export function WeeklyTrackerPage() {
           )}
         </Panel>
 
-        <Panel title="In review" subtitle="open PRs labelled GRACE-auto, authored by 10xGRACE, or on a feat/grace-* branch">
+        <Panel title="In review" subtitle="open PRs labelled GRACE-auto">
           {inReview.length === 0 ? <Empty note="No open GRACE pull requests." /> : inReview.map((p) => <PrRow key={p.number} pr={p} />)}
         </Panel>
 

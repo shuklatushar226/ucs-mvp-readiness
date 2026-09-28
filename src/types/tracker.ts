@@ -32,5 +32,4 @@ export interface TrackerData {
   warnings: string[];
   inReview: TrackerPr[];
   merged: TrackerPr[];
-  mergedGrace: TrackerPr[];
 }

@@ -4,11 +4,13 @@
 Three columns, three sources:
 
   in progress  the GRACE batch ledger (task.json) — rows still queued/running
-  in review    OPEN PRs this pipeline raised
-  merged       PRs merged since Monday 00:00 local
+  in review    OPEN PRs labelled GRACE-auto
+  merged       PRs labelled GRACE-auto merged since Monday 00:00 local
 
-"In review" and the GRACE slice of "merged" both select on the `GRACE-auto`
-label and nothing else. `2.8_pr_run.md` applies it on every PR this pipeline
+Every PR column filters on GRACE-auto. This tracker follows the pipeline's own
+work, not the repository's overall throughput.
+
+Both PR columns select on the `GRACE-auto` label and nothing else. `2.8_pr_run.md` applies it on every PR this pipeline
 raises, so it marks intent rather than inference — a `feat/grace-*` branch
 someone pushed by hand is not a tracked run.
 
@@ -137,7 +139,7 @@ def main():
 
     in_review = [slim(p) for p in open_prs if is_grace(p)]
     in_review.sort(key=lambda p: p.get("updatedAt") or "", reverse=True)
-    merged_rows = [slim(p) for p in merged]
+    merged_rows = [slim(p) for p in merged if is_grace(p)]
     merged_rows.sort(key=lambda p: p.get("mergedAt") or "", reverse=True)
 
     payload = {
@@ -150,7 +152,6 @@ def main():
         "warnings": WARNINGS,
         "inReview": in_review,
         "merged": merged_rows,
-        "mergedGrace": [slim(p) for p in merged if is_grace(p)],
     }
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(json.dumps(payload, indent=2) + "\n")
@@ -160,8 +161,8 @@ def main():
     led = payload["ledger"]
     print(f"✅ week {payload['weekStart']} → {payload['weekEnd']} → {a.out}")
     print(f"   in progress {len(led['rows']) if led else '— (no ledger on this machine)'} · "
-          f"in review {len(in_review)} · merged {len(merged_rows)} "
-          f"({len(payload['mergedGrace'])} labelled {GRACE_LABEL})")
+          f"in review {len(in_review)} · merged {len(merged_rows)}"
+          f"   (PR columns: label {GRACE_LABEL} only)")
 
 
 if __name__ == "__main__":

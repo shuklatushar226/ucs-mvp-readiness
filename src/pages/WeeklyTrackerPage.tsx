@@ -66,7 +66,7 @@ function Empty({ note }: { note: string }) {
 }
 
 export function WeeklyTrackerPage() {
-  const { ledger, inReview, merged, mergedGrace, weekStart, weekEnd } = data;
+  const { ledger, inReview, merged, weekStart, weekEnd } = data;
   const inProgress = ledger?.rows ?? [];
 
   return (
@@ -139,8 +139,7 @@ export function WeeklyTrackerPage() {
             hint={ledger ? `run ${ledger.runId ?? "?"}` : "no run ledger on the builder"}
           />
           <StatCard label="In review" value={inReview.length} hint="open, labelled GRACE-auto" />
-          <StatCard label="Merged" value={merged.length} tone="good" hint="this week, all authors" />
-          <StatCard label="Merged from GRACE" value={mergedGrace.length} hint="labelled GRACE-auto" />
+          <StatCard label="Merged" value={merged.length} tone="good" hint="this week, labelled GRACE-auto" />
         </div>
 
         <Panel title="In progress" subtitle="connectors the batch ledger still has queued or running">
@@ -169,8 +168,8 @@ export function WeeklyTrackerPage() {
           {inReview.length === 0 ? <Empty note="No open GRACE pull requests." /> : inReview.map((p) => <PrRow key={p.number} pr={p} />)}
         </Panel>
 
-        <Panel title="Merged" subtitle={`merged between ${weekStart} and now`}>
-          {merged.length === 0 ? <Empty note="Nothing merged yet this week." /> : merged.map((p) => <PrRow key={p.number} pr={p} />)}
+        <Panel title="Merged" subtitle={`labelled GRACE-auto, merged between ${weekStart} and now`}>
+          {merged.length === 0 ? <Empty note="No GRACE-auto pull request has merged this week." /> : merged.map((p) => <PrRow key={p.number} pr={p} />)}
         </Panel>
 
         <div style={{ fontSize: 11, color: T.textSubtle }}>

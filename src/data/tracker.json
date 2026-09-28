@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T19:09:29",
+  "generatedAt": "2026-09-28T19:26:05",
   "repo": "juspay/hyperswitch-prism",
   "weekStart": "2026-09-28",
   "weekEnd": "2026-10-02",
@@ -118,40 +118,5 @@
       "mergedAt": null
     }
   ],
-  "merged": [
-    {
-      "number": 2377,
-      "title": "fix(ci): stop shadowing reserved GITHUB_WORKFLOW_REF env var in hotfix-branch check",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2377",
-      "branch": "fix/create-hotfix-branch-env-var-collision",
-      "connector": null,
-      "draft": false,
-      "author": "gopikrishna000",
-      "updatedAt": "2026-09-28T12:04:35Z",
-      "mergedAt": "2026-09-28T12:02:48Z"
-    },
-    {
-      "number": 2376,
-      "title": "revert(connectors): [tsys_transit] add integrity checks, map the amount captured and fix psync status handling (#2270)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2376",
-      "branch": "revert-pr-2270-tsys-pc",
-      "connector": "tsys_transit",
-      "draft": false,
-      "author": "gopikrishna000",
-      "updatedAt": "2026-09-28T11:08:51Z",
-      "mergedAt": "2026-09-28T11:08:49Z"
-    },
-    {
-      "number": 2372,
-      "title": "fix(connectors): align production shadow parity",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2372",
-      "branch": "fix/prod-shadow-diffs-2026-09-27",
-      "connector": null,
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T07:22:00Z",
-      "mergedAt": "2026-09-28T07:21:58Z"
-    }
-  ],
-  "mergedGrace": []
+  "merged": []
 }

@@ -70,6 +70,63 @@ def evaluate(cap: dict, flows: dict, buckets: dict) -> dict:
     return {c: _STATE[v] for c, v in raw.items()}
 
 
+ROSTER = Path(__file__).resolve().parent / "creds-roster.json"
+
+
+def connector_tiers() -> dict:
+    """{connector: 'sandbox_tested' | 'alpha' | 'no_docs'}.
+
+    Three sources, in precedence order:
+
+    no_docs        the field probe reports not one `supported` result, so
+                   scripts/generators/docs/generate.py skips the connector
+                   entirely ("No flows found ... skipping") and no doc file is
+                   ever written. Causal, not correlated.
+    sandbox_tested the connector appears in the committed creds roster. The
+                   operator's rule is that holding credentials means the
+                   connector works, so presence is the whole test.
+    alpha          everything else — no credentials.
+
+    The roster is a committed snapshot because the nightly refresh runs in CI
+    against a sparse clone and cannot see a local credentials file.
+    """
+    with_creds = set()
+    try:
+        with_creds = set(json.loads(ROSTER.read_text())["with_creds"])
+    except (json.JSONDecodeError, OSError, KeyError, TypeError):
+        pass  # no roster -> every connector reads as alpha, which is the safe way to be wrong
+
+    # A connector with no `supported` result anywhere in its probe gets no docs.
+    # Check every payment-method arm, not just `default`: one supported arm is
+    # enough for generate.py to emit a page.
+    undocumented = set()
+    for f in sorted(PROBE.glob("*.json")):
+        try:
+            flows = json.loads(f.read_text()).get("flows")
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(flows, dict):
+            continue
+        supported = any(
+            (arm or {}).get("status") == "supported"
+            for arms in flows.values()
+            if isinstance(arms, dict)
+            for arm in arms.values()
+        )
+        if not supported:
+            undocumented.add(f.stem.replace("_", "").lower())
+
+    out = {}
+    for c in S.connector_set():
+        if c.replace("_", "").lower() in undocumented:
+            out[c] = "no_docs"
+        elif c in with_creds:
+            out[c] = "sandbox_tested"
+        else:
+            out[c] = "alpha"
+    return out
+
+
 def probe_secondary() -> dict:
     """Per-connector 'request buildable' counts. Secondary signal only.
 
@@ -126,6 +183,7 @@ def main() -> None:
     rubric = json.loads(RUBRIC.read_text())
     caps = rubric["capabilities"]
     probe = probe_secondary()
+    tiers = connector_tiers()
     cells = {cap["id"]: evaluate(cap, flows, buckets) for cap in caps}
 
     # Only proven fields score. A best-effort signal is shown because the
@@ -146,6 +204,7 @@ def main() -> None:
         scored = met + gap
         rows.append({
             "name": c,
+            "tier": tiers[c],
             "cells": row,
             "flows": flows[c],
             "probe": probe[c],

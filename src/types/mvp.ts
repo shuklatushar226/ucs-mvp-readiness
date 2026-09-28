@@ -47,8 +47,14 @@ export interface MvpGitProvenance {
   dirty: boolean | null;
 }
 
+/** Connector-level tier. Independent of the per-capability cell states: a
+ *  connector is credentialed or not, which says nothing about whether any one
+ *  capability is implemented. */
+export type MvpTier = "sandbox_tested" | "alpha" | "no_docs";
+
 export interface MvpConnector {
   name: string;
+  tier: MvpTier;
   cells: Record<string, MvpCellState>;
   /** Implemented gRPC flows, extracted from Rust source. */
   flows: string[];

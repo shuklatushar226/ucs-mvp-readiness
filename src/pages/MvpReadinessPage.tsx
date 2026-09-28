@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { SidebarLayout } from "../components/NavigationSidebar";
-import { CELL_STYLE, Legend, ProgressBar, StatCard } from "../components/mvp/primitives";
+import { CELL_STYLE, Legend, ProgressBar, StatCard, TierBadge } from "../components/mvp/primitives";
 import { T } from "../theme";
 import type { MvpConnector } from "../types/mvp";
 import { useMvpData } from "../lib/useMvpData";
@@ -18,6 +18,24 @@ function bandOf(c: MvpConnector) {
   return BANDS.find((b) => b.test(c))!.id;
 }
 
+/** Connector tiers, in the order they read as a pipeline. */
+const TIERS = [
+  { id: "sandbox_tested", label: "Sandbox tested" },
+  { id: "alpha", label: "Alpha · no creds" },
+  { id: "no_docs", label: "No docs" },
+] as const;
+
+const chipStyle = (active: boolean): React.CSSProperties => ({
+  padding: "7px 13px",
+  borderRadius: 6,
+  fontSize: 12,
+  fontWeight: active ? 600 : 400,
+  cursor: "pointer",
+  background: active ? T.accentSoft : T.bgElev,
+  color: active ? T.accent : T.textMuted,
+  border: `1px solid ${active ? T.accent : T.border}`,
+});
+
 function titleCase(name: string) {
   return name.replace(/_/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase());
 }
@@ -26,6 +44,7 @@ export function MvpReadinessPage() {
   const { data: DATA } = useMvpData();
   const [query, setQuery] = useState("");
   const [band, setBand] = useState<string>("all");
+  const [tier, setTier] = useState<string>("all");
   const [selected, setSelected] = useState<string | null>(null);
 
   const { capabilities, connectors } = DATA;
@@ -33,9 +52,12 @@ export function MvpReadinessPage() {
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
     return connectors.filter(
-      (c) => (!q || c.name.includes(q)) && (band === "all" || bandOf(c) === band),
+      (c) =>
+        (!q || c.name.includes(q)) &&
+        (band === "all" || bandOf(c) === band) &&
+        (tier === "all" || c.tier === tier),
     );
-  }, [query, band, connectors]);
+  }, [query, band, tier, connectors]);
 
   const totals = useMemo(() => {
     const atMvp = connectors.filter((c) => c.gaps === 0).length;
@@ -163,16 +185,7 @@ export function MvpReadinessPage() {
                 <button
                   key={b.id}
                   onClick={() => setBand(b.id)}
-                  style={{
-                    padding: "7px 13px",
-                    borderRadius: 6,
-                    fontSize: 12,
-                    fontWeight: active ? 600 : 400,
-                    cursor: "pointer",
-                    background: active ? T.accentSoft : T.bgElev,
-                    color: active ? T.accent : T.textMuted,
-                    border: `1px solid ${active ? T.accent : T.border}`,
-                  }}
+                  style={chipStyle(active)}
                 >
                   {b.label}
                 </button>
@@ -181,6 +194,19 @@ export function MvpReadinessPage() {
             <div style={{ marginLeft: "auto" }}>
               <Legend states={presentStates} />
             </div>
+          </div>
+
+          {/* Tier filters — a connector property (do we hold creds?), orthogonal
+              to the readiness bands above, which count capability gaps. */}
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
+            {[{ id: "all", label: `All tiers · ${connectors.length}` }, ...TIERS.map((t) => ({
+              id: t.id,
+              label: `${t.label} · ${connectors.filter((c) => c.tier === t.id).length}`,
+            }))].map((t) => (
+              <button key={t.id} onClick={() => setTier(t.id)} style={chipStyle(tier === t.id)}>
+                {t.label}
+              </button>
+            ))}
           </div>
 
           {/* Matrix */}
@@ -297,6 +323,7 @@ export function MvpReadinessPage() {
                     >
                       <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
                         {titleCase(c.name)}
+                        <TierBadge tier={c.tier} />
                       </span>
                     </td>
                     <td style={{ ...tdBase, background: T.bgElev }}>

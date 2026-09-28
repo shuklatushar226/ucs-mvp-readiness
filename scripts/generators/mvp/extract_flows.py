@@ -267,14 +267,31 @@ def assert_healthy(flows: dict) -> None:
             f"{per:.1f} flows per connector ({pairs} pairs over {len(flows)}) "
             f"outside the sane 5-9 band — extraction likely broke"
         )
-    if "PreAuthenticate" not in flows.get("kount", []):
-        problems.append("kount lost PreAuthenticate — local-flow macro form not parsed")
-    if "PreAuthenticate" not in flows.get("worldpayxml", []):
-        problems.append("worldpayxml lost PreAuthenticate — local-flow macro form not parsed")
-    if "Void" in flows.get("truelayer", []):
-        problems.append("truelayer regained Void — stub subtraction not applied")
-    if not flows.get("razorpay"):
-        problems.append("razorpay empty — hand-written impls not parsed")
+    # Per-connector canaries. Each names a specimen of a parse form that broke
+    # once. A connector deleted upstream is not a parser regression, so an
+    # absent specimen goes dormant instead of failing — kount was removed from
+    # main on 2026-09-28 and took its canary with it. Dormant ones are reported
+    # so the whole set cannot quietly evaporate, leaving the parser unguarded.
+    canaries = [
+        ("kount", "PreAuthenticate" in flows.get("kount", []),
+         "kount lost PreAuthenticate — local-flow macro form not parsed"),
+        ("worldpayxml", "PreAuthenticate" in flows.get("worldpayxml", []),
+         "worldpayxml lost PreAuthenticate — local-flow macro form not parsed"),
+        ("truelayer", "Void" not in flows.get("truelayer", []),
+         "truelayer regained Void — stub subtraction not applied"),
+        ("razorpay", bool(flows.get("razorpay")),
+         "razorpay empty — hand-written impls not parsed"),
+    ]
+    dormant = [name for name, _, _ in canaries if name not in flows]
+    for name, ok, msg in canaries:
+        if name in flows and not ok:
+            problems.append(msg)
+    live = len(canaries) - len(dormant)
+    if dormant:
+        print(f"note: {len(dormant)} canary connector(s) no longer in the fleet: "
+              f"{', '.join(sorted(dormant))} ({live} still guarding)")
+    if live == 0:
+        problems.append("every canary connector has been removed — parser is unguarded")
     if problems:
         raise SystemExit("flow extraction is unhealthy:\n  - " + "\n  - ".join(problems))
 

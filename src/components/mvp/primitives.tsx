@@ -1,6 +1,6 @@
 import type React from "react";
 import { T } from "../../theme";
-import type { MvpCellState } from "../../types/mvp";
+import type { MvpCellState, MvpTier } from "../../types/mvp";
 
 /**
  * Shared visual primitives for the MVP dashboards.
@@ -22,6 +22,65 @@ export const CELL_STYLE: Record<MvpCellState, { bg: string; fg: string; mark: st
   // A rubric row duplicating another; shown for fidelity, never scored.
   alias: { bg: "transparent", fg: T.textSubtle, mark: "≡", label: "Alias of another field" },
 };
+
+/** Connector-level tier. Deliberately quiet: it sits on all 118 rows, so it
+ *  marks the row without competing with the capability cells beside it. */
+export const TIER_STYLE: Record<MvpTier, { fg: string; bg: string; label: string; title: string }> = {
+  sandbox_tested: {
+    fg: T.success,
+    bg: T.successSoft,
+    label: "sandbox",
+    title: "Sandbox tested — credentials are held for this connector",
+  },
+  alpha: {
+    fg: T.accentViolet,
+    bg: "rgba(129, 97, 255, 0.14)",
+    label: "alpha",
+    title: "Alpha — no credentials held, not certified against a live sandbox",
+  },
+  no_docs: {
+    fg: T.textSubtle,
+    bg: "rgba(119, 126, 144, 0.14)",
+    label: "no docs",
+    title:
+      "No docs — the field probe reports no supported flow, so the docs generator emits no page for this connector",
+  },
+};
+
+export function TierBadge({ tier }: { tier: MvpTier }) {
+  const t = TIER_STYLE[tier];
+  if (!t) return null;
+  return (
+    <span
+      title={t.title}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 4,
+        fontSize: 9.5,
+        fontWeight: 600,
+        letterSpacing: 0.3,
+        textTransform: "uppercase",
+        // No fill or border: this sits on every one of 118 rows, so a filled
+        // pill competes with the capability cells instead of annotating them.
+        // A dot carries the colour; the word carries the meaning.
+        color: T.textSubtle,
+        flexShrink: 0,
+      }}
+    >
+      <span
+        style={{
+          width: 5,
+          height: 5,
+          borderRadius: 999,
+          background: t.fg,
+          flexShrink: 0,
+        }}
+      />
+      {t.label}
+    </span>
+  );
+}
 
 export function Panel({
   title,

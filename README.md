@@ -5,7 +5,7 @@ derived from Rust source and rebuilt daily.
 
 **Live:** https://ucs-mvp-readiness.netlify.app
 
-- `/mvp` — the matrix: 119 connectors × 14 capabilities
+- `/mvp` — the matrix: 118 connectors × 16 capabilities, each row tiered by whether we hold credentials
 - `/mvp/metrics` — numeric rollup
 
 ## Where the numbers come from
@@ -21,7 +21,7 @@ flow — implemented, `not_implemented:`, or `not_supported:` — and those buck
 must account for the entire fleet. `extract_flows.py` asserts that they do, which
 is what caught the fleet growing 108 → 113 → 119 without anyone noticing.
 
-**12 of 14 capabilities are `proven`** (a compiler-enforced declaration or a typed
+**14 of 16 capabilities are `proven`** (a compiler-enforced declaration or a typed
 field read) and only those are scored. The other 2 are `best-effort`: shown
 because they are useful, excluded from scoring so they cannot contaminate a
 provable number.

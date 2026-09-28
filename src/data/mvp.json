@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-09-25T08:50:05",
+  "generatedAt": "2026-09-28T19:06:07",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "ucs",
-    "branch": "main",
-    "commit": "c3a7a8c",
-    "committedAt": "2026-09-24",
+    "branch": "HEAD",
+    "commit": "e8eab21",
+    "committedAt": "2026-09-28",
     "dirty": false
   },
   "capabilities": [
@@ -239,6 +239,7 @@
   "connectors": [
     {
       "name": "adyen",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -286,6 +287,7 @@
     },
     {
       "name": "checkout",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -328,6 +330,7 @@
     },
     {
       "name": "novalnet",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -370,6 +373,7 @@
     },
     {
       "name": "finix",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -413,6 +417,7 @@
     },
     {
       "name": "paypal",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -459,6 +464,7 @@
     },
     {
       "name": "stripe",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -504,6 +510,7 @@
     },
     {
       "name": "barclaycard",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -548,6 +555,7 @@
     },
     {
       "name": "cybersource",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -596,6 +604,7 @@
     },
     {
       "name": "nmi",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -638,6 +647,7 @@
     },
     {
       "name": "authorizedotnet",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -682,6 +692,7 @@
     },
     {
       "name": "fiuu",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -723,6 +734,7 @@
     },
     {
       "name": "trustpay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -764,6 +776,7 @@
     },
     {
       "name": "nexixpay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -808,6 +821,7 @@
     },
     {
       "name": "peachpayments",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -849,6 +863,7 @@
     },
     {
       "name": "braintree",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -893,6 +908,7 @@
     },
     {
       "name": "paydotcom",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -936,6 +952,7 @@
     },
     {
       "name": "worldpayxml",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -979,6 +996,7 @@
     },
     {
       "name": "revolv3",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1020,6 +1038,7 @@
     },
     {
       "name": "tsys_transit",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1063,6 +1082,7 @@
     },
     {
       "name": "globalpay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1108,6 +1128,7 @@
     },
     {
       "name": "moneris",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1151,6 +1172,7 @@
     },
     {
       "name": "paysafe",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1195,6 +1217,7 @@
     },
     {
       "name": "fiservcommercehub",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1237,6 +1260,7 @@
     },
     {
       "name": "worldpay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1280,6 +1304,7 @@
     },
     {
       "name": "tsys",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1321,6 +1346,7 @@
     },
     {
       "name": "noon",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1363,6 +1389,7 @@
     },
     {
       "name": "imerchantsolutions",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1403,6 +1430,7 @@
     },
     {
       "name": "datatrans",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1447,6 +1475,7 @@
     },
     {
       "name": "jpmorgan",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1491,6 +1520,7 @@
     },
     {
       "name": "shift4",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1535,6 +1565,7 @@
     },
     {
       "name": "dlocal",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1576,6 +1607,7 @@
     },
     {
       "name": "zift",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1616,6 +1648,7 @@
     },
     {
       "name": "elavon_pg",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -1657,6 +1690,7 @@
     },
     {
       "name": "getnet",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -1701,6 +1735,7 @@
     },
     {
       "name": "globalpayments_realex",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -1743,6 +1778,7 @@
     },
     {
       "name": "redsys",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -1784,6 +1820,7 @@
     },
     {
       "name": "billwerk",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1827,6 +1864,7 @@
     },
     {
       "name": "merchante",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1868,6 +1906,7 @@
     },
     {
       "name": "nexinets",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1910,6 +1949,7 @@
     },
     {
       "name": "nuvei",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1954,6 +1994,7 @@
     },
     {
       "name": "paybox",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1995,6 +2036,7 @@
     },
     {
       "name": "payload",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2038,6 +2080,7 @@
     },
     {
       "name": "stax",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2081,6 +2124,7 @@
     },
     {
       "name": "trustpayments",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2123,6 +2167,7 @@
     },
     {
       "name": "bluesnap",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2163,6 +2208,7 @@
     },
     {
       "name": "tamara",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2203,6 +2249,7 @@
     },
     {
       "name": "paynearme",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2244,6 +2291,7 @@
     },
     {
       "name": "aci",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2284,6 +2332,7 @@
     },
     {
       "name": "saferpay",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2324,6 +2373,7 @@
     },
     {
       "name": "givepayments",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2362,6 +2412,7 @@
     },
     {
       "name": "airwallex",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2406,6 +2457,7 @@
     },
     {
       "name": "powertranz",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2447,6 +2499,7 @@
     },
     {
       "name": "ppro",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2488,6 +2541,7 @@
     },
     {
       "name": "rapyd",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2531,6 +2585,7 @@
     },
     {
       "name": "bamboraapac",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -2571,6 +2626,7 @@
     },
     {
       "name": "ilixium",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2611,6 +2667,7 @@
     },
     {
       "name": "wellsfargo",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2651,6 +2708,7 @@
     },
     {
       "name": "phonepe",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2690,6 +2748,7 @@
     },
     {
       "name": "razorpay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2730,6 +2789,7 @@
     },
     {
       "name": "grabpay",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2769,6 +2829,7 @@
     },
     {
       "name": "netcetera",
+      "tier": "no_docs",
       "cells": {
         "cit": "met",
         "mit": "na",
@@ -2806,6 +2867,7 @@
     },
     {
       "name": "citigate",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2845,6 +2907,7 @@
     },
     {
       "name": "globalpayments_heartland",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2884,6 +2947,7 @@
     },
     {
       "name": "travelhub",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2923,6 +2987,7 @@
     },
     {
       "name": "bankofamerica",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2964,6 +3029,7 @@
     },
     {
       "name": "glomopay",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3004,6 +3070,7 @@
     },
     {
       "name": "truelayer",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3043,6 +3110,7 @@
     },
     {
       "name": "worldpayraft",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -3081,6 +3149,7 @@
     },
     {
       "name": "elavon",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -3120,6 +3189,7 @@
     },
     {
       "name": "etisalat",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -3158,6 +3228,7 @@
     },
     {
       "name": "maya",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3196,6 +3267,7 @@
     },
     {
       "name": "affirm",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3235,6 +3307,7 @@
     },
     {
       "name": "authipay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3275,6 +3348,7 @@
     },
     {
       "name": "bambora",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3314,6 +3388,7 @@
     },
     {
       "name": "celero",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3353,6 +3428,7 @@
     },
     {
       "name": "fiserv",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3392,6 +3468,7 @@
     },
     {
       "name": "fiservemea",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3432,6 +3509,7 @@
     },
     {
       "name": "helcim",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3471,6 +3549,7 @@
     },
     {
       "name": "hipay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3511,6 +3590,7 @@
     },
     {
       "name": "juspay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3552,6 +3632,7 @@
     },
     {
       "name": "mollie",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3593,6 +3674,7 @@
     },
     {
       "name": "payconex",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3632,6 +3714,7 @@
     },
     {
       "name": "payme",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3672,6 +3755,7 @@
     },
     {
       "name": "payu",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3712,6 +3796,7 @@
     },
     {
       "name": "pinelabs_online",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3753,6 +3838,7 @@
     },
     {
       "name": "twoc_twop_paco",
+      "tier": "no_docs",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3793,6 +3879,7 @@
     },
     {
       "name": "flywire",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3831,6 +3918,7 @@
     },
     {
       "name": "revolut",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3870,6 +3958,7 @@
     },
     {
       "name": "cashfree",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3910,6 +3999,7 @@
     },
     {
       "name": "forte",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3949,6 +4039,7 @@
     },
     {
       "name": "placetopay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -3989,6 +4080,7 @@
     },
     {
       "name": "silverflow",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4028,6 +4120,7 @@
     },
     {
       "name": "worldpayvantiv",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4069,6 +4162,7 @@
     },
     {
       "name": "boost",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4106,6 +4200,7 @@
     },
     {
       "name": "trustly",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4141,6 +4236,7 @@
     },
     {
       "name": "xendit",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4179,6 +4275,7 @@
     },
     {
       "name": "easebuzz",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4218,6 +4315,7 @@
     },
     {
       "name": "iatapay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4256,6 +4354,7 @@
     },
     {
       "name": "razorpayv2",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4294,6 +4393,7 @@
     },
     {
       "name": "qwikcilver",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "na",
@@ -4334,6 +4434,7 @@
     },
     {
       "name": "gigadat",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4370,6 +4471,7 @@
     },
     {
       "name": "tesouro",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -4408,6 +4510,7 @@
     },
     {
       "name": "axisbank",
+      "tier": "no_docs",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4445,6 +4548,7 @@
     },
     {
       "name": "d24",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4482,6 +4586,7 @@
     },
     {
       "name": "hyperpg",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4519,6 +4624,7 @@
     },
     {
       "name": "multisafepay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4557,6 +4663,7 @@
     },
     {
       "name": "jpmorganorbital",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "na",
@@ -4592,6 +4699,7 @@
     },
     {
       "name": "cashtocode",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4626,6 +4734,7 @@
     },
     {
       "name": "cryptopay",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4661,6 +4770,7 @@
     },
     {
       "name": "volt",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4698,6 +4808,7 @@
     },
     {
       "name": "absa_sanlam",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4732,6 +4843,7 @@
     },
     {
       "name": "calida",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4767,6 +4879,7 @@
     },
     {
       "name": "hyperswitch",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "gap",
         "mit": "met",
@@ -4802,6 +4915,7 @@
     },
     {
       "name": "payhere",
+      "tier": "alpha",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4838,6 +4952,7 @@
     },
     {
       "name": "loonio",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4873,6 +4988,7 @@
     },
     {
       "name": "mifinity",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4908,6 +5024,7 @@
     },
     {
       "name": "paytm",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -4944,6 +5061,7 @@
     },
     {
       "name": "itaubank",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "gap",
         "mit": "gap",
@@ -4974,44 +5092,6 @@
       "na": 3,
       "scored": 11,
       "effort": 37,
-      "pct": 0
-    },
-    {
-      "name": "kount",
-      "cells": {
-        "cit": "gap",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "refund_sync": "gap",
-        "external_three_ds": "gap",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "FrmPaymentOutcome",
-        "FrmRefundProcessed",
-        "PreAuthenticate",
-        "PreRiskCheck",
-        "ServerAuthenticationToken"
-      ],
-      "probe": {
-        "buildableFlows": 2,
-        "probedFlows": 34
-      },
-      "met": 0,
-      "gaps": 14,
-      "na": 0,
-      "scored": 14,
-      "effort": 44,
       "pct": 0
     }
   ]

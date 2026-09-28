@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T19:06:07",
+  "generatedAt": "2026-09-28T22:47:43",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "ucs",
@@ -1430,7 +1430,7 @@
     },
     {
       "name": "datatrans",
-      "tier": "alpha",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1475,7 +1475,7 @@
     },
     {
       "name": "jpmorgan",
-      "tier": "alpha",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
@@ -1735,7 +1735,7 @@
     },
     {
       "name": "globalpayments_realex",
-      "tier": "alpha",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2332,7 +2332,7 @@
     },
     {
       "name": "saferpay",
-      "tier": "alpha",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",
@@ -2907,7 +2907,7 @@
     },
     {
       "name": "globalpayments_heartland",
-      "tier": "alpha",
+      "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "gap",

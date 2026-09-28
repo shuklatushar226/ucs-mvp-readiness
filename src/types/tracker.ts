@@ -13,7 +13,8 @@ export interface TrackerPr {
 
 export interface TrackerLedgerRow {
   connector: string;
-  status: "queued" | "running";
+  status: "queued" | "running" | "blocked";
+  slot: string | number | null;
   startedAt: string | null;
   retries: number;
   error: string | null;
@@ -22,8 +23,6 @@ export interface TrackerLedgerRow {
 export interface TrackerData {
   generatedAt: string;
   repo: string;
-  weekStart: string;
-  weekEnd: string;
   /** null when the run ledger was not on the machine that built this file —
    *  which is the normal case in CI. Not the same as "nothing in progress". */
   ledger: { runId: string | null; updatedAt: string | null; rows: TrackerLedgerRow[] } | null;

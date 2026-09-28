@@ -14,6 +14,7 @@ import argparse, datetime, json, pathlib, re, sys
 
 HERE = pathlib.Path(__file__).resolve().parent
 OUT = HERE / "creds-roster.json"
+EXTRA = HERE / "creds-extra.json"
 DEFAULT_CREDS = pathlib.Path.home() / ".hyperswitch" / "creds.json"
 
 # Anything that looks like a credential. Used to prove the output is clean.
@@ -44,9 +45,26 @@ def has_creds(entry) -> bool:
     return False
 
 
+def extra_names() -> tuple:
+    """Connectors credentialed on the box but absent from the local creds file.
+
+    Some credentials only exist in the prism checkouts on the Linux host, so a
+    roster built purely from ~/.hyperswitch/creds.json under-reports. The extra
+    file carries names and slot numbers, never values.
+    """
+    try:
+        d = json.loads(EXTRA.read_text())
+    except (json.JSONDecodeError, OSError):
+        return (), {}
+    conns = d.get("connectors") or {}
+    return tuple(sorted(conns)), {k: (v or {}).get("slots") for k, v in conns.items()}
+
+
 def build(creds_path: pathlib.Path) -> dict:
     creds = json.loads(creds_path.read_text())
-    names = sorted(n for n, e in creds.items() if has_creds(e))
+    local = {n for n, e in creds.items() if has_creds(e)}
+    extra, slots = extra_names()
+    names = sorted(local | set(extra))
     return {
         "_comment": [
             "Connectors we hold credentials for. Names only — no values, ever.",
@@ -57,6 +75,8 @@ def build(creds_path: pathlib.Path) -> dict:
         "captured_at": datetime.date.today().isoformat(),
         "count": len(names),
         "with_creds": names,
+        "from_local_file": sorted(local),
+        "from_checkouts": {n: slots.get(n) for n in extra},
     }
 
 

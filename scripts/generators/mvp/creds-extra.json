@@ -1,0 +1,18 @@
+{
+  "_comment": [
+    "Connectors whose credentials live in the prism checkouts on the Linux box,",
+    "not in the local ~/.hyperswitch/creds.json the roster is generated from.",
+    "NAMES AND SLOT NUMBERS ONLY — never credential values.",
+    "`slots` records which hyperswitch-prismN checkouts hold them, because a",
+    "connector can only run in a slot that actually has its credentials."
+  ],
+  "captured_at": "2026-09-28",
+  "connectors": {
+    "datatrans":                { "slots": [1, 2, 3, 4, 5, 8] },
+    "jpmorgan":                 { "slots": [1, 2, 3, 4, 5, 8] },
+    "globalpayments_heartland": { "slots": [5, 8] },
+    "globalpayments_realex":    { "slots": [2] },
+    "saferpay":                 { "slots": [5, 8],
+                                  "note": "prism8 stores it without the connector_account_details wrapper and its contents differ slightly — check prism8's copy before using it" }
+  }
+}

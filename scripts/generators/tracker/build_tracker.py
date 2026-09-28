@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Weekly connector tracker: in progress, in review, merged (Mon -> now).
+"""PR tracker: what the pipeline has in flight, in review, and landed.
 
-Three columns, three sources:
+Four columns:
 
-  in progress  the GRACE batch ledger (task.json) — rows still queued/running
+  in progress  the run ledger — connectors queued or running
+  blocked      the run ledger — connectors stopped and needing a human
   in review    OPEN PRs labelled GRACE-auto
-  merged       PRs labelled GRACE-auto merged since Monday 00:00 local
+  merged       MERGED PRs labelled GRACE-auto
 
 Every PR column filters on GRACE-auto. This tracker follows the pipeline's own
 work, not the repository's overall throughput.
+
+Not time-boxed. A connector run takes about nine hours and a review can sit for
+days, so a Monday-to-Friday window cut the record in the middle of the work it
+was meant to show. `merged_limit` bounds the list instead.
 
 Both PR columns select on the `GRACE-auto` label and nothing else. `2.8_pr_run.md` applies it on every PR this pipeline
 raises, so it marks intent rather than inference — a `feat/grace-*` branch
@@ -54,11 +59,6 @@ def gh(args):
         return None
 
 
-def week_start():
-    t = datetime.date.today()
-    return t - datetime.timedelta(days=t.weekday())
-
-
 GRACE_LABEL = "GRACE-auto"
 
 
@@ -99,7 +99,12 @@ def slim(pr):
 
 
 def read_ledger(path):
-    """Ledger rows still outstanding. None when the file is absent."""
+    """Ledger rows not yet finished. None when the file is absent.
+
+    `blocked` is carried alongside queued/running because a blocked connector
+    is still the pipeline's work — it has simply stopped needing compute and
+    started needing a person. Folding it into `failed` would hide it.
+    """
     if not path or not path.exists():
         return None
     try:
@@ -108,14 +113,15 @@ def read_ledger(path):
         return None
     rows = [
         {
-            "connector": i.get("connector") or (i.get("id") or "").replace("connector-agent-", ""),
+            "connector": i.get("connector") or (i.get("id") or "").replace("connector-", ""),
             "status": i.get("status"),
             "startedAt": i.get("started_at"),
             "retries": i.get("retries") or 0,
             "error": i.get("error"),
+            "slot": i.get("slot"),
         }
         for i in d.get("invocations") or []
-        if isinstance(i, dict) and i.get("status") in ("queued", "running")
+        if isinstance(i, dict) and i.get("status") in ("queued", "running", "blocked")
     ]
     return {"runId": d.get("run_id"), "updatedAt": d.get("updated_at"), "rows": rows}
 
@@ -125,15 +131,15 @@ def main():
     ap.add_argument("--repo", default="juspay/hyperswitch-prism")
     ap.add_argument("--ledger", type=pathlib.Path)
     ap.add_argument("--out", type=pathlib.Path, default=OUT)
+    ap.add_argument("--merged-limit", type=int, default=50)
     a = ap.parse_args()
 
-    since = week_start()
     fields = "number,title,url,headRefName,author,labels,isDraft,updatedAt,mergedAt"
 
     open_prs = gh(["pr", "list", "--repo", a.repo, "--state", "open",
                    "--limit", "200", "--json", fields])
-    merged = gh(["pr", "list", "--repo", a.repo, "--state", "merged", "--limit", "200",
-                 "--search", f"merged:>={since.isoformat()}", "--json", fields])
+    merged = gh(["pr", "list", "--repo", a.repo, "--state", "merged",
+                 "--limit", str(a.merged_limit), "--json", fields])
     prs_ok = open_prs is not None and merged is not None
     open_prs, merged = open_prs or [], merged or []
 
@@ -145,8 +151,6 @@ def main():
     payload = {
         "generatedAt": datetime.datetime.now().isoformat(timespec="seconds"),
         "repo": a.repo,
-        "weekStart": since.isoformat(),
-        "weekEnd": (since + datetime.timedelta(days=4)).isoformat(),
         "ledger": read_ledger(a.ledger),
         "prsOk": prs_ok,
         "warnings": WARNINGS,
@@ -159,9 +163,14 @@ def main():
         for w in WARNINGS:
             print(f"   warning: {w}", file=sys.stderr)
     led = payload["ledger"]
-    print(f"✅ week {payload['weekStart']} → {payload['weekEnd']} → {a.out}")
-    print(f"   in progress {len(led['rows']) if led else '— (no ledger on this machine)'} · "
-          f"in review {len(in_review)} · merged {len(merged_rows)}"
+    if led:
+        active = sum(1 for r in led["rows"] if r["status"] != "blocked")
+        blocked = sum(1 for r in led["rows"] if r["status"] == "blocked")
+        progress = f"{active} in progress, {blocked} blocked"
+    else:
+        progress = "— (no ledger on this machine)"
+    print(f"✅ {a.out}")
+    print(f"   {progress} · in review {len(in_review)} · merged {len(merged_rows)}"
           f"   (PR columns: label {GRACE_LABEL} only)")
 
 

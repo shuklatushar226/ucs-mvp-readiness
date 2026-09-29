@@ -88,4 +88,4 @@ jobs:
         run: |
           npx --yes netlify-cli@latest deploy --prod --dir=dist \
             --site="${{ secrets.NETLIFY_SITE_ID }}" \
-            --message="prism $(cd "$RUNNER_TEMP/ucs" && git rev-parse --short HEAD)"
+            --message="PR tracker $(date -u +%Y-%m-%dT%H:%MZ)"

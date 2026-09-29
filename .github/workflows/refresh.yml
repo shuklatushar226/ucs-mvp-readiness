@@ -1,10 +1,18 @@
-name: Refresh MVP data from prism main
+name: Refresh the PR tracker
 
+# The capability matrix (src/data/mvp.json) is NO LONGER built here. It is owned
+# by the grace database on the batch box, which refreshes it from prism every
+# 12h, exports it and pushes — so this workflow regenerating it too would give
+# the same file two writers, from different checkouts at different times,
+# flip-flopping it daily. What is left is the PR tracker, which reads live
+# GitHub state and has no other writer (the boss only publishes it when
+# dashboard_repo is configured, and it is not).
+#
 # Why commit the data instead of pinging a Netlify build hook: the push IS the
 # repository activity that keeps this schedule alive. GitHub disables scheduled
 # workflows in public repos after 60 days of inactivity, which would be fatal
-# for a repo that otherwise never changes. prism takes ~4 commits/day, so the
-# data moves on most runs and the repo is never idle by construction.
+# for a repo that otherwise never changes. The box's own 12h pushes now also
+# count towards that, so the schedule is doubly safe.
 # workflow_dispatch is the escape hatch if the schedule is ever disabled anyway.
 
 on:
@@ -27,29 +35,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Sparse-clone prism main
-        # Only the three trees the generator reads: ~25 MB instead of ~160 MB.
-        run: |
-          git clone --filter=blob:none --no-checkout --depth=1 --branch main \
-            https://github.com/juspay/hyperswitch-prism.git "$RUNNER_TEMP/ucs"
-          cd "$RUNNER_TEMP/ucs"
-          git sparse-checkout init --cone
-          git sparse-checkout set \
-            crates/integrations/connector-integration/src/connectors \
-            crates/internal/integration-tests/src/connector_specs \
-            data/field_probe
-          git checkout main
-          echo "prism main is $(git rev-parse --short HEAD)"
-
-      - name: Regenerate mvp.json
-        # The generator asserts its own consistency (every flow's impl /
-        # not_implemented / not_supported buckets must account for the whole
-        # fleet, and connector dirs must match specs dirs). A drift it cannot
-        # explain raises here, so the step fails and nothing is committed.
-        env:
-          UCS_ROOT: ${{ runner.temp }}/ucs
-        run: python3 scripts/generators/mvp/build_mvp.py
-
       - name: Regenerate tracker.json
         # PR metadata for the Mon-Fri tracker. hyperswitch-prism is public, so
         # this repo's GITHUB_TOKEN can read its pull requests. A failed query is
@@ -61,48 +46,22 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python3 scripts/generators/tracker/build_tracker.py --repo juspay/hyperswitch-prism
 
-      - name: Commit if the data moved
+      - name: Commit if the tracker moved
         id: commit
         run: |
-          # mvp.json carries generatedAt, which changes on every run, so a plain
-          # `git diff --quiet` is never quiet and this would commit daily whether
-          # or not anything moved. Compare everything EXCEPT that timestamp.
-          # provenance.commit stays in the comparison on purpose: when prism
-          # advances, the footer should say so even if no capability changed.
-          if python3 - <<'PY'; then
-          import json, subprocess, sys
-          new = json.load(open("src/data/mvp.json"))
-          old = json.loads(subprocess.run(
-              ["git", "show", "HEAD:src/data/mvp.json"],
-              capture_output=True, text=True, check=True).stdout)
-          for d in (new, old):
-              d.pop("generatedAt", None)
-          sys.exit(0 if new == old else 1)
-          PY
-            echo "matrix unchanged — checking the tracker before standing down"
-            git checkout -- src/data/mvp.json
-            # The tracker moves on its own schedule: a week with no capability
-            # change still has PRs opening and merging. Deploy on its diff alone.
-            if git diff --quiet -- src/data/tracker.json; then
-              echo "changed=false" >> "$GITHUB_OUTPUT"
-              exit 0
-            fi
-            git config user.name  "mvp-refresh[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add -- src/data/tracker.json
-            git commit -m "chore(data): refresh weekly tracker"
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+          # mvp.json is NOT touched here any more. It is owned by the grace
+          # database on the batch box, which refreshes it from prism every 12h
+          # and pushes it. Regenerating it here as well would mean two writers
+          # producing the same file from different checkouts at different
+          # times, flip-flopping it daily.
+          if git diff --quiet -- src/data/tracker.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name  "mvp-refresh[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/data/mvp.json
-          # The tracker is time-varying by nature (PRs move daily), so it rides
-          # along with a matrix change rather than gating one. -- guards a name
-          # that does not exist yet on the very first run.
-          git add -- src/data/tracker.json 2>/dev/null || true
-          git commit -m "chore(data): refresh from prism $(cd "$RUNNER_TEMP/ucs" && git rev-parse --short HEAD)"
+          git add -- src/data/tracker.json
+          git commit -m "chore(data): refresh PR tracker"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
 

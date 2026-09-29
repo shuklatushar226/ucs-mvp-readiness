@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-30T02:21:07",
+  "generatedAt": "2026-09-30T02:30:49",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
-    "updatedAt": "2026-09-30T02:17:27+05:30",
+    "updatedAt": "2026-09-30T02:26:10+05:30",
     "rows": [
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T02:06:13+05:30",
+        "startedAt": "2026-09-30T02:15:47+05:30",
         "retries": 0,
         "error": null,
         "slot": 5
@@ -54,28 +54,6 @@
       "mergedAt": null
     },
     {
-      "number": 2384,
-      "title": "feat(connector): [Hipay] add 6 flows (Payments, ThreeDS, Void, Refunds, Mandates) [GRACE-INCOMPLETE]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2384",
-      "branch": "feat/hipay_grace",
-      "connector": "hipay",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-29T05:54:20Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2278,
-      "title": "feat(connector): [Xendit] enrich card Authorize, implement Void and SetupMandate",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2278",
-      "branch": "feat/xendit_grace",
-      "connector": "xendit",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:27Z",
-      "mergedAt": null
-    },
-    {
       "number": 2341,
       "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
@@ -84,28 +62,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-09-28T12:57:08Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2356,
-      "title": "feat(connector): [Authipay] full connector implementation for all flows",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2356",
-      "branch": "feat/authipay_grace",
-      "connector": "authipay",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:56:57Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2364,
-      "title": "feat(connector): [Saferpay] add Authorize, Refund, ThreeDS, SetupMandate, RepeatPayment and IncomingWebhook [GRACE-INCOMPLETE]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2364",
-      "branch": "feat/saferpay_grace",
-      "connector": "saferpay",
-      "draft": true,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:56:54Z",
       "mergedAt": null
     }
   ],

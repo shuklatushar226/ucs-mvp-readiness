@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-30T02:16:30",
+  "generatedAt": "2026-09-30T02:21:07",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
-    "updatedAt": "2026-09-30T02:16:27+05:30",
+    "updatedAt": "2026-09-30T02:17:27+05:30",
     "rows": [
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T02:01:35+05:30",
+        "startedAt": "2026-09-30T02:06:13+05:30",
         "retries": 0,
         "error": null,
         "slot": 5
@@ -51,17 +51,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-09-29T12:10:07Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2353,
-      "title": "docs(grace): name the two turn-burning bypasses R6 already forbids",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2353",
-      "branch": "docs/grace-r6-busy-wait-bypasses",
-      "connector": null,
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-29T11:50:50Z",
       "mergedAt": null
     },
     {

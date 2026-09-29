@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-09-30T02:13:25",
+  "generatedAt": "2026-09-30T02:16:30",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
-    "updatedAt": "2026-09-30T02:13:22+05:30",
+    "updatedAt": "2026-09-30T02:16:27+05:30",
     "rows": [
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T01:58:24+05:30",
+        "startedAt": "2026-09-30T02:01:35+05:30",
         "retries": 0,
         "error": null,
         "slot": 5
@@ -20,17 +20,6 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
-    {
-      "number": 2405,
-      "title": "feat(connector): [datatrans] add ZeroAuth, MIT, IncomingWebhook and Chargeback [GRACE-INCOMPLETE]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2405",
-      "branch": "feat/grace-datatrans-d23c06",
-      "connector": "datatrans",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-29T17:13:57Z",
-      "mergedAt": null
-    },
     {
       "number": 2308,
       "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",

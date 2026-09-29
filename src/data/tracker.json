@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T09:50:46",
+  "generatedAt": "2026-09-29T13:27:39",
   "repo": "juspay/hyperswitch-prism",
   "ledger": null,
   "prsOk": true,
@@ -7,6 +7,50 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2308,
+      "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2308",
+      "branch": "feat/braintree_grace",
+      "connector": "braintree",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T13:04:40Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2340,
+      "title": "feat(connector): [Shift4] add ThreeDS, PSync, Capture, Void, Refund, RSync, SetupMandate, RepeatPayment and webhooks",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2340",
+      "branch": "feat/shift4-grace-d05f4f",
+      "connector": "shift4",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T12:13:15Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T12:10:07Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2353,
+      "title": "docs(grace): name the two turn-burning bypasses R6 already forbids",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2353",
+      "branch": "docs/grace-r6-busy-wait-bypasses",
+      "connector": null,
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T11:50:50Z",
+      "mergedAt": null
+    },
     {
       "number": 2384,
       "title": "feat(connector): [Hipay] add 6 flows (Payments, ThreeDS, Void, Refunds, Mandates) [GRACE-INCOMPLETE]",
@@ -30,39 +74,6 @@
       "mergedAt": null
     },
     {
-      "number": 2308,
-      "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2308",
-      "branch": "feat/braintree_grace",
-      "connector": "braintree",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:20Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2330,
-      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
-      "branch": "feat/nuvei_grace",
-      "connector": "nuvei",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:16Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2340,
-      "title": "feat(connector): [Shift4] add ThreeDS, PSync, Capture, Void, Refund, RSync, SetupMandate, RepeatPayment and webhooks",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2340",
-      "branch": "feat/shift4-grace-d05f4f",
-      "connector": "shift4",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:12Z",
-      "mergedAt": null
-    },
-    {
       "number": 2341,
       "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
@@ -82,17 +93,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-09-28T12:57:05Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2353,
-      "title": "docs(grace): name the two turn-burning bypasses R6 already forbids",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2353",
-      "branch": "docs/grace-r6-busy-wait-bypasses",
-      "connector": null,
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:01Z",
       "mergedAt": null
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T00:45:05",
+  "generatedAt": "2026-09-29T09:50:46",
   "repo": "juspay/hyperswitch-prism",
   "ledger": null,
   "prsOk": true,
@@ -7,6 +7,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2384,
+      "title": "feat(connector): [Hipay] add 6 flows (Payments, ThreeDS, Void, Refunds, Mandates) [GRACE-INCOMPLETE]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2384",
+      "branch": "feat/hipay_grace",
+      "connector": "hipay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T05:54:20Z",
+      "mergedAt": null
+    },
     {
       "number": 2278,
       "title": "feat(connector): [Xendit] enrich card Authorize, implement Void and SetupMandate",
@@ -16,17 +27,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-09-28T12:57:27Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2283,
-      "title": "feat(connector): [Hipay] billing, shipping, L2 basket, AVS/CVC, GSM error mapping and 3DS inputs on Authorize",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2283",
-      "branch": "feat/hipay_grace",
-      "connector": "hipay",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:24Z",
       "mergedAt": null
     },
     {

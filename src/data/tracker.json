@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T03:11:02",
+  "generatedAt": "2026-09-30T03:21:07",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T03:00:00+05:30",
+        "startedAt": "2026-09-30T03:10:24+05:30",
         "retries": 0,
         "error": null,
         "slot": 5
@@ -20,6 +20,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2341,
+      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
+      "branch": "feat/worldpayraft_grace",
+      "connector": "worldpayraft",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T21:43:38Z",
+      "mergedAt": null
+    },
     {
       "number": 2308,
       "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",
@@ -51,17 +62,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-09-29T12:10:07Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2341,
-      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
-      "branch": "feat/worldpayraft_grace",
-      "connector": "worldpayraft",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-28T12:57:08Z",
       "mergedAt": null
     }
   ],

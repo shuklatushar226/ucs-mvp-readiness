@@ -1,49 +1,17 @@
 {
-  "generatedAt": "2026-09-30T02:11:07",
+  "generatedAt": "2026-09-30T02:13:25",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
-    "updatedAt": "2026-09-29T23:56:09+05:30",
+    "updatedAt": "2026-09-30T02:13:22+05:30",
     "rows": [
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T01:56:24+05:30",
+        "startedAt": "2026-09-30T01:58:24+05:30",
         "retries": 0,
         "error": null,
         "slot": 5
-      },
-      {
-        "connector": "datatrans",
-        "status": "blocked",
-        "startedAt": "2026-09-29T17:20:14+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": "3"
-      },
-      {
-        "connector": "getnet",
-        "status": "blocked",
-        "startedAt": "2026-09-29T22:52:53+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": "1"
-      },
-      {
-        "connector": "jpmorgan",
-        "status": "blocked",
-        "startedAt": "2026-09-29T23:00:03+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": "1"
-      },
-      {
-        "connector": "payhound",
-        "status": "blocked",
-        "startedAt": "2026-09-29T14:37:13+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": "1"
       }
     ]
   },

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T07:11:07",
+  "generatedAt": "2026-09-30T07:21:07",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T06:56:15+05:30",
+        "startedAt": "2026-09-30T07:06:08+05:30",
         "retries": 0,
         "error": null,
         "slot": 5
@@ -20,6 +20,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2407,
+      "title": "chore(connector): [Airwallex] GRACE run incomplete \u2014 9 flows unresolved (ThreeDS, PSync, Capture)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2407",
+      "branch": "feat/airwallex_grace",
+      "connector": "airwallex",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-30T01:49:24Z",
+      "mergedAt": null
+    },
     {
       "number": 2341,
       "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",

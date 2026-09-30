@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T06:41:07",
+  "generatedAt": "2026-09-30T06:51:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T06:26:21+05:30",
+        "startedAt": "2026-09-30T06:41:19+05:30",
         "retries": 0,
         "error": null,
         "slot": 5

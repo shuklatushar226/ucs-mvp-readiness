@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-09-30T18:30:07",
+  "generatedAt": "2026-09-30T18:41:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-09-30T02:26:10+05:30",
     "rows": [
       {
-        "connector": "trustpay",
+        "connector": "airwallex",
         "status": "running",
-        "startedAt": "2026-09-30T18:21:17+05:30",
+        "startedAt": "2026-09-30T18:36:01+05:30",
         "retries": 0,
         "error": null,
-        "slot": 13
+        "slot": 5
       }
     ]
   },

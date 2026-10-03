@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T04:41:08",
+  "generatedAt": "2026-10-03T14:51:07",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,6 +11,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2431,
+      "title": "feat(connector): [Xendit] migrate to v3 payment requests, add void, mandates, webhooks and refunds",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2431",
+      "branch": "feat/xendit_grace",
+      "connector": "xendit",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-03T09:14:23Z",
+      "mergedAt": null
+    },
     {
       "number": 2425,
       "title": "feat(connector): [Rapyd] add 9 flows (ThreeDS, PSync, Capture, Void, Refund, RSync, ...) [GRACE-INCOMPLETE]",

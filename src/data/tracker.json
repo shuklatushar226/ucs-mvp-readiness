@@ -1,10 +1,19 @@
 {
-  "generatedAt": "2026-10-03T15:21:08",
+  "generatedAt": "2026-10-03T16:11:07",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-09-30T02:26:10+05:30",
-    "rows": []
+    "rows": [
+      {
+        "connector": "raypd",
+        "status": "running",
+        "startedAt": "2026-10-03T16:08:51+05:30",
+        "retries": 0,
+        "error": null,
+        "slot": 3
+      }
+    ]
   },
   "prsOk": true,
   "blockedLabel": "GRACE-blocked",
@@ -20,17 +29,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-03T09:44:05Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2425,
-      "title": "feat(connector): [Rapyd] add 9 flows (ThreeDS, PSync, Capture, Void, Refund, RSync, ...) [GRACE-INCOMPLETE]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2425",
-      "branch": "feat/rapyd_grace",
-      "connector": "rapyd",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-01T07:27:09Z",
       "mergedAt": null
     },
     {

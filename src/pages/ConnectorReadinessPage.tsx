@@ -15,7 +15,8 @@ import tracker from "../data/tracker.json";
  *             generator skips the connector and writes no doc file. This is a
  *             tier from build_mvp.py — an implementation signal, NOT a claim
  *             about whether the vendor publishes an API spec.
- *   missing   no credentials — someone has to go and obtain them
+ *   missing   alpha tier: no credentials held. A run stops at preflight with
+ *             ABORT_CREDS and is SKIPPED — there is no mock mode and no PR.
  *   ready     nothing blocking it
  *
  * Credential SHAPE is not a state. An entry in the legacy
@@ -51,7 +52,7 @@ function blockerOf(c: MvpConnector): Blocker {
 
 const BLOCKER_STYLE: Record<Blocker, { label: string; fg: string; bg: string; title: string }> = {
   ready:   { label: "ready",    fg: "#0f766e", bg: "#ccfbf1", title: "Credentials present — this connector can be run" },
-  missing: { label: "no creds", fg: "#9f1239", bg: "#ffe4e6", title: "No credentials entry — a run aborts with ABORT_CREDS" },
+  missing: { label: "alpha",    fg: "#9f1239", bg: "#ffe4e6", title: "Alpha tier: no credentials are held for this connector. A GRACE run stops at preflight with ABORT_CREDS and is recorded as SKIPPED — there is no mock or degraded mode, and no PR is raised." },
   gated_docs: { label: "docs gated", fg: "#1e40af", bg: "#dbeafe", title: "The vendor publishes API documentation but it is behind registration, a partner agreement or an NDA. An access request, not engineering work." },
   no_docs:    { label: "no docs",    fg: "#3f3f46", bg: "#e4e4e7", title: "No vendor API documentation could be found. Mostly wallet and voucher schemes that are only integrable through an aggregator." },
   pipeline:   { label: "not built",  fg: "#7c2d12", bg: "#ffedd5", title: "A merchant has asked for this connector but no module exists in prism yet, so there is nothing to show per flow." },
@@ -146,7 +147,7 @@ export function ConnectorReadinessPage() {
       <div style={{ padding: "18px 32px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
           <StatCard label="Ready to run" value={totals.ready} tone="good" hint="credentials present" />
-          <StatCard label="No creds" value={totals.missing} tone={totals.missing ? "bad" : "default"} hint="aborts with ABORT_CREDS" />
+          <StatCard label="Alpha" value={totals.missing} tone={totals.missing ? "bad" : "default"} hint="no credentials held" />
           <StatCard label="Docs gated" value={totals.gated_docs} hint="registration or partner access" />
           <StatCard label="No docs" value={totals.no_docs} hint="vendor publishes none" />
           <StatCard label="PR open" value={totals.withPr} hint="from the GRACE-auto label" />

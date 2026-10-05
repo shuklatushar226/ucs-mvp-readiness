@@ -5038,8 +5038,8 @@
       "effort": 39,
       "pct": 21,
       "credsState": "ready",
-      "docsState": "none",
-      "docsUrl": null,
+      "docsState": "public",
+      "docsUrl": "https://docs.hyperpg.in/integration-doc/docs/express-checkout/introduction",
       "merchant": null
     },
     {

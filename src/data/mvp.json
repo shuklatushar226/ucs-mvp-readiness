@@ -286,7 +286,8 @@
       "pct": 86,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.adyen.com/api-explorer/Checkout/latest/overview"
+      "docsUrl": "https://docs.adyen.com/api-explorer/Checkout/latest/overview",
+      "merchant": null
     },
     {
       "name": "checkout",
@@ -332,7 +333,8 @@
       "pct": 86,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://www.checkout.com/docs/payments/add-payment-methods/apple-pay/unified-payments-api"
+      "docsUrl": "https://www.checkout.com/docs/payments/add-payment-methods/apple-pay/unified-payments-api",
+      "merchant": null
     },
     {
       "name": "novalnet",
@@ -378,7 +380,8 @@
       "pct": 85,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.novalnet.de/onlinepayments/apiparameterreference"
+      "docsUrl": "https://developer.novalnet.de/onlinepayments/apiparameterreference",
+      "merchant": null
     },
     {
       "name": "finix",
@@ -425,7 +428,8 @@
       "pct": 79,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.finix.com/api"
+      "docsUrl": "https://docs.finix.com/api",
+      "merchant": null
     },
     {
       "name": "paypal",
@@ -475,7 +479,8 @@
       "pct": 79,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.paypal.com/api/orders/v2"
+      "docsUrl": "https://developer.paypal.com/api/orders/v2",
+      "merchant": null
     },
     {
       "name": "stripe",
@@ -524,7 +529,8 @@
       "pct": 79,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.stripe.com/api"
+      "docsUrl": "https://docs.stripe.com/api",
+      "merchant": null
     },
     {
       "name": "barclaycard",
@@ -572,7 +578,8 @@
       "pct": 77,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.smartpayfuse.barclaycard/docs/barclays/en-us/payments/developer/all/rest/payments/MITs.html"
+      "docsUrl": "https://developer.smartpayfuse.barclaycard/docs/barclays/en-us/payments/developer/all/rest/payments/MITs.html",
+      "merchant": null
     },
     {
       "name": "cybersource",
@@ -624,7 +631,8 @@
       "pct": 77,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.cybersource.com/api-reference-assets/index.html"
+      "docsUrl": "https://developer.cybersource.com/api-reference-assets/index.html",
+      "merchant": null
     },
     {
       "name": "nmi",
@@ -670,7 +678,8 @@
       "pct": 77,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.nmi.com/reference/getting-started"
+      "docsUrl": "https://docs.nmi.com/reference/getting-started",
+      "merchant": null
     },
     {
       "name": "authorizedotnet",
@@ -718,7 +727,8 @@
       "pct": 77,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.authorize.net/api/reference/index.html"
+      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
+      "merchant": null
     },
     {
       "name": "fiuu",
@@ -763,7 +773,8 @@
       "pct": 77,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://github.com/FiuuPayment/Documentation-Fiuu_API_Spec"
+      "docsUrl": "https://github.com/FiuuPayment/Documentation-Fiuu_API_Spec",
+      "merchant": null
     },
     {
       "name": "trustpay",
@@ -808,7 +819,8 @@
       "pct": 73,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://doc.finby.eu/aapi/"
+      "docsUrl": "https://doc.finby.eu/aapi/",
+      "merchant": null
     },
     {
       "name": "nexixpay",
@@ -856,7 +868,8 @@
       "pct": 69,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.nexigroup.com/xpayglobal/en-EU/api/payment-api-v1/"
+      "docsUrl": "https://developer.nexigroup.com/xpayglobal/en-EU/api/payment-api-v1/",
+      "merchant": null
     },
     {
       "name": "peachpayments",
@@ -901,7 +914,8 @@
       "pct": 69,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.peachpayments.com/reference/payment"
+      "docsUrl": "https://developer.peachpayments.com/reference/payment",
+      "merchant": null
     },
     {
       "name": "braintree",
@@ -949,7 +963,8 @@
       "pct": 64,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developer.paypal.com/braintree/graphql/reference"
+      "docsUrl": "https://developer.paypal.com/braintree/graphql/reference",
+      "merchant": null
     },
     {
       "name": "paydotcom",
@@ -996,7 +1011,8 @@
       "pct": 64,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://apiref.pay.com/reference/introduction"
+      "docsUrl": "https://apiref.pay.com/reference/introduction",
+      "merchant": null
     },
     {
       "name": "worldpayxml",
@@ -1043,7 +1059,8 @@
       "pct": 64,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "http://dtd.worldpay.com/v1/ElemList.html"
+      "docsUrl": "http://dtd.worldpay.com/v1/ElemList.html",
+      "merchant": null
     },
     {
       "name": "revolv3",
@@ -1088,7 +1105,8 @@
       "pct": 64,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.revolv3.com/api-reference"
+      "docsUrl": "https://docs.revolv3.com/api-reference",
+      "merchant": null
     },
     {
       "name": "tsys_transit",
@@ -1135,7 +1153,8 @@
       "pct": 64,
       "credsState": "missing",
       "docsState": "gated",
-      "docsUrl": "https://developerportal.transit-pass.com/developerportal/resources/dist/index.html"
+      "docsUrl": "https://developerportal.transit-pass.com/developerportal/resources/dist/index.html",
+      "merchant": null
     },
     {
       "name": "globalpay",
@@ -1184,7 +1203,8 @@
       "pct": 64,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.globalpayments.com/api/getting-started"
+      "docsUrl": "https://developer.globalpayments.com/api/getting-started",
+      "merchant": null
     },
     {
       "name": "moneris",
@@ -1231,7 +1251,8 @@
       "pct": 62,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.moneris.com/moneris-api/docs/getting-started-guide"
+      "docsUrl": "https://developer.moneris.com/moneris-api/docs/getting-started-guide",
+      "merchant": null
     },
     {
       "name": "paysafe",
@@ -1279,7 +1300,8 @@
       "pct": 62,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.paysafe.com/en/payments-api/#/schemas/neteller"
+      "docsUrl": "https://developer.paysafe.com/en/payments-api/#/schemas/neteller",
+      "merchant": null
     },
     {
       "name": "fiservcommercehub",
@@ -1325,7 +1347,8 @@
       "pct": 62,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developer.fiserv.com/product/CommerceHub/apis?branch=active"
+      "docsUrl": "https://developer.fiserv.com/product/CommerceHub/apis?branch=active",
+      "merchant": null
     },
     {
       "name": "worldpay",
@@ -1372,7 +1395,8 @@
       "pct": 62,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.worldpay.com/access/products/card-payments/openapi"
+      "docsUrl": "https://docs.worldpay.com/access/products/card-payments/openapi",
+      "merchant": null
     },
     {
       "name": "tsys",
@@ -1417,7 +1441,8 @@
       "pct": 62,
       "credsState": "missing",
       "docsState": "gated",
-      "docsUrl": "https://developers.tsys.com/api"
+      "docsUrl": "https://developers.tsys.com/api",
+      "merchant": null
     },
     {
       "name": "noon",
@@ -1463,7 +1488,8 @@
       "pct": 62,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.noonpayments.com/"
+      "docsUrl": "https://docs.noonpayments.com/",
+      "merchant": null
     },
     {
       "name": "imerchantsolutions",
@@ -1507,7 +1533,8 @@
       "pct": 62,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://imerchantsolutions.com/docs"
+      "docsUrl": "https://imerchantsolutions.com/docs",
+      "merchant": null
     },
     {
       "name": "datatrans",
@@ -1555,7 +1582,8 @@
       "pct": 57,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://api-reference.datatrans.ch/"
+      "docsUrl": "https://api-reference.datatrans.ch/",
+      "merchant": null
     },
     {
       "name": "jpmorgan",
@@ -1603,7 +1631,8 @@
       "pct": 57,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.payments.jpmorgan.com/api/home"
+      "docsUrl": "https://developer.payments.jpmorgan.com/api/home",
+      "merchant": null
     },
     {
       "name": "shift4",
@@ -1651,7 +1680,8 @@
       "pct": 57,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://dev.shift4.com/docs/api"
+      "docsUrl": "https://dev.shift4.com/docs/api",
+      "merchant": null
     },
     {
       "name": "dlocal",
@@ -1696,7 +1726,8 @@
       "pct": 57,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.dlocal.com/reference/api"
+      "docsUrl": "https://docs.dlocal.com/reference/api",
+      "merchant": null
     },
     {
       "name": "zift",
@@ -1740,7 +1771,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://api.ziftpay.com/index.php"
+      "docsUrl": "https://api.ziftpay.com/index.php",
+      "merchant": null
     },
     {
       "name": "elavon_pg",
@@ -1785,7 +1817,8 @@
       "pct": 54,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developer.elavon.com/products/elavon-payment-gateway/v1/api-reference"
+      "docsUrl": "https://developer.elavon.com/products/elavon-payment-gateway/v1/api-reference",
+      "merchant": null
     },
     {
       "name": "getnet",
@@ -1833,7 +1866,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.globalgetnet.com/en/products/online-payments/regional-api"
+      "docsUrl": "https://docs.globalgetnet.com/en/products/online-payments/regional-api",
+      "merchant": null
     },
     {
       "name": "globalpayments_realex",
@@ -1879,7 +1913,8 @@
       "pct": 54,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developer.globalpayments.com/ecommerce/getting-started"
+      "docsUrl": "https://developer.globalpayments.com/ecommerce/getting-started",
+      "merchant": null
     },
     {
       "name": "redsys",
@@ -1924,7 +1959,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://pagosonline.redsys.es/desarrolladores-inicio/"
+      "docsUrl": "https://pagosonline.redsys.es/desarrolladores-inicio/",
+      "merchant": null
     },
     {
       "name": "billwerk",
@@ -1971,7 +2007,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.frisbii.com/"
+      "docsUrl": "https://docs.frisbii.com/",
+      "merchant": null
     },
     {
       "name": "merchante",
@@ -2016,7 +2053,8 @@
       "pct": 54,
       "credsState": "missing",
       "docsState": "gated",
-      "docsUrl": "https://www.merchante.com/developer-portal"
+      "docsUrl": "https://www.merchante.com/developer-portal",
+      "merchant": null
     },
     {
       "name": "nexinets",
@@ -2062,7 +2100,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.paygate.nexigroup.com/nexi-developer/rest-api-direct-integration"
+      "docsUrl": "https://docs.paygate.nexigroup.com/nexi-developer/rest-api-direct-integration",
+      "merchant": null
     },
     {
       "name": "nuvei",
@@ -2110,7 +2149,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.nuvei.com/api/v2/main/docs/introduction/"
+      "docsUrl": "https://docs.nuvei.com/api/v2/main/docs/introduction/",
+      "merchant": null
     },
     {
       "name": "paybox",
@@ -2155,7 +2195,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://www1.paybox.com/wp-content/uploads/2017/08/ManuelIntegrationVerifone_PayboxDirect_V8.1_EN.pdf"
+      "docsUrl": "https://www1.paybox.com/wp-content/uploads/2017/08/ManuelIntegrationVerifone_PayboxDirect_V8.1_EN.pdf",
+      "merchant": null
     },
     {
       "name": "payload",
@@ -2202,7 +2243,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.payload.com/apis/object-reference/transactions/"
+      "docsUrl": "https://docs.payload.com/apis/object-reference/transactions/",
+      "merchant": null
     },
     {
       "name": "stax",
@@ -2249,7 +2291,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.staxpayments.com/docs/getting-started"
+      "docsUrl": "https://docs.staxpayments.com/docs/getting-started",
+      "merchant": null
     },
     {
       "name": "trustpayments",
@@ -2295,7 +2338,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.trustpayments.com/document/webservices-api/authorisations/"
+      "docsUrl": "https://docs.trustpayments.com/document/webservices-api/authorisations/",
+      "merchant": null
     },
     {
       "name": "bluesnap",
@@ -2339,7 +2383,8 @@
       "pct": 54,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developers.bluesnap.com/v8976-JSON/reference/bluesnap-payment-api-json"
+      "docsUrl": "https://developers.bluesnap.com/v8976-JSON/reference/bluesnap-payment-api-json",
+      "merchant": null
     },
     {
       "name": "tamara",
@@ -2383,7 +2428,8 @@
       "pct": 54,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.tamara.co/"
+      "docsUrl": "https://docs.tamara.co/",
+      "merchant": null
     },
     {
       "name": "paynearme",
@@ -2428,7 +2474,8 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://apidocs.paynearme.com/devdocs/reference/api-overview"
+      "docsUrl": "https://apidocs.paynearme.com/devdocs/reference/api-overview",
+      "merchant": null
     },
     {
       "name": "aci",
@@ -2472,7 +2519,8 @@
       "pct": 50,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.aciworldwide.com/server-to-server"
+      "docsUrl": "https://docs.aciworldwide.com/server-to-server",
+      "merchant": null
     },
     {
       "name": "saferpay",
@@ -2516,7 +2564,8 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://saferpay.github.io/jsonapi/"
+      "docsUrl": "https://saferpay.github.io/jsonapi/",
+      "merchant": null
     },
     {
       "name": "givepayments",
@@ -2558,7 +2607,8 @@
       "pct": 50,
       "credsState": "missing",
       "docsState": "gated",
-      "docsUrl": "https://www.givepayments.com/developers/"
+      "docsUrl": "https://www.givepayments.com/developers/",
+      "merchant": null
     },
     {
       "name": "airwallex",
@@ -2606,7 +2656,8 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://www.airwallex.com/docs/payments/online-payments/native-api/registered-user-checkout"
+      "docsUrl": "https://www.airwallex.com/docs/payments/online-payments/native-api/registered-user-checkout",
+      "merchant": null
     },
     {
       "name": "powertranz",
@@ -2651,7 +2702,8 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "gated",
-      "docsUrl": "https://developer.powertranz.com/"
+      "docsUrl": "https://developer.powertranz.com/",
+      "merchant": null
     },
     {
       "name": "ppro",
@@ -2696,7 +2748,8 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developerhub.ppro.com/global-api/docs/ppro-api"
+      "docsUrl": "https://developerhub.ppro.com/global-api/docs/ppro-api",
+      "merchant": null
     },
     {
       "name": "rapyd",
@@ -2743,7 +2796,8 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.rapyd.net/en/merchant-api-reference.html"
+      "docsUrl": "https://docs.rapyd.net/en/merchant-api-reference.html",
+      "merchant": null
     },
     {
       "name": "bamboraapac",
@@ -2787,7 +2841,8 @@
       "pct": 46,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://dev-apac.bambora.com/guides/paymentApi__3GdiI.html"
+      "docsUrl": "https://dev-apac.bambora.com/guides/paymentApi__3GdiI.html",
+      "merchant": null
     },
     {
       "name": "ilixium",
@@ -2831,7 +2886,8 @@
       "pct": 46,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.ilixium.com/docs/api/authorisation"
+      "docsUrl": "https://docs.ilixium.com/docs/api/authorisation",
+      "merchant": null
     },
     {
       "name": "wellsfargo",
@@ -2875,7 +2931,8 @@
       "pct": 46,
       "credsState": "ready",
       "docsState": "gated",
-      "docsUrl": "https://developer.wellsfargo.com/"
+      "docsUrl": "https://developer.wellsfargo.com/",
+      "merchant": null
     },
     {
       "name": "phonepe",
@@ -2918,7 +2975,8 @@
       "pct": 46,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.phonepe.com/phonepe-payment-gateway/pg-v2-standard-checkout-integration"
+      "docsUrl": "https://developer.phonepe.com/phonepe-payment-gateway/pg-v2-standard-checkout-integration",
+      "merchant": null
     },
     {
       "name": "razorpay",
@@ -2962,7 +3020,8 @@
       "pct": 46,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://razorpay.com/docs/api/"
+      "docsUrl": "https://razorpay.com/docs/api/",
+      "merchant": null
     },
     {
       "name": "grabpay",
@@ -3005,7 +3064,8 @@
       "pct": 45,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developer.grab.com/docs/payment-otc/api/v2"
+      "docsUrl": "https://developer.grab.com/docs/payment-otc/api/v2",
+      "merchant": null
     },
     {
       "name": "netcetera",
@@ -3046,7 +3106,8 @@
       "pct": 43,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://3dss.netcetera.com/3dsserver/doc/2.5.1.0/integration-manual/"
+      "docsUrl": "https://3dss.netcetera.com/3dsserver/doc/2.5.1.0/integration-manual/",
+      "merchant": null
     },
     {
       "name": "citigate",
@@ -3089,7 +3150,8 @@
       "pct": 43,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://na.gateway.spring.citi.com/api/documentation/apiDocumentation/rest-json/version/latest/apiReference.html"
+      "docsUrl": "https://na.gateway.spring.citi.com/api/documentation/apiDocumentation/rest-json/version/latest/apiReference.html",
+      "merchant": null
     },
     {
       "name": "globalpayments_heartland",
@@ -3132,7 +3194,8 @@
       "pct": 43,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://cert.api2.heartlandportico.com/Hps.Exchange.PosGateway/PosGatewayService.asmx?wsdl"
+      "docsUrl": "https://cert.api2.heartlandportico.com/Hps.Exchange.PosGateway/PosGatewayService.asmx?wsdl",
+      "merchant": null
     },
     {
       "name": "travelhub",
@@ -3175,7 +3238,8 @@
       "pct": 43,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.travel.worldline-solutions.com/travelHub/API-reference/index.html"
+      "docsUrl": "https://docs.travel.worldline-solutions.com/travelHub/API-reference/index.html",
+      "merchant": null
     },
     {
       "name": "bankofamerica",
@@ -3220,7 +3284,8 @@
       "pct": 43,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.merchant.services.bankofamerica.com/api/developer-guides.html"
+      "docsUrl": "https://developer.merchant.services.bankofamerica.com/api/developer-guides.html",
+      "merchant": null
     },
     {
       "name": "glomopay",
@@ -3264,7 +3329,8 @@
       "pct": 42,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.glomo.one/get-started"
+      "docsUrl": "https://docs.glomo.one/get-started",
+      "merchant": null
     },
     {
       "name": "truelayer",
@@ -3307,7 +3373,8 @@
       "pct": 42,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.truelayer.com/reference/create-payment"
+      "docsUrl": "https://docs.truelayer.com/reference/create-payment",
+      "merchant": null
     },
     {
       "name": "worldpayraft",
@@ -3349,7 +3416,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.worldpay.com/apis/native-raft/tokenization/api-specification"
+      "docsUrl": "https://docs.worldpay.com/apis/native-raft/tokenization/api-specification",
+      "merchant": null
     },
     {
       "name": "elavon",
@@ -3392,7 +3460,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.elavon.com/products/xml-api/v1/overview"
+      "docsUrl": "https://developer.elavon.com/products/xml-api/v1/overview",
+      "merchant": null
     },
     {
       "name": "etisalat",
@@ -3434,7 +3503,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "gated",
-      "docsUrl": "https://www.epg-sandbox.etisalat.ae/"
+      "docsUrl": "https://www.epg-sandbox.etisalat.ae/",
+      "merchant": null
     },
     {
       "name": "maya",
@@ -3476,7 +3546,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developers.maya.ph/reference/one-time-payment-using-maya-wallet"
+      "docsUrl": "https://developers.maya.ph/reference/one-time-payment-using-maya-wallet",
+      "merchant": null
     },
     {
       "name": "affirm",
@@ -3519,7 +3590,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.affirm.com/developers/reference/transaction-api-endpoints"
+      "docsUrl": "https://docs.affirm.com/developers/reference/transaction-api-endpoints",
+      "merchant": null
     },
     {
       "name": "authipay",
@@ -3563,7 +3635,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://www.aibms.com/developers/api-documentation/"
+      "docsUrl": "https://www.aibms.com/developers/api-documentation/",
+      "merchant": null
     },
     {
       "name": "bambora",
@@ -3606,7 +3679,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.na.worldline-solutions.com/build-your-integration/payment-apis/credential-on-file"
+      "docsUrl": "https://docs.na.worldline-solutions.com/build-your-integration/payment-apis/credential-on-file",
+      "merchant": null
     },
     {
       "name": "celero",
@@ -3649,7 +3723,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://sandbox.gotnpgateway.com/docs/"
+      "docsUrl": "https://sandbox.gotnpgateway.com/docs/",
+      "merchant": null
     },
     {
       "name": "fiserv",
@@ -3692,7 +3767,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.fiserv.com/catalog"
+      "docsUrl": "https://developer.fiserv.com/catalog",
+      "merchant": null
     },
     {
       "name": "fiservemea",
@@ -3736,7 +3812,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.fiserv.dev/public/reference/apis"
+      "docsUrl": "https://docs.fiserv.dev/public/reference/apis",
+      "merchant": null
     },
     {
       "name": "helcim",
@@ -3779,7 +3856,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://devdocs.helcim.com/reference/connectiontest"
+      "docsUrl": "https://devdocs.helcim.com/reference/connectiontest",
+      "merchant": null
     },
     {
       "name": "hipay",
@@ -3823,7 +3901,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.hipay.com/api-explorer/api-online-payments"
+      "docsUrl": "https://developer.hipay.com/api-explorer/api-online-payments",
+      "merchant": null
     },
     {
       "name": "juspay",
@@ -3868,7 +3947,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://juspay.io/in/docs/api-reference-global"
+      "docsUrl": "https://juspay.io/in/docs/api-reference-global",
+      "merchant": null
     },
     {
       "name": "mollie",
@@ -3913,7 +3993,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.mollie.com/reference/"
+      "docsUrl": "https://docs.mollie.com/reference/",
+      "merchant": null
     },
     {
       "name": "payconex",
@@ -3956,7 +4037,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developers.bluefin.com/payconex/docs/qsapi-transaction"
+      "docsUrl": "https://developers.bluefin.com/payconex/docs/qsapi-transaction",
+      "merchant": null
     },
     {
       "name": "payme",
@@ -4000,7 +4082,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://develop.hsbc.com/payme-apis-business/endpoints"
+      "docsUrl": "https://develop.hsbc.com/payme-apis-business/endpoints",
+      "merchant": null
     },
     {
       "name": "payu",
@@ -4044,7 +4127,8 @@
       "pct": 38,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developers.payu.com/europe/docs/payment-solutions/cards/recurring/"
+      "docsUrl": "https://developers.payu.com/europe/docs/payment-solutions/cards/recurring/",
+      "merchant": null
     },
     {
       "name": "pinelabs_online",
@@ -4089,7 +4173,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developer.pinelabsonline.com/docs/introduction"
+      "docsUrl": "https://developer.pinelabsonline.com/docs/introduction",
+      "merchant": null
     },
     {
       "name": "twoc_twop_paco",
@@ -4133,7 +4218,8 @@
       "pct": 38,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://devzone.2c2p.com/docs/paco-intro"
+      "docsUrl": "https://devzone.2c2p.com/docs/paco-intro",
+      "merchant": null
     },
     {
       "name": "flywire",
@@ -4175,7 +4261,8 @@
       "pct": 36,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developers.flywire.com/education/Content/api-landing-page.htm"
+      "docsUrl": "https://developers.flywire.com/education/Content/api-landing-page.htm",
+      "merchant": null
     },
     {
       "name": "revolut",
@@ -4218,7 +4305,8 @@
       "pct": 36,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developer.revolut.com/docs/merchant/merchant-api"
+      "docsUrl": "https://developer.revolut.com/docs/merchant/merchant-api",
+      "merchant": null
     },
     {
       "name": "cashfree",
@@ -4262,7 +4350,8 @@
       "pct": 36,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://www.cashfree.com/docs/api-reference/payments/latest/overview"
+      "docsUrl": "https://www.cashfree.com/docs/api-reference/payments/latest/overview",
+      "merchant": null
     },
     {
       "name": "forte",
@@ -4305,7 +4394,8 @@
       "pct": 36,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://restdocs.forte.net/"
+      "docsUrl": "https://restdocs.forte.net/",
+      "merchant": null
     },
     {
       "name": "placetopay",
@@ -4349,7 +4439,8 @@
       "pct": 36,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.placetopay.dev/en/checkout/api/reference/payment/"
+      "docsUrl": "https://docs.placetopay.dev/en/checkout/api/reference/payment/",
+      "merchant": null
     },
     {
       "name": "silverflow",
@@ -4392,7 +4483,8 @@
       "pct": 36,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.silverflow.com/apidocs"
+      "docsUrl": "https://docs.silverflow.com/apidocs",
+      "merchant": null
     },
     {
       "name": "worldpayvantiv",
@@ -4437,7 +4529,8 @@
       "pct": 36,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "http://support.worldpay.com/support/CNP-API/content/introduction.htm"
+      "docsUrl": "http://support.worldpay.com/support/CNP-API/content/introduction.htm",
+      "merchant": null
     },
     {
       "name": "boost",
@@ -4478,7 +4571,8 @@
       "pct": 33,
       "credsState": "missing",
       "docsState": "none",
-      "docsUrl": null
+      "docsUrl": null,
+      "merchant": null
     },
     {
       "name": "trustly",
@@ -4517,7 +4611,8 @@
       "pct": 31,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.trustly.com/api"
+      "docsUrl": "https://docs.trustly.com/api",
+      "merchant": null
     },
     {
       "name": "xendit",
@@ -4559,7 +4654,8 @@
       "pct": 31,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developers.xendit.co/api-reference/"
+      "docsUrl": "https://developers.xendit.co/api-reference/",
+      "merchant": null
     },
     {
       "name": "easebuzz",
@@ -4602,7 +4698,8 @@
       "pct": 29,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.easebuzz.in/docs/payment-gateway/8ec545c331e6f-initiate-payment-api"
+      "docsUrl": "https://docs.easebuzz.in/docs/payment-gateway/8ec545c331e6f-initiate-payment-api",
+      "merchant": null
     },
     {
       "name": "iatapay",
@@ -4644,7 +4741,8 @@
       "pct": 27,
       "credsState": "ready",
       "docsState": "gated",
-      "docsUrl": "https://www.iata.org/en/services/finance/iata-pay/"
+      "docsUrl": "https://www.iata.org/en/services/finance/iata-pay/",
+      "merchant": null
     },
     {
       "name": "razorpayv2",
@@ -4686,7 +4784,8 @@
       "pct": 23,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://razorpay.com/docs/api/"
+      "docsUrl": "https://razorpay.com/docs/api/",
+      "merchant": null
     },
     {
       "name": "qwikcilver",
@@ -4730,7 +4829,8 @@
       "pct": 22,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://developers.qwikcilver.com/"
+      "docsUrl": "https://developers.qwikcilver.com/",
+      "merchant": null
     },
     {
       "name": "gigadat",
@@ -4770,7 +4870,8 @@
       "pct": 22,
       "credsState": "ready",
       "docsState": "gated",
-      "docsUrl": "https://gigadatsolutions.com/"
+      "docsUrl": "https://gigadatsolutions.com/",
+      "merchant": null
     },
     {
       "name": "tesouro",
@@ -4812,7 +4913,8 @@
       "pct": 21,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.tesouro.com/finops"
+      "docsUrl": "https://docs.tesouro.com/finops",
+      "merchant": null
     },
     {
       "name": "axisbank",
@@ -4853,7 +4955,8 @@
       "pct": 21,
       "credsState": "missing",
       "docsState": "gated",
-      "docsUrl": "https://apiportal.axisbank.com/portal/product/10107"
+      "docsUrl": "https://apiportal.axisbank.com/portal/product/10107",
+      "merchant": null
     },
     {
       "name": "d24",
@@ -4894,7 +4997,8 @@
       "pct": 21,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://docs.d24.com/api-reference/deposits-api/manage-payments/create-deposit"
+      "docsUrl": "https://docs.d24.com/api-reference/deposits-api/manage-payments/create-deposit",
+      "merchant": null
     },
     {
       "name": "hyperpg",
@@ -4935,7 +5039,8 @@
       "pct": 21,
       "credsState": "ready",
       "docsState": "none",
-      "docsUrl": null
+      "docsUrl": null,
+      "merchant": null
     },
     {
       "name": "multisafepay",
@@ -4977,7 +5082,8 @@
       "pct": 21,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.multisafepay.com/reference/introduction"
+      "docsUrl": "https://docs.multisafepay.com/reference/introduction",
+      "merchant": null
     },
     {
       "name": "jpmorganorbital",
@@ -5016,7 +5122,8 @@
       "pct": 18,
       "credsState": "ready",
       "docsState": "gated",
-      "docsUrl": "https://developer.jpmorgan.com/products/orbital-api"
+      "docsUrl": "https://developer.jpmorgan.com/products/orbital-api",
+      "merchant": null
     },
     {
       "name": "cashtocode",
@@ -5054,7 +5161,8 @@
       "pct": 18,
       "credsState": "missing",
       "docsState": "none",
-      "docsUrl": null
+      "docsUrl": null,
+      "merchant": null
     },
     {
       "name": "cryptopay",
@@ -5093,7 +5201,8 @@
       "pct": 18,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://developers.cryptopay.me/guides/api-reference"
+      "docsUrl": "https://developers.cryptopay.me/guides/api-reference",
+      "merchant": null
     },
     {
       "name": "volt",
@@ -5134,7 +5243,8 @@
       "pct": 18,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.volt.io/api-reference/payments"
+      "docsUrl": "https://docs.volt.io/api-reference/payments",
+      "merchant": null
     },
     {
       "name": "absa_sanlam",
@@ -5172,7 +5282,8 @@
       "pct": 17,
       "credsState": "missing",
       "docsState": "none",
-      "docsUrl": null
+      "docsUrl": null,
+      "merchant": null
     },
     {
       "name": "calida",
@@ -5211,7 +5322,8 @@
       "pct": 17,
       "credsState": "ready",
       "docsState": "none",
-      "docsUrl": null
+      "docsUrl": null,
+      "merchant": null
     },
     {
       "name": "hyperswitch",
@@ -5250,7 +5362,8 @@
       "pct": 15,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://raw.githubusercontent.com/juspay/hyperswitch/connector-integration-hs/api-reference/v1/openapi_spec_v1.json"
+      "docsUrl": "https://raw.githubusercontent.com/juspay/hyperswitch/connector-integration-hs/api-reference/v1/openapi_spec_v1.json",
+      "merchant": null
     },
     {
       "name": "payhere",
@@ -5290,7 +5403,8 @@
       "pct": 14,
       "credsState": "missing",
       "docsState": "public",
-      "docsUrl": "https://support.payhere.lk/api-&-mobile-sdk/checkout-api"
+      "docsUrl": "https://support.payhere.lk/api-&-mobile-sdk/checkout-api",
+      "merchant": null
     },
     {
       "name": "loonio",
@@ -5329,7 +5443,8 @@
       "pct": 9,
       "credsState": "ready",
       "docsState": "none",
-      "docsUrl": null
+      "docsUrl": null,
+      "merchant": null
     },
     {
       "name": "mifinity",
@@ -5368,7 +5483,8 @@
       "pct": 9,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://mifinity.readme.io/reference/deposit-api"
+      "docsUrl": "https://mifinity.readme.io/reference/deposit-api",
+      "merchant": null
     },
     {
       "name": "paytm",
@@ -5408,7 +5524,8 @@
       "pct": 7,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://business.paytm.com/docs/subscription/"
+      "docsUrl": "https://business.paytm.com/docs/subscription/",
+      "merchant": null
     },
     {
       "name": "itaubank",
@@ -5446,7 +5563,8 @@
       "pct": 0,
       "credsState": "ready",
       "docsState": "gated",
-      "docsUrl": "https://devportal.itau.com.br/"
+      "docsUrl": "https://devportal.itau.com.br/",
+      "merchant": null
     }
   ],
   "pipeline": [
@@ -5456,7 +5574,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "amex",
@@ -5464,7 +5583,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": null
     },
     {
       "name": "cardconnect",
@@ -5472,7 +5592,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.cardpointe.com/",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "chase",
@@ -5480,7 +5601,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Retailcloud"
     },
     {
       "name": "chase_salem",
@@ -5488,7 +5610,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Arrive"
     },
     {
       "name": "chase_tampa",
@@ -5496,7 +5619,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Arrive"
     },
     {
       "name": "firstdata_north",
@@ -5504,7 +5628,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Arrive"
     },
     {
       "name": "firstdata_rapidconnect",
@@ -5512,7 +5637,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Arrive"
     },
     {
       "name": "global_gateway",
@@ -5520,7 +5646,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "gmo",
@@ -5528,7 +5655,8 @@
       "docsState": "public",
       "docsUrl": "https://www.gmo-pg.com/en/",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "ingenico",
@@ -5536,7 +5664,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "ncr_securepay",
@@ -5544,7 +5673,8 @@
       "docsState": "public",
       "docsUrl": "https://portal.ncrsecurepay.com:8444/",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Arrive"
     },
     {
       "name": "nsure",
@@ -5552,7 +5682,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kraken"
     },
     {
       "name": "paramount",
@@ -5560,7 +5691,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Supergroup"
     },
     {
       "name": "payhound",
@@ -5568,7 +5700,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": true
+      "inQueue": true,
+      "merchant": "Reloadhero"
     },
     {
       "name": "paymentech",
@@ -5576,7 +5709,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "paymetric",
@@ -5584,7 +5718,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.paymetric.info/",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "paypal_direct",
@@ -5592,7 +5727,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Arrive"
     },
     {
       "name": "paypar",
@@ -5600,7 +5736,8 @@
       "docsState": "unknown",
       "docsUrl": null,
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Supergroup"
     },
     {
       "name": "paystack",
@@ -5608,7 +5745,8 @@
       "docsState": "public",
       "docsUrl": "https://paystack.com/docs/api/",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Recurly"
     },
     {
       "name": "sezzle",
@@ -5616,7 +5754,8 @@
       "docsState": "public",
       "docsUrl": "https://sezzle.com/merchants/",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     },
     {
       "name": "toss",
@@ -5624,7 +5763,8 @@
       "docsState": "public",
       "docsUrl": "https://toss.im/en",
       "credsState": "missing",
-      "inQueue": false
+      "inQueue": false,
+      "merchant": "Kibo"
     }
   ]
 }

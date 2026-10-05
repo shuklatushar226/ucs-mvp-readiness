@@ -70,6 +70,8 @@ export interface MvpConnector {
    */
   docsState: "public" | "gated" | "none" | "unknown";
   docsUrl: string | null;
+  /** Which merchant is waiting on this connector, where known. */
+  merchant: string | null;
 
   name: string;
   tier: MvpTier;
@@ -112,4 +114,5 @@ export interface PipelineConnector {
   docsUrl: string | null;
   credsState: "ready" | "missing";
   inQueue: boolean;
+  merchant: string | null;
 }

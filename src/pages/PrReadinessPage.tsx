@@ -22,7 +22,21 @@ import tracker from "../data/tracker.json";
  * connector_account_details form holds real working credentials; converting it
  * is an engineering task, not a missing prerequisite.
  */
-type Blocker = "no_docs" | "gated_docs" | "missing" | "ready";
+type Blocker = "no_docs" | "gated_docs" | "missing" | "ready" | "pipeline";
+
+/**
+ * One row of the matrix. Implemented connectors and pipeline connectors share
+ * it so they live in the same table: a pipeline row simply has no flows, which
+ * is the honest rendering — nothing is implemented yet, so every cell is empty.
+ */
+type Row = {
+  name: string;
+  flows: string[];
+  blocker: Blocker;
+  docsUrl: string | null;
+  merchant: string | null;
+  notes: string | null;
+};
 
 function blockerOf(c: MvpConnector): Blocker {
   // Vendor documentation first: with no spec there is nothing to implement
@@ -40,6 +54,7 @@ const BLOCKER_STYLE: Record<Blocker, { label: string; fg: string; bg: string; ti
   missing: { label: "no creds", fg: "#9f1239", bg: "#ffe4e6", title: "No credentials entry — a run aborts with ABORT_CREDS" },
   gated_docs: { label: "docs gated", fg: "#1e40af", bg: "#dbeafe", title: "The vendor publishes API documentation but it is behind registration, a partner agreement or an NDA. An access request, not engineering work." },
   no_docs:    { label: "no docs",    fg: "#3f3f46", bg: "#e4e4e7", title: "No vendor API documentation could be found. Mostly wallet and voucher schemes that are only integrable through an aggregator." },
+  pipeline:   { label: "not built",  fg: "#7c2d12", bg: "#ffedd5", title: "A merchant has asked for this connector but no module exists in prism yet, so there is nothing to show per flow." },
 };
 
 /** PRs are per-connector, not per-flow: GRACE raises one PR covering many flows. */
@@ -86,16 +101,32 @@ export function PrReadinessPage() {
     return [...n.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([f]) => f);
   }, [connectors]);
 
+  /** Implemented and pipeline connectors in one list, so they share a table. */
+  const allRows = useMemo<Row[]>(() => [
+    ...connectors.map((c) => ({
+      name: c.name, flows: c.flows, blocker: blockerOf(c),
+      docsUrl: c.docsUrl, merchant: c.merchant, notes: null,
+    })),
+    ...pipeline.map((p) => ({
+      // No flows: nothing is implemented, so every cell is empty. That is the
+      // point of showing them here rather than in a separate list.
+      name: p.name, flows: [], blocker: "pipeline" as Blocker,
+      docsUrl: p.docsUrl, merchant: p.merchant, notes: p.notes,
+    })),
+  ], [connectors, pipeline]);
+
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return connectors
-      .filter((c) => (filter === "all" ? true : blockerOf(c) === filter))
-      .filter((c) => (q ? c.name.toLowerCase().includes(q) : true))
+    return allRows
+      .filter((r) => (filter === "all" ? true : r.blocker === filter))
+      .filter((r) => (q ? r.name.toLowerCase().includes(q)
+                        || (r.merchant ?? "").toLowerCase().includes(q) : true))
+      // Implemented first, most flows first; pipeline rows trail with 0 flows.
       .sort((a, b) => b.flows.length - a.flows.length || a.name.localeCompare(b.name));
-  }, [connectors, query, filter]);
+  }, [allRows, query, filter]);
 
   const totals = useMemo(() => {
-    const by = { ready: 0, missing: 0, gated_docs: 0, no_docs: 0 } as Record<Blocker, number>;
+    const by = { ready: 0, missing: 0, gated_docs: 0, no_docs: 0, pipeline: pipeline.length } as Record<Blocker, number>;
     connectors.forEach((c) => by[blockerOf(c)]++);
     const withPr = connectors.filter((c) => prs.has(c.name.toLowerCase())).length;
     return { ...by, withPr };
@@ -119,7 +150,7 @@ export function PrReadinessPage() {
           <StatCard label="Docs gated" value={totals.gated_docs} hint="registration or partner access" />
           <StatCard label="No docs" value={totals.no_docs} hint="vendor publishes none" />
           <StatCard label="PR open" value={totals.withPr} hint="from the GRACE-auto label" />
-          <StatCard label="Pipeline" value={pipeline.length} hint="wanted, not yet in prism" />
+          <StatCard label="Not built" value={pipeline.length} hint="merchant wants it, no module yet" />
         </div>
 
         <div style={{ display: "flex", gap: 8, alignItems: "center", margin: "18px 0 10px", flexWrap: "wrap" }}>
@@ -132,20 +163,21 @@ export function PrReadinessPage() {
               border: `1px solid ${T.border}`, background: T.bg, color: T.text,
             }}
           />
-          {(["all", "ready", "missing", "gated_docs", "no_docs"] as const).map((f) => (
+          {(["all", "ready", "missing", "gated_docs", "no_docs", "pipeline"] as const).map((f) => (
             <button key={f} onClick={() => setFilter(f)} style={chip(filter === f)}>
-              {f === "all" ? `all ${connectors.length}` : `${BLOCKER_STYLE[f].label} ${totals[f]}`}
+              {f === "all" ? `all ${allRows.length}` : `${BLOCKER_STYLE[f].label} ${totals[f]}`}
             </button>
           ))}
         </div>
 
-        <Panel title="Connectors × flows" subtitle={`${rows.length} shown · ${flows.length} flows · ● implemented`}>
+        <Panel title="Connectors × flows" subtitle={`${rows.length} shown · ${flows.length} flows · ● implemented · faded rows are not built yet`}>
           <div style={{ overflowX: "auto" }}>
             <table style={{ borderCollapse: "collapse", fontSize: 11, width: "100%" }}>
               <thead>
                 <tr>
                   <th style={{ ...th, textAlign: "left", position: "sticky", left: 0, background: T.bg, zIndex: 2 }}>Connector</th>
                   <th style={{ ...th, textAlign: "left" }}>Status</th>
+                  <th style={{ ...th, textAlign: "left" }}>Merchant</th>
                   {flows.map((f) => (
                     <th key={f} style={{ ...th, writingMode: "vertical-rl", transform: "rotate(180deg)", height: 92 }} title={f}>
                       {f}
@@ -154,37 +186,34 @@ export function PrReadinessPage() {
                 </tr>
               </thead>
               <tbody>
-                {rows.map((c) => {
-                  const b = BLOCKER_STYLE[blockerOf(c)];
-                  const pr = prs.get(c.name.toLowerCase());
-                  const has = new Set(c.flows);
+                {rows.map((r) => {
+                  const b = BLOCKER_STYLE[r.blocker];
+                  const pr = prs.get(r.name.toLowerCase());
+                  const has = new Set(r.flows);
                   return (
-                    <tr key={c.name}>
-                      <td style={{ ...td, position: "sticky", left: 0, background: T.bg, fontWeight: 600, whiteSpace: "nowrap" }}>
-                        {c.name}
+                    <tr key={r.name} style={{ opacity: r.blocker === "pipeline" ? 0.72 : 1 }}>
+                      <td style={{ ...td, position: "sticky", left: 0, background: T.bg, fontWeight: 600, whiteSpace: "nowrap" }}
+                          title={r.notes ?? undefined}>
+                        {r.name}
                       </td>
                       <td style={{ ...td, whiteSpace: "nowrap" }}>
                         <span title={b.title} style={{ padding: "2px 7px", borderRadius: 999, fontSize: 10, color: b.fg, background: b.bg }}>
                           {b.label}
                         </span>
-                        {c.docsUrl && (
-                          <a href={c.docsUrl} target="_blank" rel="noreferrer" title={c.docsUrl}
-                             style={{ marginLeft: 6, fontSize: 10, color: T.textMuted, textDecoration: "none" }}>
-                            docs
-                          </a>
+                        {r.docsUrl && (
+                          <a href={r.docsUrl} target="_blank" rel="noreferrer" title={r.docsUrl}
+                             style={{ marginLeft: 6, fontSize: 10, color: T.textMuted, textDecoration: "none" }}>docs</a>
                         )}
                         {pr && (
-                          <a
-                            href={pr.pr.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            title={`PR #${pr.pr.number} — ${pr.state}`}
-                            style={{ marginLeft: 6, fontSize: 10, color: T.textMuted, textDecoration: "none" }}
-                          >
-                            #{pr.pr.number}
-                            {pr.pr.draft ? " draft" : ""}
+                          <a href={pr.pr.url} target="_blank" rel="noreferrer"
+                             title={`PR #${pr.pr.number} — ${pr.state}`}
+                             style={{ marginLeft: 6, fontSize: 10, color: T.textMuted, textDecoration: "none" }}>
+                            #{pr.pr.number}{pr.pr.draft ? " draft" : ""}
                           </a>
                         )}
+                      </td>
+                      <td style={{ ...td, whiteSpace: "nowrap", fontSize: 10, color: T.textMuted }}>
+                        {r.merchant ?? ""}
                       </td>
                       {flows.map((f) => (
                         <td key={f} style={{ ...td, textAlign: "center", color: has.has(f) ? T.text : T.border }}>
@@ -198,26 +227,6 @@ export function PrReadinessPage() {
             </table>
           </div>
         </Panel>
-        {pipeline.length > 0 && (
-          <div style={{ marginTop: 18 }}>
-            <Panel
-              title="Pipeline"
-              subtitle={`${pipeline.length} connectors wanted by merchants with no module in prism yet`}
-            >
-              {pipeline.map((p) => (
-                <div key={p.name} style={{ display: "flex", gap: 10, alignItems: "baseline", padding: "7px 0", borderBottom: `1px solid ${T.border}` }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: T.text, minWidth: 190 }}>{p.name}</span>
-                  {p.docsUrl ? (
-                    <a href={p.docsUrl} target="_blank" rel="noreferrer" style={{ fontSize: 10, color: T.textMuted }}>docs</a>
-                  ) : (
-                    <span style={{ fontSize: 10, color: T.border }}>no docs</span>
-                  )}
-                  <span style={{ fontSize: 11, color: T.textMuted }}>{p.notes}</span>
-                </div>
-              ))}
-            </Panel>
-          </div>
-        )}
       </div>
     </SidebarLayout>
   );

@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-05T16:02:08",
+  "generatedAt": "2026-10-05T18:27:02",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "3bbe0bf",
+    "commit": "c2f6542",
     "committedAt": "2026-10-05",
     "dirty": false
   },
@@ -283,7 +283,8 @@
       "na": 0,
       "scored": 14,
       "effort": 6,
-      "pct": 86
+      "pct": 86,
+      "credsState": "ready"
     },
     {
       "name": "checkout",
@@ -326,7 +327,8 @@
       "na": 0,
       "scored": 14,
       "effort": 10,
-      "pct": 86
+      "pct": 86,
+      "credsState": "ready"
     },
     {
       "name": "novalnet",
@@ -369,7 +371,8 @@
       "na": 1,
       "scored": 13,
       "effort": 13,
-      "pct": 85
+      "pct": 85,
+      "credsState": "ready"
     },
     {
       "name": "finix",
@@ -413,7 +416,8 @@
       "na": 0,
       "scored": 14,
       "effort": 13,
-      "pct": 79
+      "pct": 79,
+      "credsState": "ready"
     },
     {
       "name": "paypal",
@@ -460,7 +464,8 @@
       "na": 0,
       "scored": 14,
       "effort": 16,
-      "pct": 79
+      "pct": 79,
+      "credsState": "ready"
     },
     {
       "name": "stripe",
@@ -506,7 +511,8 @@
       "na": 0,
       "scored": 14,
       "effort": 18,
-      "pct": 79
+      "pct": 79,
+      "credsState": "ready"
     },
     {
       "name": "barclaycard",
@@ -551,7 +557,8 @@
       "na": 1,
       "scored": 13,
       "effort": 8,
-      "pct": 77
+      "pct": 77,
+      "credsState": "ready"
     },
     {
       "name": "cybersource",
@@ -600,7 +607,8 @@
       "na": 1,
       "scored": 13,
       "effort": 8,
-      "pct": 77
+      "pct": 77,
+      "credsState": "ready"
     },
     {
       "name": "nmi",
@@ -643,7 +651,8 @@
       "na": 1,
       "scored": 13,
       "effort": 16,
-      "pct": 77
+      "pct": 77,
+      "credsState": "ready"
     },
     {
       "name": "authorizedotnet",
@@ -688,7 +697,8 @@
       "na": 1,
       "scored": 13,
       "effort": 18,
-      "pct": 77
+      "pct": 77,
+      "credsState": "ready"
     },
     {
       "name": "fiuu",
@@ -730,7 +740,8 @@
       "na": 1,
       "scored": 13,
       "effort": 18,
-      "pct": 77
+      "pct": 77,
+      "credsState": "ready"
     },
     {
       "name": "trustpay",
@@ -772,7 +783,8 @@
       "na": 3,
       "scored": 11,
       "effort": 16,
-      "pct": 73
+      "pct": 73,
+      "credsState": "ready"
     },
     {
       "name": "nexixpay",
@@ -817,7 +829,8 @@
       "na": 1,
       "scored": 13,
       "effort": 11,
-      "pct": 69
+      "pct": 69,
+      "credsState": "ready"
     },
     {
       "name": "peachpayments",
@@ -859,7 +872,8 @@
       "na": 1,
       "scored": 13,
       "effort": 21,
-      "pct": 69
+      "pct": 69,
+      "credsState": "ready"
     },
     {
       "name": "braintree",
@@ -904,7 +918,8 @@
       "na": 0,
       "scored": 14,
       "effort": 16,
-      "pct": 64
+      "pct": 64,
+      "credsState": "missing"
     },
     {
       "name": "paydotcom",
@@ -948,7 +963,8 @@
       "na": 0,
       "scored": 14,
       "effort": 16,
-      "pct": 64
+      "pct": 64,
+      "credsState": "missing"
     },
     {
       "name": "worldpayxml",
@@ -992,7 +1008,8 @@
       "na": 0,
       "scored": 14,
       "effort": 16,
-      "pct": 64
+      "pct": 64,
+      "credsState": "ready"
     },
     {
       "name": "revolv3",
@@ -1034,7 +1051,8 @@
       "na": 0,
       "scored": 14,
       "effort": 18,
-      "pct": 64
+      "pct": 64,
+      "credsState": "missing"
     },
     {
       "name": "tsys_transit",
@@ -1078,7 +1096,8 @@
       "na": 0,
       "scored": 14,
       "effort": 18,
-      "pct": 64
+      "pct": 64,
+      "credsState": "missing"
     },
     {
       "name": "globalpay",
@@ -1124,7 +1143,8 @@
       "na": 0,
       "scored": 14,
       "effort": 26,
-      "pct": 64
+      "pct": 64,
+      "credsState": "ready"
     },
     {
       "name": "moneris",
@@ -1168,7 +1188,8 @@
       "na": 1,
       "scored": 13,
       "effort": 14,
-      "pct": 62
+      "pct": 62,
+      "credsState": "ready"
     },
     {
       "name": "paysafe",
@@ -1213,7 +1234,8 @@
       "na": 1,
       "scored": 13,
       "effort": 14,
-      "pct": 62
+      "pct": 62,
+      "credsState": "ready"
     },
     {
       "name": "fiservcommercehub",
@@ -1256,7 +1278,8 @@
       "na": 1,
       "scored": 13,
       "effort": 16,
-      "pct": 62
+      "pct": 62,
+      "credsState": "missing"
     },
     {
       "name": "worldpay",
@@ -1300,7 +1323,8 @@
       "na": 1,
       "scored": 13,
       "effort": 19,
-      "pct": 62
+      "pct": 62,
+      "credsState": "legacy"
     },
     {
       "name": "tsys",
@@ -1342,7 +1366,8 @@
       "na": 1,
       "scored": 13,
       "effort": 21,
-      "pct": 62
+      "pct": 62,
+      "credsState": "missing"
     },
     {
       "name": "noon",
@@ -1385,7 +1410,8 @@
       "na": 1,
       "scored": 13,
       "effort": 22,
-      "pct": 62
+      "pct": 62,
+      "credsState": "ready"
     },
     {
       "name": "imerchantsolutions",
@@ -1426,7 +1452,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 62
+      "pct": 62,
+      "credsState": "missing"
     },
     {
       "name": "datatrans",
@@ -1471,7 +1498,8 @@
       "na": 0,
       "scored": 14,
       "effort": 21,
-      "pct": 57
+      "pct": 57,
+      "credsState": "ready"
     },
     {
       "name": "jpmorgan",
@@ -1516,7 +1544,8 @@
       "na": 0,
       "scored": 14,
       "effort": 26,
-      "pct": 57
+      "pct": 57,
+      "credsState": "ready"
     },
     {
       "name": "shift4",
@@ -1561,7 +1590,8 @@
       "na": 0,
       "scored": 14,
       "effort": 26,
-      "pct": 57
+      "pct": 57,
+      "credsState": "ready"
     },
     {
       "name": "dlocal",
@@ -1603,7 +1633,8 @@
       "na": 0,
       "scored": 14,
       "effort": 27,
-      "pct": 57
+      "pct": 57,
+      "credsState": "ready"
     },
     {
       "name": "zift",
@@ -1644,7 +1675,8 @@
       "na": 1,
       "scored": 13,
       "effort": 17,
-      "pct": 54
+      "pct": 54,
+      "credsState": "missing"
     },
     {
       "name": "elavon_pg",
@@ -1686,7 +1718,8 @@
       "na": 1,
       "scored": 13,
       "effort": 19,
-      "pct": 54
+      "pct": 54,
+      "credsState": "missing"
     },
     {
       "name": "getnet",
@@ -1731,7 +1764,8 @@
       "na": 1,
       "scored": 13,
       "effort": 19,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "globalpayments_realex",
@@ -1774,7 +1808,8 @@
       "na": 1,
       "scored": 13,
       "effort": 19,
-      "pct": 54
+      "pct": 54,
+      "credsState": "missing"
     },
     {
       "name": "redsys",
@@ -1816,7 +1851,8 @@
       "na": 1,
       "scored": 13,
       "effort": 19,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "billwerk",
@@ -1860,7 +1896,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "merchante",
@@ -1902,7 +1939,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "missing"
     },
     {
       "name": "nexinets",
@@ -1945,7 +1983,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "legacy"
     },
     {
       "name": "nuvei",
@@ -1990,7 +2029,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "paybox",
@@ -2032,7 +2072,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "payload",
@@ -2076,7 +2117,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "legacy"
     },
     {
       "name": "stax",
@@ -2120,7 +2162,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "trustpayments",
@@ -2163,7 +2206,8 @@
       "na": 1,
       "scored": 13,
       "effort": 24,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "bluesnap",
@@ -2204,7 +2248,8 @@
       "na": 1,
       "scored": 13,
       "effort": 29,
-      "pct": 54
+      "pct": 54,
+      "credsState": "ready"
     },
     {
       "name": "tamara",
@@ -2245,7 +2290,8 @@
       "na": 1,
       "scored": 13,
       "effort": 29,
-      "pct": 54
+      "pct": 54,
+      "credsState": "missing"
     },
     {
       "name": "paynearme",
@@ -2287,7 +2333,8 @@
       "na": 0,
       "scored": 14,
       "effort": 22,
-      "pct": 50
+      "pct": 50,
+      "credsState": "ready"
     },
     {
       "name": "aci",
@@ -2328,7 +2375,8 @@
       "na": 2,
       "scored": 12,
       "effort": 24,
-      "pct": 50
+      "pct": 50,
+      "credsState": "missing"
     },
     {
       "name": "saferpay",
@@ -2369,7 +2417,8 @@
       "na": 0,
       "scored": 14,
       "effort": 24,
-      "pct": 50
+      "pct": 50,
+      "credsState": "missing"
     },
     {
       "name": "givepayments",
@@ -2408,7 +2457,8 @@
       "na": 2,
       "scored": 12,
       "effort": 25,
-      "pct": 50
+      "pct": 50,
+      "credsState": "missing"
     },
     {
       "name": "airwallex",
@@ -2453,7 +2503,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 50
+      "pct": 50,
+      "credsState": "legacy"
     },
     {
       "name": "powertranz",
@@ -2495,7 +2546,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 50
+      "pct": 50,
+      "credsState": "ready"
     },
     {
       "name": "ppro",
@@ -2537,7 +2589,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 50
+      "pct": 50,
+      "credsState": "legacy"
     },
     {
       "name": "rapyd",
@@ -2581,7 +2634,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 50
+      "pct": 50,
+      "credsState": "ready"
     },
     {
       "name": "bamboraapac",
@@ -2622,7 +2676,8 @@
       "na": 1,
       "scored": 13,
       "effort": 25,
-      "pct": 46
+      "pct": 46,
+      "credsState": "ready"
     },
     {
       "name": "ilixium",
@@ -2663,7 +2718,8 @@
       "na": 1,
       "scored": 13,
       "effort": 27,
-      "pct": 46
+      "pct": 46,
+      "credsState": "missing"
     },
     {
       "name": "wellsfargo",
@@ -2704,7 +2760,8 @@
       "na": 1,
       "scored": 13,
       "effort": 29,
-      "pct": 46
+      "pct": 46,
+      "credsState": "ready"
     },
     {
       "name": "phonepe",
@@ -2744,7 +2801,8 @@
       "na": 1,
       "scored": 13,
       "effort": 30,
-      "pct": 46
+      "pct": 46,
+      "credsState": "missing"
     },
     {
       "name": "razorpay",
@@ -2785,7 +2843,8 @@
       "na": 1,
       "scored": 13,
       "effort": 34,
-      "pct": 46
+      "pct": 46,
+      "credsState": "legacy"
     },
     {
       "name": "grabpay",
@@ -2825,7 +2884,8 @@
       "na": 3,
       "scored": 11,
       "effort": 31,
-      "pct": 45
+      "pct": 45,
+      "credsState": "missing"
     },
     {
       "name": "netcetera",
@@ -2863,7 +2923,8 @@
       "na": 7,
       "scored": 7,
       "effort": 11,
-      "pct": 43
+      "pct": 43,
+      "credsState": "missing"
     },
     {
       "name": "citigate",
@@ -2903,7 +2964,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 43
+      "pct": 43,
+      "credsState": "ready"
     },
     {
       "name": "globalpayments_heartland",
@@ -2943,7 +3005,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 43
+      "pct": 43,
+      "credsState": "missing"
     },
     {
       "name": "travelhub",
@@ -2983,7 +3046,8 @@
       "na": 0,
       "scored": 14,
       "effort": 29,
-      "pct": 43
+      "pct": 43,
+      "credsState": "missing"
     },
     {
       "name": "bankofamerica",
@@ -3025,7 +3089,8 @@
       "na": 0,
       "scored": 14,
       "effort": 34,
-      "pct": 43
+      "pct": 43,
+      "credsState": "ready"
     },
     {
       "name": "glomopay",
@@ -3066,7 +3131,8 @@
       "na": 2,
       "scored": 12,
       "effort": 30,
-      "pct": 42
+      "pct": 42,
+      "credsState": "missing"
     },
     {
       "name": "truelayer",
@@ -3106,7 +3172,8 @@
       "na": 2,
       "scored": 12,
       "effort": 30,
-      "pct": 42
+      "pct": 42,
+      "credsState": "missing"
     },
     {
       "name": "worldpayraft",
@@ -3145,7 +3212,8 @@
       "na": 1,
       "scored": 13,
       "effort": 26,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "elavon",
@@ -3185,7 +3253,8 @@
       "na": 1,
       "scored": 13,
       "effort": 28,
-      "pct": 38
+      "pct": 38,
+      "credsState": "ready"
     },
     {
       "name": "etisalat",
@@ -3224,7 +3293,8 @@
       "na": 1,
       "scored": 13,
       "effort": 28,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "maya",
@@ -3263,7 +3333,8 @@
       "na": 1,
       "scored": 13,
       "effort": 31,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "affirm",
@@ -3303,7 +3374,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "authipay",
@@ -3344,7 +3416,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "ready"
     },
     {
       "name": "bambora",
@@ -3384,7 +3457,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "legacy"
     },
     {
       "name": "celero",
@@ -3424,7 +3498,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "fiserv",
@@ -3464,7 +3539,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "ready"
     },
     {
       "name": "fiservemea",
@@ -3505,7 +3581,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "ready"
     },
     {
       "name": "helcim",
@@ -3545,7 +3622,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "hipay",
@@ -3586,7 +3664,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "ready"
     },
     {
       "name": "juspay",
@@ -3628,7 +3707,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "legacy"
     },
     {
       "name": "mollie",
@@ -3670,7 +3750,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "ready"
     },
     {
       "name": "payconex",
@@ -3710,7 +3791,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "payme",
@@ -3751,7 +3833,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "payu",
@@ -3792,7 +3875,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "legacy"
     },
     {
       "name": "pinelabs_online",
@@ -3834,7 +3918,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "twoc_twop_paco",
@@ -3875,7 +3960,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 38
+      "pct": 38,
+      "credsState": "missing"
     },
     {
       "name": "flywire",
@@ -3914,7 +4000,8 @@
       "na": 0,
       "scored": 14,
       "effort": 36,
-      "pct": 36
+      "pct": 36,
+      "credsState": "missing"
     },
     {
       "name": "revolut",
@@ -3954,7 +4041,8 @@
       "na": 0,
       "scored": 14,
       "effort": 36,
-      "pct": 36
+      "pct": 36,
+      "credsState": "ready"
     },
     {
       "name": "cashfree",
@@ -3995,7 +4083,8 @@
       "na": 0,
       "scored": 14,
       "effort": 37,
-      "pct": 36
+      "pct": 36,
+      "credsState": "missing"
     },
     {
       "name": "forte",
@@ -4035,7 +4124,8 @@
       "na": 0,
       "scored": 14,
       "effort": 37,
-      "pct": 36
+      "pct": 36,
+      "credsState": "legacy"
     },
     {
       "name": "placetopay",
@@ -4076,7 +4166,8 @@
       "na": 0,
       "scored": 14,
       "effort": 37,
-      "pct": 36
+      "pct": 36,
+      "credsState": "ready"
     },
     {
       "name": "silverflow",
@@ -4116,7 +4207,8 @@
       "na": 0,
       "scored": 14,
       "effort": 37,
-      "pct": 36
+      "pct": 36,
+      "credsState": "missing"
     },
     {
       "name": "worldpayvantiv",
@@ -4158,7 +4250,8 @@
       "na": 0,
       "scored": 14,
       "effort": 37,
-      "pct": 36
+      "pct": 36,
+      "credsState": "ready"
     },
     {
       "name": "boost",
@@ -4196,7 +4289,8 @@
       "na": 2,
       "scored": 12,
       "effort": 31,
-      "pct": 33
+      "pct": 33,
+      "credsState": "missing"
     },
     {
       "name": "trustly",
@@ -4232,7 +4326,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 31
+      "pct": 31,
+      "credsState": "missing"
     },
     {
       "name": "xendit",
@@ -4271,7 +4366,8 @@
       "na": 1,
       "scored": 13,
       "effort": 33,
-      "pct": 31
+      "pct": 31,
+      "credsState": "missing"
     },
     {
       "name": "easebuzz",
@@ -4311,7 +4407,8 @@
       "na": 0,
       "scored": 14,
       "effort": 38,
-      "pct": 29
+      "pct": 29,
+      "credsState": "missing"
     },
     {
       "name": "iatapay",
@@ -4350,7 +4447,8 @@
       "na": 3,
       "scored": 11,
       "effort": 32,
-      "pct": 27
+      "pct": 27,
+      "credsState": "ready"
     },
     {
       "name": "razorpayv2",
@@ -4389,7 +4487,8 @@
       "na": 1,
       "scored": 13,
       "effort": 38,
-      "pct": 23
+      "pct": 23,
+      "credsState": "legacy"
     },
     {
       "name": "qwikcilver",
@@ -4430,7 +4529,8 @@
       "na": 5,
       "scored": 9,
       "effort": 25,
-      "pct": 22
+      "pct": 22,
+      "credsState": "missing"
     },
     {
       "name": "gigadat",
@@ -4467,7 +4567,8 @@
       "na": 5,
       "scored": 9,
       "effort": 29,
-      "pct": 22
+      "pct": 22,
+      "credsState": "ready"
     },
     {
       "name": "tesouro",
@@ -4506,7 +4607,8 @@
       "na": 0,
       "scored": 14,
       "effort": 34,
-      "pct": 21
+      "pct": 21,
+      "credsState": "ready"
     },
     {
       "name": "axisbank",
@@ -4544,7 +4646,8 @@
       "na": 0,
       "scored": 14,
       "effort": 39,
-      "pct": 21
+      "pct": 21,
+      "credsState": "missing"
     },
     {
       "name": "d24",
@@ -4582,7 +4685,8 @@
       "na": 0,
       "scored": 14,
       "effort": 39,
-      "pct": 21
+      "pct": 21,
+      "credsState": "missing"
     },
     {
       "name": "hyperpg",
@@ -4620,7 +4724,8 @@
       "na": 0,
       "scored": 14,
       "effort": 39,
-      "pct": 21
+      "pct": 21,
+      "credsState": "missing"
     },
     {
       "name": "multisafepay",
@@ -4659,7 +4764,8 @@
       "na": 0,
       "scored": 14,
       "effort": 39,
-      "pct": 21
+      "pct": 21,
+      "credsState": "ready"
     },
     {
       "name": "jpmorganorbital",
@@ -4695,7 +4801,8 @@
       "na": 3,
       "scored": 11,
       "effort": 21,
-      "pct": 18
+      "pct": 18,
+      "credsState": "legacy"
     },
     {
       "name": "cashtocode",
@@ -4730,7 +4837,8 @@
       "na": 3,
       "scored": 11,
       "effort": 33,
-      "pct": 18
+      "pct": 18,
+      "credsState": "missing"
     },
     {
       "name": "cryptopay",
@@ -4766,7 +4874,8 @@
       "na": 3,
       "scored": 11,
       "effort": 33,
-      "pct": 18
+      "pct": 18,
+      "credsState": "ready"
     },
     {
       "name": "volt",
@@ -4804,7 +4913,8 @@
       "na": 3,
       "scored": 11,
       "effort": 33,
-      "pct": 18
+      "pct": 18,
+      "credsState": "missing"
     },
     {
       "name": "absa_sanlam",
@@ -4839,7 +4949,8 @@
       "na": 2,
       "scored": 12,
       "effort": 34,
-      "pct": 17
+      "pct": 17,
+      "credsState": "missing"
     },
     {
       "name": "calida",
@@ -4875,7 +4986,8 @@
       "na": 2,
       "scored": 12,
       "effort": 38,
-      "pct": 17
+      "pct": 17,
+      "credsState": "missing"
     },
     {
       "name": "hyperswitch",
@@ -4911,7 +5023,8 @@
       "na": 1,
       "scored": 13,
       "effort": 32,
-      "pct": 15
+      "pct": 15,
+      "credsState": "missing"
     },
     {
       "name": "payhere",
@@ -4948,7 +5061,8 @@
       "na": 0,
       "scored": 14,
       "effort": 40,
-      "pct": 14
+      "pct": 14,
+      "credsState": "missing"
     },
     {
       "name": "loonio",
@@ -4984,7 +5098,8 @@
       "na": 3,
       "scored": 11,
       "effort": 35,
-      "pct": 9
+      "pct": 9,
+      "credsState": "ready"
     },
     {
       "name": "mifinity",
@@ -5020,7 +5135,8 @@
       "na": 3,
       "scored": 11,
       "effort": 35,
-      "pct": 9
+      "pct": 9,
+      "credsState": "ready"
     },
     {
       "name": "paytm",
@@ -5057,7 +5173,8 @@
       "na": 0,
       "scored": 14,
       "effort": 42,
-      "pct": 7
+      "pct": 7,
+      "credsState": "legacy"
     },
     {
       "name": "itaubank",
@@ -5092,7 +5209,8 @@
       "na": 3,
       "scored": 11,
       "effort": 37,
-      "pct": 0
+      "pct": 0,
+      "credsState": "ready"
     }
   ]
 }

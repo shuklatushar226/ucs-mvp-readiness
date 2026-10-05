@@ -44,6 +44,7 @@ const NAV_ITEMS: NavItem[] = [
   { id: "mvp", label: "MVP Readiness", icon: Icon.matrix, path: "/mvp" },
   { id: "mvp-metrics", label: "MVP Metrics", icon: Icon.metrics, path: "/mvp/metrics" },
   { id: "tracker", label: "PR Tracker", icon: Icon.tracker, path: "/tracker" },
+  { id: "pr-readiness", label: "PR Readiness", icon: Icon.matrix, path: "/pr-readiness" },
 ];
 
 export function NavigationSidebar() {

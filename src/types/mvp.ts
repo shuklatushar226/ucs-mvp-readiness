@@ -53,6 +53,16 @@ export interface MvpGitProvenance {
 export type MvpTier = "sandbox_tested" | "alpha" | "no_docs";
 
 export interface MvpConnector {
+  /**
+   * Why this connector cannot be run, derived on the batch machine from the
+   * slot's creds.json — key names and shape only, never a credential value.
+   *
+   * "legacy" is NOT merged into "missing": both abort a run with ABORT_CREDS,
+   * but a legacy entry already holds working credentials in the rejected
+   * `connector_account_details` shape and is one conversion from running.
+   */
+  credsState: "ready" | "legacy" | "missing";
+
   name: string;
   tier: MvpTier;
   cells: Record<string, MvpCellState>;

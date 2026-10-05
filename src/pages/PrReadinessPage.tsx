@@ -9,33 +9,28 @@ import tracker from "../data/tracker.json";
 /**
  * Why a connector is not moving, as one matrix.
  *
- * The blocker is deliberately NOT a single "blocked" state. A connector stalls
- * for one of four reasons that need completely different work, and the whole
- * point of this page is that they are told apart:
+ * Three states, and they need completely different work:
  *
  *   no_docs   no public API documentation — nothing to implement from
- *   missing   no credentials at all — someone has to go get them
- *   legacy    credentials exist in the rejected connector_account_details
- *             shape; one conversion away from running
+ *   missing   no credentials — someone has to go and obtain them
  *   ready     nothing blocking it
  *
- * Lumping legacy in with missing hides the cheapest wins on the board, which is
- * why they are separate columns everywhere here.
+ * Credential SHAPE is not a state. An entry in the legacy
+ * connector_account_details form holds real working credentials; converting it
+ * is an engineering task, not a missing prerequisite.
  */
-type Blocker = "no_docs" | "missing" | "legacy" | "ready";
+type Blocker = "no_docs" | "missing" | "ready";
 
 function blockerOf(c: MvpConnector): Blocker {
   // Docs first: with no documentation, credentials are beside the point.
   if (c.tier === "no_docs") return "no_docs";
   if (c.credsState === "missing") return "missing";
-  if (c.credsState === "legacy") return "legacy";
   return "ready";
 }
 
 const BLOCKER_STYLE: Record<Blocker, { label: string; fg: string; bg: string; title: string }> = {
-  ready:   { label: "ready",        fg: "#0f766e", bg: "#ccfbf1", title: "Credentials present and usable — this connector can run" },
-  legacy:  { label: "legacy creds", fg: "#92400e", bg: "#fef3c7", title: "Credentials exist but in the rejected connector_account_details shape; one conversion from running" },
-  missing: { label: "no creds",     fg: "#9f1239", bg: "#ffe4e6", title: "No credentials entry at all — a run aborts with ABORT_CREDS" },
+  ready:   { label: "ready",    fg: "#0f766e", bg: "#ccfbf1", title: "Credentials present — this connector can be run" },
+  missing: { label: "no creds", fg: "#9f1239", bg: "#ffe4e6", title: "No credentials entry — a run aborts with ABORT_CREDS" },
   no_docs: { label: "no docs",      fg: "#3f3f46", bg: "#e4e4e7", title: "No public API documentation — there is nothing to implement from" },
 };
 
@@ -89,7 +84,7 @@ export function PrReadinessPage() {
   }, [connectors, query, filter]);
 
   const totals = useMemo(() => {
-    const by = { ready: 0, legacy: 0, missing: 0, no_docs: 0 } as Record<Blocker, number>;
+    const by = { ready: 0, missing: 0, no_docs: 0 } as Record<Blocker, number>;
     connectors.forEach((c) => by[blockerOf(c)]++);
     const withPr = connectors.filter((c) => prs.has(c.name.toLowerCase())).length;
     return { ...by, withPr };
@@ -108,8 +103,7 @@ export function PrReadinessPage() {
 
       <div style={{ padding: "18px 32px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
-          <StatCard label="Ready to run" value={totals.ready} tone="good" hint="credentials present and usable" />
-          <StatCard label="Legacy creds" value={totals.legacy} tone={totals.legacy ? "bad" : "default"} hint="one conversion from running" />
+          <StatCard label="Ready to run" value={totals.ready} tone="good" hint="credentials present" />
           <StatCard label="No creds" value={totals.missing} tone={totals.missing ? "bad" : "default"} hint="aborts with ABORT_CREDS" />
           <StatCard label="No docs" value={totals.no_docs} hint="nothing to implement from" />
           <StatCard label="PR open" value={totals.withPr} hint="from the GRACE-auto label" />
@@ -125,7 +119,7 @@ export function PrReadinessPage() {
               border: `1px solid ${T.border}`, background: T.bg, color: T.text,
             }}
           />
-          {(["all", "ready", "legacy", "missing", "no_docs"] as const).map((f) => (
+          {(["all", "ready", "missing", "no_docs"] as const).map((f) => (
             <button key={f} onClick={() => setFilter(f)} style={chip(filter === f)}>
               {f === "all" ? `all ${connectors.length}` : `${BLOCKER_STYLE[f].label} ${totals[f]}`}
             </button>

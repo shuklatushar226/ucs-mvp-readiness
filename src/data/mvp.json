@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T18:27:02",
+  "generatedAt": "2026-10-05T18:35:45",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -1324,7 +1324,7 @@
       "scored": 13,
       "effort": 19,
       "pct": 62,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "tsys",
@@ -1984,7 +1984,7 @@
       "scored": 13,
       "effort": 24,
       "pct": 54,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "nuvei",
@@ -2118,7 +2118,7 @@
       "scored": 13,
       "effort": 24,
       "pct": 54,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "stax",
@@ -2504,7 +2504,7 @@
       "scored": 14,
       "effort": 29,
       "pct": 50,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "powertranz",
@@ -2590,7 +2590,7 @@
       "scored": 14,
       "effort": 29,
       "pct": 50,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "rapyd",
@@ -2844,7 +2844,7 @@
       "scored": 13,
       "effort": 34,
       "pct": 46,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "grabpay",
@@ -3458,7 +3458,7 @@
       "scored": 13,
       "effort": 32,
       "pct": 38,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "celero",
@@ -3708,7 +3708,7 @@
       "scored": 13,
       "effort": 32,
       "pct": 38,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "mollie",
@@ -3876,7 +3876,7 @@
       "scored": 13,
       "effort": 32,
       "pct": 38,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "pinelabs_online",
@@ -4125,7 +4125,7 @@
       "scored": 14,
       "effort": 37,
       "pct": 36,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "placetopay",
@@ -4488,7 +4488,7 @@
       "scored": 13,
       "effort": 38,
       "pct": 23,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "qwikcilver",
@@ -4802,7 +4802,7 @@
       "scored": 11,
       "effort": 21,
       "pct": 18,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "cashtocode",
@@ -5174,7 +5174,7 @@
       "scored": 14,
       "effort": 42,
       "pct": 7,
-      "credsState": "legacy"
+      "credsState": "ready"
     },
     {
       "name": "itaubank",

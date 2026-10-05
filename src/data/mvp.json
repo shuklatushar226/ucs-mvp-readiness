@@ -5448,5 +5448,183 @@
       "docsState": "gated",
       "docsUrl": "https://devportal.itau.com.br/"
     }
+  ],
+  "pipeline": [
+    {
+      "name": "ads",
+      "notes": "Kibo \u00b7 New integration \u00b7 no further detail in the sheet",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "amex",
+      "notes": "US \u00b7 priority unset in the sheet",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "cardconnect",
+      "notes": "Kibo \u00b7 New integration \u00b7 sheet notes the docs page does not open",
+      "docsState": "public",
+      "docsUrl": "https://developer.cardpointe.com/",
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "chase",
+      "notes": "Retailcloud \u00b7 Cards recurring, ApplePay/GooglePay PSP decryption, Returning PAR \u00b7 PSP enhancement \u00b7 likely the same acquirer as jpmorganorbital",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "chase_salem",
+      "notes": "Arrive \u00b7 New integration \u00b7 2,477,590 txns/mo \u00b7 SHEET ASKS: same as chase orbital?",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "chase_tampa",
+      "notes": "Arrive \u00b7 New integration \u00b7 1,273,280 txns/mo \u00b7 SHEET ASKS: same as chase orbital?",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "firstdata_north",
+      "notes": "Arrive \u00b7 New integration \u00b7 7,113,340 txns/mo, $31.8M",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "firstdata_rapidconnect",
+      "notes": "Arrive \u00b7 Cards \u00b7 New integration \u00b7 15,245,400 txns/mo, $90.2M",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "global_gateway",
+      "notes": "Kibo \u00b7 New integration \u00b7 no further detail in the sheet",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "gmo",
+      "notes": "Kibo \u00b7 New integration \u00b7 Japanese payment gateway \u00b7 to be confirmed",
+      "docsState": "public",
+      "docsUrl": "https://www.gmo-pg.com/en/",
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "ingenico",
+      "notes": "Kibo \u00b7 New integration",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "ncr_securepay",
+      "notes": "Arrive \u00b7 New integration",
+      "docsState": "public",
+      "docsUrl": "https://portal.ncrsecurepay.com:8444/",
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "nsure",
+      "notes": "Kraken \u00b7 FRAUD connector, not a payment connector \u00b7 New integration",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "paramount",
+      "notes": "Supergroup \u00b7 Interac \u00b7 New integration \u00b7 merchant will share info",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "payhound",
+      "notes": "Reloadhero \u00b7 Bluecode one-time payments \u00b7 New integration \u00b7 module exists on branch feat/grace-Payhound, not main",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": true
+    },
+    {
+      "name": "paymentech",
+      "notes": "Kibo \u00b7 New integration \u00b7 SHEET ASKS: same as chase orbital?",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "paymetric",
+      "notes": "Kibo \u00b7 New integration \u00b7 to be confirmed",
+      "docsState": "public",
+      "docsUrl": "https://docs.paymetric.info/",
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "paypal_direct",
+      "notes": "Arrive \u00b7 242,525 txns/mo \u00b7 sheet says \"Need to discuss\" \u00b7 plain paypal already exists",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "paypar",
+      "notes": "Supergroup \u00b7 Interac \u00b7 New integration \u00b7 merchant will share info",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "paystack",
+      "notes": "Recurly \u00b7 Cards \u00b7 New integration \u00b7 credentials already in creds.json",
+      "docsState": "public",
+      "docsUrl": "https://paystack.com/docs/api/",
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "sezzle",
+      "notes": "Kibo \u00b7 New integration \u00b7 to be confirmed",
+      "docsState": "public",
+      "docsUrl": "https://sezzle.com/merchants/",
+      "credsState": "missing",
+      "inQueue": false
+    },
+    {
+      "name": "toss",
+      "notes": "Kibo \u00b7 New integration \u00b7 Korean payment gateway \u00b7 to be confirmed",
+      "docsState": "public",
+      "docsUrl": "https://toss.im/en",
+      "credsState": "missing",
+      "inQueue": false
+    }
   ]
 }

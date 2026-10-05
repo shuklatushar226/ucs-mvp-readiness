@@ -66,6 +66,9 @@ const chip = (active: boolean): React.CSSProperties => ({
 export function PrReadinessPage() {
   const { data: DATA } = useMvpData();
   const { connectors } = DATA;
+  // Wanted by merchants, not yet in prism. Its own array because these rows
+  // have no cells, flows or score to show in the matrix.
+  const pipeline = DATA.pipeline ?? [];
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Blocker | "all">("all");
 
@@ -116,6 +119,7 @@ export function PrReadinessPage() {
           <StatCard label="Docs gated" value={totals.gated_docs} hint="registration or partner access" />
           <StatCard label="No docs" value={totals.no_docs} hint="vendor publishes none" />
           <StatCard label="PR open" value={totals.withPr} hint="from the GRACE-auto label" />
+          <StatCard label="Pipeline" value={pipeline.length} hint="wanted, not yet in prism" />
         </div>
 
         <div style={{ display: "flex", gap: 8, alignItems: "center", margin: "18px 0 10px", flexWrap: "wrap" }}>
@@ -194,6 +198,26 @@ export function PrReadinessPage() {
             </table>
           </div>
         </Panel>
+        {pipeline.length > 0 && (
+          <div style={{ marginTop: 18 }}>
+            <Panel
+              title="Pipeline"
+              subtitle={`${pipeline.length} connectors wanted by merchants with no module in prism yet`}
+            >
+              {pipeline.map((p) => (
+                <div key={p.name} style={{ display: "flex", gap: 10, alignItems: "baseline", padding: "7px 0", borderBottom: `1px solid ${T.border}` }}>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: T.text, minWidth: 190 }}>{p.name}</span>
+                  {p.docsUrl ? (
+                    <a href={p.docsUrl} target="_blank" rel="noreferrer" style={{ fontSize: 10, color: T.textMuted }}>docs</a>
+                  ) : (
+                    <span style={{ fontSize: 10, color: T.border }}>no docs</span>
+                  )}
+                  <span style={{ fontSize: 11, color: T.textMuted }}>{p.notes}</span>
+                </div>
+              ))}
+            </Panel>
+          </div>
+        )}
       </div>
     </SidebarLayout>
   );

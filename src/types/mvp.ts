@@ -88,9 +88,28 @@ export interface MvpConnector {
 }
 
 export interface MvpData {
+  pipeline?: PipelineConnector[];
   generatedAt: string;
   source: string;
   provenance: MvpGitProvenance | null;
   capabilities: MvpCapability[];
   connectors: MvpConnector[];
+}
+
+
+/**
+ * A connector in the business pipeline with no module in prism yet.
+ *
+ * Separate from MvpConnector because it has no cells, flows or score — there is
+ * no Rust source to derive them from. Identified in the database by
+ * refreshed_at IS NULL, since catalog_refresh.py only touches what it finds in
+ * the source tree.
+ */
+export interface PipelineConnector {
+  name: string;
+  notes: string | null;
+  docsState: "public" | "gated" | "none" | "unknown";
+  docsUrl: string | null;
+  credsState: "ready" | "missing";
+  inQueue: boolean;
 }

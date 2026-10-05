@@ -5442,7 +5442,7 @@
       "effort": 35,
       "pct": 9,
       "credsState": "ready",
-      "docsState": "none",
+      "docsState": "gated",
       "docsUrl": null,
       "merchant": null
     },

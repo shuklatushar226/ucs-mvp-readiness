@@ -1,19 +1,10 @@
 {
-  "generatedAt": "2026-10-05T16:41:08",
+  "generatedAt": "2026-10-05T17:01:07",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-09-30T02:26:10+05:30",
-    "rows": [
-      {
-        "connector": "raypd",
-        "status": "running",
-        "startedAt": "2026-10-05T16:37:35+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": 3
-      }
-    ]
+    "rows": []
   },
   "prsOk": true,
   "blockedLabel": "GRACE-blocked",

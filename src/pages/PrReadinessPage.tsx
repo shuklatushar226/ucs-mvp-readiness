@@ -11,7 +11,10 @@ import tracker from "../data/tracker.json";
  *
  * Three states, and they need completely different work:
  *
- *   no_docs   no public API documentation — nothing to implement from
+ *   no_docs   the field probe found not one supported flow, so the docs
+ *             generator skips the connector and writes no doc file. This is a
+ *             tier from build_mvp.py — an implementation signal, NOT a claim
+ *             about whether the vendor publishes an API spec.
  *   missing   no credentials — someone has to go and obtain them
  *   ready     nothing blocking it
  *
@@ -22,7 +25,8 @@ import tracker from "../data/tracker.json";
 type Blocker = "no_docs" | "missing" | "ready";
 
 function blockerOf(c: MvpConnector): Blocker {
-  // Docs first: with no documentation, credentials are beside the point.
+  // Docs first: a connector with no probe-supported flow at all is not
+  // blocked on credentials, it is blocked on being implemented.
   if (c.tier === "no_docs") return "no_docs";
   if (c.credsState === "missing") return "missing";
   return "ready";
@@ -31,7 +35,7 @@ function blockerOf(c: MvpConnector): Blocker {
 const BLOCKER_STYLE: Record<Blocker, { label: string; fg: string; bg: string; title: string }> = {
   ready:   { label: "ready",    fg: "#0f766e", bg: "#ccfbf1", title: "Credentials present — this connector can be run" },
   missing: { label: "no creds", fg: "#9f1239", bg: "#ffe4e6", title: "No credentials entry — a run aborts with ABORT_CREDS" },
-  no_docs: { label: "no docs",      fg: "#3f3f46", bg: "#e4e4e7", title: "No public API documentation — there is nothing to implement from" },
+  no_docs: { label: "no docs",  fg: "#3f3f46", bg: "#e4e4e7", title: "The field probe found no supported flow across 34 probes, so the docs generator skips this connector and no doc file exists. An implementation signal, NOT a statement about the vendor's published API." },
 };
 
 /** PRs are per-connector, not per-flow: GRACE raises one PR covering many flows. */
@@ -105,7 +109,7 @@ export function PrReadinessPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
           <StatCard label="Ready to run" value={totals.ready} tone="good" hint="credentials present" />
           <StatCard label="No creds" value={totals.missing} tone={totals.missing ? "bad" : "default"} hint="aborts with ABORT_CREDS" />
-          <StatCard label="No docs" value={totals.no_docs} hint="nothing to implement from" />
+          <StatCard label="No docs" value={totals.no_docs} hint="no supported flow in the probe" />
           <StatCard label="PR open" value={totals.withPr} hint="from the GRACE-auto label" />
         </div>
 

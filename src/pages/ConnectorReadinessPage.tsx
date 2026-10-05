@@ -78,7 +78,7 @@ const chip = (active: boolean): React.CSSProperties => ({
   color: active ? T.bg : T.textMuted,
 });
 
-export function PrReadinessPage() {
+export function ConnectorReadinessPage() {
   const { data: DATA } = useMvpData();
   const { connectors } = DATA;
   // Wanted by merchants, not yet in prism. Its own array because these rows
@@ -135,7 +135,7 @@ export function PrReadinessPage() {
   return (
     <SidebarLayout>
       <header style={{ padding: "22px 32px", borderBottom: `1px solid ${T.border}` }}>
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: T.text }}>PR Readiness</h1>
+        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: T.text }}>Connector Readiness</h1>
         <p style={{ margin: "6px 0 0", fontSize: 12, color: T.textMuted, maxWidth: 760 }}>
           Which flows each connector implements, and what is stopping the ones that are not moving.
           A PR covers a whole connector, not a single flow — nothing records flow-to-PR — so the PR

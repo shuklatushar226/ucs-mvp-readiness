@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { MvpReadinessPage } from "./pages/MvpReadinessPage";
 import { MvpMetricsPage } from "./pages/MvpMetricsPage";
 import { PrTrackerPage } from "./pages/PrTrackerPage";
-import { PrReadinessPage } from "./pages/PrReadinessPage";
+import { ConnectorReadinessPage } from "./pages/ConnectorReadinessPage";
 
 /**
  * App shell. Routes:
@@ -19,7 +19,9 @@ export function App() {
       <Route path="/mvp" element={<MvpReadinessPage />} />
       <Route path="/mvp/metrics" element={<MvpMetricsPage />} />
       <Route path="/tracker" element={<PrTrackerPage />} />
-      <Route path="/pr-readiness" element={<PrReadinessPage />} />
+      <Route path="/connector-readiness" element={<ConnectorReadinessPage />} />
+      {/* old path kept so existing links and bookmarks do not 404 */}
+      <Route path="/pr-readiness" element={<Navigate to="/connector-readiness" replace />} />
       <Route path="*" element={<Navigate to="/mvp" replace />} />
     </Routes>
   );

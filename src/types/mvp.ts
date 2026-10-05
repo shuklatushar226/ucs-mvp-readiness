@@ -61,6 +61,15 @@ export interface MvpConnector {
    * working credentials and counts as "ready".
    */
   credsState: "ready" | "missing";
+  /**
+   * Whether the VENDOR publishes API documentation. Hand-researched.
+   *
+   * NOT the `no_docs` tier: that is set when the field probe returns no
+   * supported flow, so our own docs generator skips the connector. All three
+   * no_docs connectors in fact have documentation.
+   */
+  docsState: "public" | "gated" | "none" | "unknown";
+  docsUrl: string | null;
 
   name: string;
   tier: MvpTier;

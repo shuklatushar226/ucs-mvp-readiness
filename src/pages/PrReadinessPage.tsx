@@ -22,12 +22,15 @@ import tracker from "../data/tracker.json";
  * connector_account_details form holds real working credentials; converting it
  * is an engineering task, not a missing prerequisite.
  */
-type Blocker = "no_docs" | "missing" | "ready";
+type Blocker = "no_docs" | "gated_docs" | "missing" | "ready";
 
 function blockerOf(c: MvpConnector): Blocker {
-  // Docs first: a connector with no probe-supported flow at all is not
-  // blocked on credentials, it is blocked on being implemented.
-  if (c.tier === "no_docs") return "no_docs";
+  // Vendor documentation first: with no spec there is nothing to implement
+  // from, and credentials would not help. This uses the RESEARCHED docsState,
+  // not the no_docs tier — the tier reports whether our own generator wrote a
+  // file, and all three connectors it flags do have vendor documentation.
+  if (c.docsState === "none") return "no_docs";
+  if (c.docsState === "gated") return "gated_docs";
   if (c.credsState === "missing") return "missing";
   return "ready";
 }
@@ -35,7 +38,8 @@ function blockerOf(c: MvpConnector): Blocker {
 const BLOCKER_STYLE: Record<Blocker, { label: string; fg: string; bg: string; title: string }> = {
   ready:   { label: "ready",    fg: "#0f766e", bg: "#ccfbf1", title: "Credentials present — this connector can be run" },
   missing: { label: "no creds", fg: "#9f1239", bg: "#ffe4e6", title: "No credentials entry — a run aborts with ABORT_CREDS" },
-  no_docs: { label: "no docs",  fg: "#3f3f46", bg: "#e4e4e7", title: "The field probe found no supported flow across 34 probes, so the docs generator skips this connector and no doc file exists. An implementation signal, NOT a statement about the vendor's published API." },
+  gated_docs: { label: "docs gated", fg: "#1e40af", bg: "#dbeafe", title: "The vendor publishes API documentation but it is behind registration, a partner agreement or an NDA. An access request, not engineering work." },
+  no_docs:    { label: "no docs",    fg: "#3f3f46", bg: "#e4e4e7", title: "No vendor API documentation could be found. Mostly wallet and voucher schemes that are only integrable through an aggregator." },
 };
 
 /** PRs are per-connector, not per-flow: GRACE raises one PR covering many flows. */
@@ -88,7 +92,7 @@ export function PrReadinessPage() {
   }, [connectors, query, filter]);
 
   const totals = useMemo(() => {
-    const by = { ready: 0, missing: 0, no_docs: 0 } as Record<Blocker, number>;
+    const by = { ready: 0, missing: 0, gated_docs: 0, no_docs: 0 } as Record<Blocker, number>;
     connectors.forEach((c) => by[blockerOf(c)]++);
     const withPr = connectors.filter((c) => prs.has(c.name.toLowerCase())).length;
     return { ...by, withPr };
@@ -109,7 +113,8 @@ export function PrReadinessPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
           <StatCard label="Ready to run" value={totals.ready} tone="good" hint="credentials present" />
           <StatCard label="No creds" value={totals.missing} tone={totals.missing ? "bad" : "default"} hint="aborts with ABORT_CREDS" />
-          <StatCard label="No docs" value={totals.no_docs} hint="no supported flow in the probe" />
+          <StatCard label="Docs gated" value={totals.gated_docs} hint="registration or partner access" />
+          <StatCard label="No docs" value={totals.no_docs} hint="vendor publishes none" />
           <StatCard label="PR open" value={totals.withPr} hint="from the GRACE-auto label" />
         </div>
 
@@ -123,7 +128,7 @@ export function PrReadinessPage() {
               border: `1px solid ${T.border}`, background: T.bg, color: T.text,
             }}
           />
-          {(["all", "ready", "missing", "no_docs"] as const).map((f) => (
+          {(["all", "ready", "missing", "gated_docs", "no_docs"] as const).map((f) => (
             <button key={f} onClick={() => setFilter(f)} style={chip(filter === f)}>
               {f === "all" ? `all ${connectors.length}` : `${BLOCKER_STYLE[f].label} ${totals[f]}`}
             </button>
@@ -158,6 +163,12 @@ export function PrReadinessPage() {
                         <span title={b.title} style={{ padding: "2px 7px", borderRadius: 999, fontSize: 10, color: b.fg, background: b.bg }}>
                           {b.label}
                         </span>
+                        {c.docsUrl && (
+                          <a href={c.docsUrl} target="_blank" rel="noreferrer" title={c.docsUrl}
+                             style={{ marginLeft: 6, fontSize: 10, color: T.textMuted, textDecoration: "none" }}>
+                            docs
+                          </a>
+                        )}
                         {pr && (
                           <a
                             href={pr.pr.url}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T18:35:45",
+  "generatedAt": "2026-10-05T19:39:57",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -1676,7 +1676,7 @@
       "scored": 13,
       "effort": 17,
       "pct": 54,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "elavon_pg",
@@ -2418,7 +2418,7 @@
       "scored": 14,
       "effort": 24,
       "pct": 50,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "givepayments",
@@ -2802,7 +2802,7 @@
       "scored": 13,
       "effort": 30,
       "pct": 46,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "razorpay",
@@ -3623,7 +3623,7 @@
       "scored": 13,
       "effort": 32,
       "pct": 38,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "hipay",
@@ -4725,7 +4725,7 @@
       "scored": 14,
       "effort": 39,
       "pct": 21,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "multisafepay",
@@ -4914,7 +4914,7 @@
       "scored": 11,
       "effort": 33,
       "pct": 18,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "absa_sanlam",
@@ -4987,7 +4987,7 @@
       "scored": 12,
       "effort": 38,
       "pct": 17,
-      "credsState": "missing"
+      "credsState": "ready"
     },
     {
       "name": "hyperswitch",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T02:30:18",
+  "generatedAt": "2026-10-07T02:41:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "rapyd",
         "status": "running",
-        "startedAt": "2026-10-07T02:15:15+05:30",
+        "startedAt": "2026-10-07T02:26:13+05:30",
         "retries": 0,
         "error": null,
         "slot": 8

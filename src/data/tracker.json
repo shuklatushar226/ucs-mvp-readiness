@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T13:37:28",
+  "generatedAt": "2026-10-06T13:40:15",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,20 +8,84 @@
       {
         "connector": "rapyd",
         "status": "running",
-        "startedAt": "2026-10-06T13:22:34+05:30",
+        "startedAt": "2026-10-06T13:25:14+05:30",
         "retries": 0,
         "error": null,
         "slot": 7
       }
     ]
   },
-  "prsOk": false,
+  "prsOk": true,
   "blockedLabel": "GRACE-blocked",
   "blockedPrs": [],
-  "warnings": [
-    "gh failed (pr list --repo juspay/hyperswitch-prism): check your internet connection or https://githubstatus.com",
-    "gh failed (pr list --repo juspay/hyperswitch-prism): check your internet connection or https://githubstatus.com"
+  "warnings": [],
+  "inReview": [
+    {
+      "number": 2431,
+      "title": "feat(connector): [Xendit] migrate to v3 payment requests, add void, mandates, webhooks and refunds",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2431",
+      "branch": "feat/xendit_grace",
+      "connector": "xendit",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-03T10:47:03Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2407,
+      "title": "chore(connector): [Airwallex] GRACE run incomplete \u2014 9 flows unresolved (ThreeDS, PSync, Capture)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2407",
+      "branch": "feat/airwallex_grace",
+      "connector": "airwallex",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-30T02:11:54Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2341,
+      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
+      "branch": "feat/worldpayraft_grace",
+      "connector": "worldpayraft",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T21:43:38Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2308,
+      "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2308",
+      "branch": "feat/braintree_grace",
+      "connector": "braintree",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T13:04:40Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2340,
+      "title": "feat(connector): [Shift4] add ThreeDS, PSync, Capture, Void, Refund, RSync, SetupMandate, RepeatPayment and webhooks",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2340",
+      "branch": "feat/shift4-grace-d05f4f",
+      "connector": "shift4",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T12:13:15Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-09-29T12:10:07Z",
+      "mergedAt": null
+    }
   ],
-  "inReview": [],
   "merged": []
 }

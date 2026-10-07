@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T01:41:09",
+  "generatedAt": "2026-10-08T01:51:06",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "rapyd",
         "status": "running",
-        "startedAt": "2026-10-08T01:27:37+05:30",
+        "startedAt": "2026-10-08T01:36:26+05:30",
         "retries": 0,
         "error": null,
         "slot": 12
@@ -28,7 +28,7 @@
       "connector": "worldpayraft",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-07T16:45:28Z",
+      "updatedAt": "2026-10-07T20:12:08Z",
       "mergedAt": null
     },
     {

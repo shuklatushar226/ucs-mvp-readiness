@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T07:21:02",
+  "generatedAt": "2026-10-07T18:30:35",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,6 +11,28 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2341,
+      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
+      "branch": "feat/worldpayraft_grace",
+      "connector": "worldpayraft",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-07T13:00:26Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2308,
+      "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2308",
+      "branch": "feat/braintree_grace",
+      "connector": "braintree",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-07T12:55:29Z",
+      "mergedAt": null
+    },
     {
       "number": 2456,
       "title": "feat(connector): [Rapyd] add Payments, Void, Refunds, Mandates, ThreeDS and IncomingWebhook",
@@ -53,28 +75,6 @@
       "draft": true,
       "author": "shuklatushar226",
       "updatedAt": "2026-09-30T02:11:54Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2341,
-      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
-      "branch": "feat/worldpayraft_grace",
-      "connector": "worldpayraft",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-29T21:43:38Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2308,
-      "title": "feat(connector): [Braintree] Authorize enrichment, native 3D Secure, MIT with network transaction id, a real $0 SetupMandate verification, incoming webhooks, and refund/capture/void correctness fixes",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2308",
-      "branch": "feat/braintree_grace",
-      "connector": "braintree",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-09-29T13:04:40Z",
       "mergedAt": null
     },
     {

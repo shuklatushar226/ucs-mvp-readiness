@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T00:50:34",
+  "generatedAt": "2026-10-09T01:01:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "nuvei",
         "status": "running",
-        "startedAt": "2026-10-09T00:37:27+05:30",
+        "startedAt": "2026-10-09T00:48:54+05:30",
         "retries": 0,
         "error": null,
         "slot": 4

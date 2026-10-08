@@ -1,19 +1,10 @@
 {
-  "generatedAt": "2026-10-08T18:50:08",
+  "generatedAt": "2026-10-08T19:00:59",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-10-05T23:08:02+05:30",
-    "rows": [
-      {
-        "connector": "rapyd",
-        "status": "running",
-        "startedAt": "2026-10-08T18:45:29+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": 12
-      }
-    ]
+    "rows": []
   },
   "prsOk": true,
   "blockedLabel": "GRACE-blocked",
@@ -28,7 +19,7 @@
       "connector": "rapyd",
       "draft": true,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-08T13:19:08Z",
+      "updatedAt": "2026-10-08T13:28:59Z",
       "mergedAt": null
     },
     {

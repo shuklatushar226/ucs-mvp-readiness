@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T18:20:32",
+  "generatedAt": "2026-10-08T18:30:22",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "rapyd",
         "status": "running",
-        "startedAt": "2026-10-08T18:05:37+05:30",
+        "startedAt": "2026-10-08T18:15:42+05:30",
         "retries": 0,
         "error": null,
         "slot": 12
@@ -20,6 +20,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2474,
+      "title": "feat(connector): [Rapyd] add Payments, Void, Refunds, Mandates, ThreeDS and IncomingWebhook",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2474",
+      "branch": "feat/grace-rapyd-35743f",
+      "connector": "rapyd",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-08T12:56:33Z",
+      "mergedAt": null
+    },
     {
       "number": 2341,
       "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",

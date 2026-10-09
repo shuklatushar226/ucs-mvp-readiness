@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T13:00:41",
+  "generatedAt": "2026-10-09T13:10:29",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "nuvei",
         "status": "running",
-        "startedAt": "2026-10-09T12:45:47+05:30",
+        "startedAt": "2026-10-09T12:55:33+05:30",
         "retries": 0,
         "error": null,
         "slot": 4
@@ -20,6 +20,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2480,
+      "title": "feat(connector): [Nuvei] add PSync, Capture, Void, Refund and RSync [GRACE-INCOMPLETE]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2480",
+      "branch": "feat/nuvei_grace_full",
+      "connector": "nuvei",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-09T07:40:18Z",
+      "mergedAt": null
+    },
     {
       "number": 2474,
       "title": "feat(connector): [Rapyd] add Payments, Void, Refunds, Mandates, ThreeDS and IncomingWebhook",

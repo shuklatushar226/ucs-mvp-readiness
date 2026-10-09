@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-09T16:00:55",
+  "generatedAt": "2026-10-10T04:03:53",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "d4e7e1c",
+    "commit": "6ed2d45",
     "committedAt": "2026-10-09",
     "dirty": false
   },
@@ -1063,6 +1063,55 @@
       "merchant": null
     },
     {
+      "name": "jpmorgan",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "gap",
+        "webhooks_refund": "gap",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerAuthenticationToken",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 12,
+        "probedFlows": 34
+      },
+      "met": 9,
+      "gaps": 5,
+      "na": 0,
+      "scored": 14,
+      "effort": 18,
+      "pct": 64,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://developer.payments.jpmorgan.com/api/home",
+      "merchant": null
+    },
+    {
       "name": "revolv3",
       "tier": "alpha",
       "cells": {
@@ -1583,55 +1632,6 @@
       "credsState": "ready",
       "docsState": "public",
       "docsUrl": "https://api-reference.datatrans.ch/",
-      "merchant": null
-    },
-    {
-      "name": "jpmorgan",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "gap",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerAuthenticationToken",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 12,
-        "probedFlows": 34
-      },
-      "met": 8,
-      "gaps": 6,
-      "na": 0,
-      "scored": 14,
-      "effort": 26,
-      "pct": 57,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://developer.payments.jpmorgan.com/api/home",
       "merchant": null
     },
     {

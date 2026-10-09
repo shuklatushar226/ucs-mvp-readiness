@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-09T04:00:40",
+  "generatedAt": "2026-10-09T16:00:55",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "e45d358",
-    "committedAt": "2026-10-08",
+    "commit": "d4e7e1c",
+    "committedAt": "2026-10-09",
     "dirty": false
   },
   "capabilities": [
@@ -2845,6 +2845,50 @@
       "merchant": null
     },
     {
+      "name": "worldpayraft",
+      "tier": "alpha",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "gap",
+        "external_three_ds": "gap",
+        "webhooks_payment": "gap",
+        "webhooks_refund": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "decrypted_wallet": "gap"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 6,
+      "gaps": 7,
+      "na": 1,
+      "scored": 13,
+      "effort": 25,
+      "pct": 46,
+      "credsState": "missing",
+      "docsState": "public",
+      "docsUrl": "https://docs.worldpay.com/apis/native-raft/tokenization/api-specification",
+      "merchant": null
+    },
+    {
       "name": "ilixium",
       "tier": "sandbox_tested",
       "cells": {
@@ -3374,49 +3418,6 @@
       "credsState": "missing",
       "docsState": "public",
       "docsUrl": "https://docs.truelayer.com/reference/create-payment",
-      "merchant": null
-    },
-    {
-      "name": "worldpayraft",
-      "tier": "alpha",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "gap",
-        "refunds": "met",
-        "refund_sync": "gap",
-        "external_three_ds": "gap",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "decrypted_wallet": "gap"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate"
-      ],
-      "probe": {
-        "buildableFlows": 6,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 8,
-      "na": 1,
-      "scored": 13,
-      "effort": 26,
-      "pct": 38,
-      "credsState": "missing",
-      "docsState": "public",
-      "docsUrl": "https://docs.worldpay.com/apis/native-raft/tokenization/api-specification",
       "merchant": null
     },
     {

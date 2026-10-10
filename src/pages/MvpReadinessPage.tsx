@@ -78,7 +78,7 @@ export function MvpReadinessPage() {
       (c) =>
         (!q || c.name.includes(q)) &&
         (band === "all" || bandOf(c) === band) &&
-        (tier === "all" || c.tier === tier),
+        (tier === "all" || (tier === "prod" ? c.inProd : c.tier === tier)),
     );
     // Hidden whenever a band or tier filter is on: a connector with no module
     // belongs to neither, so including it would be an invented answer.
@@ -241,10 +241,17 @@ export function MvpReadinessPage() {
           {/* Tier filters — a connector property (do we hold creds?), orthogonal
               to the readiness bands above, which count capability gaps. */}
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
-            {[{ id: "all", label: `All tiers · ${connectors.length}` }, ...TIERS.map((t) => ({
-              id: t.id,
-              label: `${t.label} · ${connectors.filter((c) => c.tier === t.id).length}`,
-            }))].map((t) => (
+            {[
+              { id: "all", label: `All tiers · ${connectors.length}` },
+              // Not a tier: a production connector still has one. It lives in
+              // this row because this is where the fleet gets narrowed, but it
+              // filters on traffic rather than on tier.
+              { id: "prod", label: `In prod · ${connectors.filter((c) => c.inProd).length}` },
+              ...TIERS.map((t) => ({
+                id: t.id,
+                label: `${t.label} · ${connectors.filter((c) => c.tier === t.id).length}`,
+              })),
+            ].map((t) => (
               <button key={t.id} onClick={() => setTier(t.id)} style={chipStyle(tier === t.id)}>
                 {t.label}
               </button>

@@ -177,7 +177,7 @@ export function ConnectorReadinessPage() {
               border: `1px solid ${T.border}`, background: T.bg, color: T.text,
             }}
           />
-          {(["all", "prod", "ready", "missing", "gated_docs", "no_docs", "pipeline"] as const).map((f) => (
+          {(["prod", "all", "ready", "missing", "gated_docs", "no_docs", "pipeline"] as const).map((f) => (
             <button key={f} onClick={() => setFilter(f)} style={chip(filter === f)}>
               {f === "all"  ? `all ${allRows.length}`
              : f === "prod" ? `in production ${totals.prod}`

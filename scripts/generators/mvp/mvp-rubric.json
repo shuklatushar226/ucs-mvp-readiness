@@ -266,17 +266,52 @@
       "short": "Auto capture"
     },
     {
-      "id": "decrypted_wallet",
-      "label": "Decrypted wallet, HS creds",
-      "description": "Apple Pay / Google Pay decrypted with Hyperswitch-held certificates. Detected from the decrypted-token types the connector consumes. Payment-method parsing is unreliable in general (a naive pass classified stripe as not supporting Card), so this is indicative, not proven.",
+      "id": "applepay_psp",
+      "label": "Apple Pay \u2014 PSP decryption",
+      "short": "APay PSP",
+      "description": "The connector forwards the encrypted Apple Pay token and the processor decrypts it. Detected from WalletData::ApplePay, excluding the redirect and third-party-SDK variants.",
+      "weight": 3,
+      "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "ApplePayDecryptedData|ApplePayPredecryptData|GooglePayDecryptedData|PazeDecryptedData|ApplePayDecrypt\\b|GooglePayDecrypt\\b",
-        "close_unknown": true
-      },
+        "pattern": "WalletData::ApplePay\\b"
+      }
+    },
+    {
+      "id": "applepay_hs",
+      "label": "Apple Pay \u2014 HS decryption",
+      "short": "APay HS",
+      "description": "The connector consumes an Apple Pay token already decrypted by HyperSwitch/UCS and sends the DPAN and cryptogram onward. Detected from the ApplePayDecrypt* types.",
       "weight": 5,
       "confidence": "best-effort",
-      "short": "Wallet decrypt"
+      "signal": {
+        "type": "code",
+        "pattern": "ApplePayDecrypt"
+      }
+    },
+    {
+      "id": "googlepay_psp",
+      "label": "Google Pay \u2014 PSP decryption",
+      "short": "GPay PSP",
+      "description": "The connector forwards the encrypted Google Pay token and the processor decrypts it. Detected from WalletData::GooglePay, excluding the redirect and third-party-SDK variants.",
+      "weight": 3,
+      "confidence": "best-effort",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::GooglePay\\b"
+      }
+    },
+    {
+      "id": "googlepay_hs",
+      "label": "Google Pay \u2014 HS decryption",
+      "short": "GPay HS",
+      "description": "The connector consumes a Google Pay token already decrypted by HyperSwitch/UCS. Detected from the GooglePayDecrypt* types.",
+      "weight": 5,
+      "confidence": "best-effort",
+      "signal": {
+        "type": "code",
+        "pattern": "GooglePayDecrypt"
+      }
     }
   ]
 }

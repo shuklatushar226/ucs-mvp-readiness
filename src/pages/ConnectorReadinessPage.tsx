@@ -87,7 +87,7 @@ export function ConnectorReadinessPage() {
   // have no cells, flows or score to show in the matrix.
   const pipeline = DATA.pipeline ?? [];
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<Blocker | "all">("all");
+  const [filter, setFilter] = useState<Blocker | "all" | "prod">("all");
 
   const prs = useMemo(prIndex, []);
 
@@ -121,7 +121,11 @@ export function ConnectorReadinessPage() {
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
     return allRows
-      .filter((r) => (filter === "all" ? true : r.blocker === filter))
+      // "prod" cuts across the blocker states rather than being one of them:
+      // a production connector is still ready or alpha or docs-gated.
+      .filter((r) => filter === "all" ? true
+                   : filter === "prod" ? r.inProd
+                   : r.blocker === filter)
       .filter((r) => (q ? r.name.toLowerCase().includes(q)
                         || (r.merchant ?? "").toLowerCase().includes(q) : true))
       // Production first, then most flows. What is live and incomplete matters
@@ -137,7 +141,8 @@ export function ConnectorReadinessPage() {
     const by = { ready: 0, missing: 0, gated_docs: 0, no_docs: 0, pipeline: pipeline.length } as Record<Blocker, number>;
     connectors.forEach((c) => by[blockerOf(c)]++);
     const withPr = connectors.filter((c) => prs.has(c.name.toLowerCase())).length;
-    return { ...by, withPr };
+    const prod = connectors.filter((c) => c.inProd).length;
+    return { ...by, withPr, prod };
   }, [connectors, prs]);
 
   return (
@@ -153,7 +158,8 @@ export function ConnectorReadinessPage() {
 
       <div style={{ padding: "18px 32px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(172px, 1fr))", gap: 14 }}>
-          <StatCard label="Ready to run" value={totals.ready} tone="good" hint="credentials present" />
+          <StatCard label="In production" value={totals.prod} tone="good" hint="live traffic, last 30 days" />
+          <StatCard label="Ready to run" value={totals.ready} hint="credentials present" />
           <StatCard label="Alpha" value={totals.missing} tone={totals.missing ? "bad" : "default"} hint="no credentials held" />
           <StatCard label="Docs gated" value={totals.gated_docs} hint="registration or partner access" />
           <StatCard label="No docs" value={totals.no_docs} hint="vendor publishes none" />
@@ -171,9 +177,11 @@ export function ConnectorReadinessPage() {
               border: `1px solid ${T.border}`, background: T.bg, color: T.text,
             }}
           />
-          {(["all", "ready", "missing", "gated_docs", "no_docs", "pipeline"] as const).map((f) => (
+          {(["all", "prod", "ready", "missing", "gated_docs", "no_docs", "pipeline"] as const).map((f) => (
             <button key={f} onClick={() => setFilter(f)} style={chip(filter === f)}>
-              {f === "all" ? `all ${allRows.length}` : `${BLOCKER_STYLE[f].label} ${totals[f]}`}
+              {f === "all"  ? `all ${allRows.length}`
+             : f === "prod" ? `in production ${totals.prod}`
+             : `${BLOCKER_STYLE[f].label} ${totals[f]}`}
             </button>
           ))}
         </div>

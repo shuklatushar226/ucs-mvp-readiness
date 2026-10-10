@@ -288,8 +288,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.adyen.com/api-explorer/Checkout/latest/overview",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 212302
     },
     {
       "name": "checkout",
@@ -337,8 +337,8 @@
       "docsState": "public",
       "docsUrl": "https://www.checkout.com/docs/payments/add-payment-methods/apple-pay/unified-payments-api",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 8674
     },
     {
       "name": "novalnet",
@@ -386,8 +386,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.novalnet.de/onlinepayments/apiparameterreference",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 48051
     },
     {
       "name": "finix",
@@ -436,8 +436,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.finix.com/api",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 572
     },
     {
       "name": "paypal",
@@ -489,8 +489,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.paypal.com/api/orders/v2",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 19357
     },
     {
       "name": "stripe",
@@ -541,8 +541,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.stripe.com/api",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 331155
     },
     {
       "name": "barclaycard",
@@ -647,8 +647,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.cybersource.com/api-reference-assets/index.html",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 44282
     },
     {
       "name": "nmi",
@@ -696,8 +696,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.nmi.com/reference/getting-started",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 3490
     },
     {
       "name": "authorizedotnet",
@@ -747,8 +747,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.authorize.net/api/reference/index.html",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 46185
     },
     {
       "name": "fiuu",
@@ -795,8 +795,8 @@
       "docsState": "public",
       "docsUrl": "https://github.com/FiuuPayment/Documentation-Fiuu_API_Spec",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 2343
     },
     {
       "name": "trustpay",
@@ -843,8 +843,8 @@
       "docsState": "public",
       "docsUrl": "https://doc.finby.eu/aapi/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 4465
     },
     {
       "name": "nexixpay",
@@ -894,8 +894,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.nexigroup.com/xpayglobal/en-EU/api/payment-api-v1/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 1503
     },
     {
       "name": "peachpayments",
@@ -993,8 +993,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.paypal.com/braintree/graphql/reference",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 49
     },
     {
       "name": "paydotcom",
@@ -1093,8 +1093,8 @@
       "docsState": "public",
       "docsUrl": "http://dtd.worldpay.com/v1/ElemList.html",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 1102
     },
     {
       "name": "jpmorgan",
@@ -1242,8 +1242,8 @@
       "docsState": "gated",
       "docsUrl": "https://developerportal.transit-pass.com/developerportal/resources/dist/index.html",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 9968
     },
     {
       "name": "globalpay",
@@ -1444,8 +1444,8 @@
       "docsState": "public",
       "docsUrl": "https://developer.fiserv.com/product/CommerceHub/apis?branch=active",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 346369
     },
     {
       "name": "worldpay",
@@ -1591,8 +1591,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.noonpayments.com/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 52443
     },
     {
       "name": "imerchantsolutions",
@@ -1689,8 +1689,8 @@
       "docsState": "public",
       "docsUrl": "https://api-reference.datatrans.ch/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 38
     },
     {
       "name": "shift4",
@@ -1835,8 +1835,8 @@
       "docsState": "public",
       "docsUrl": "https://api.ziftpay.com/index.php",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 783
     },
     {
       "name": "elavon_pg",
@@ -2031,8 +2031,8 @@
       "docsState": "public",
       "docsUrl": "https://pagosonline.redsys.es/desarrolladores-inicio/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 323
     },
     {
       "name": "billwerk",
@@ -2229,8 +2229,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.nuvei.com/api/v2/main/docs/introduction/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 37
     },
     {
       "name": "paybox",
@@ -2327,8 +2327,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.payload.com/apis/object-reference/transactions/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 4009
     },
     {
       "name": "stax",
@@ -3044,8 +3044,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.ilixium.com/docs/api/authorisation",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 3
     },
     {
       "name": "wellsfargo",
@@ -3274,8 +3274,8 @@
       "docsState": "public",
       "docsUrl": "https://3dss.netcetera.com/3dsserver/doc/2.5.1.0/integration-manual/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 3
     },
     {
       "name": "citigate",
@@ -3320,8 +3320,8 @@
       "docsState": "public",
       "docsUrl": "https://na.gateway.spring.citi.com/api/documentation/apiDocumentation/rest-json/version/latest/apiReference.html",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 27
     },
     {
       "name": "globalpayments_heartland",
@@ -3553,8 +3553,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.truelayer.com/reference/create-payment",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 1
     },
     {
       "name": "elavon",
@@ -4802,8 +4802,8 @@
       "docsState": "public",
       "docsUrl": "https://docs.trustly.com/api",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 2
     },
     {
       "name": "xendit",
@@ -5073,8 +5073,8 @@
       "docsState": "gated",
       "docsUrl": "https://gigadatsolutions.com/",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 65
     },
     {
       "name": "tesouro",
@@ -5378,8 +5378,8 @@
       "docsState": "none",
       "docsUrl": null,
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 760
     },
     {
       "name": "cryptopay",
@@ -5420,8 +5420,8 @@
       "docsState": "public",
       "docsUrl": "https://developers.cryptopay.me/guides/api-reference",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 35
     },
     {
       "name": "volt",
@@ -5547,8 +5547,8 @@
       "docsState": "none",
       "docsUrl": null,
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 2
     },
     {
       "name": "hyperswitch",
@@ -5674,8 +5674,8 @@
       "docsState": "gated",
       "docsUrl": null,
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 1412
     },
     {
       "name": "mifinity",
@@ -5716,8 +5716,8 @@
       "docsState": "public",
       "docsUrl": "https://mifinity.readme.io/reference/deposit-api",
       "merchant": null,
-      "inProd": false,
-      "prodVolume": null
+      "inProd": true,
+      "prodVolume": 60
     },
     {
       "name": "paytm",

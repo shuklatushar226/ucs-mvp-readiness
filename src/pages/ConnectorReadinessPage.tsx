@@ -33,6 +33,7 @@ type Blocker = "no_docs" | "gated_docs" | "missing" | "ready" | "pipeline";
 type Row = {
   name: string;
   flows: string[];
+  inProd: boolean;
   blocker: Blocker;
   docsUrl: string | null;
   merchant: string | null;
@@ -105,13 +106,14 @@ export function ConnectorReadinessPage() {
   /** Implemented and pipeline connectors in one list, so they share a table. */
   const allRows = useMemo<Row[]>(() => [
     ...connectors.map((c) => ({
-      name: c.name, flows: c.flows, blocker: blockerOf(c),
+      name: c.name, flows: c.flows, blocker: blockerOf(c), inProd: c.inProd,
       docsUrl: c.docsUrl, merchant: c.merchant, notes: null,
     })),
     ...pipeline.map((p) => ({
       // No flows: nothing is implemented, so every cell is empty. That is the
       // point of showing them here rather than in a separate list.
-      name: p.name, flows: [], blocker: "pipeline" as Blocker,
+      // Nothing in the pipeline is in production by definition.
+      name: p.name, flows: [], blocker: "pipeline" as Blocker, inProd: false,
       docsUrl: p.docsUrl, merchant: p.merchant, notes: p.notes,
     })),
   ], [connectors, pipeline]);
@@ -122,8 +124,13 @@ export function ConnectorReadinessPage() {
       .filter((r) => (filter === "all" ? true : r.blocker === filter))
       .filter((r) => (q ? r.name.toLowerCase().includes(q)
                         || (r.merchant ?? "").toLowerCase().includes(q) : true))
-      // Implemented first, most flows first; pipeline rows trail with 0 flows.
-      .sort((a, b) => b.flows.length - a.flows.length || a.name.localeCompare(b.name));
+      // Production first, then most flows. What is live and incomplete matters
+      // more than what is complete and unused, so traffic outranks coverage.
+      // Pipeline rows trail naturally with 0 flows.
+      .sort((a, b) =>
+        Number(b.inProd) - Number(a.inProd) ||
+        b.flows.length - a.flows.length ||
+        a.name.localeCompare(b.name));
   }, [allRows, query, filter]);
 
   const totals = useMemo(() => {
@@ -201,6 +208,13 @@ export function ConnectorReadinessPage() {
                         <span title={b.title} style={{ padding: "2px 7px", borderRadius: 999, fontSize: 10, color: b.fg, background: b.bg }}>
                           {b.label}
                         </span>
+                        {r.inProd && (
+                          <span title="Carries live production traffic"
+                                style={{ marginLeft: 6, padding: "2px 6px", borderRadius: 999,
+                                         fontSize: 10, color: "#065f46", background: "#a7f3d0" }}>
+                            prod
+                          </span>
+                        )}
                         {r.docsUrl && (
                           <a href={r.docsUrl} target="_blank" rel="noreferrer" title={r.docsUrl}
                              style={{ marginLeft: 6, fontSize: 10, color: T.textMuted, textDecoration: "none" }}>docs</a>

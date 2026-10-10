@@ -72,6 +72,12 @@ export interface MvpConnector {
   docsUrl: string | null;
   /** Which merchant is waiting on this connector, where known. */
   merchant: string | null;
+  /**
+   * Carries live production traffic. From Grafana, not from prism source —
+   * the source says what is implemented, never what is in use.
+   */
+  inProd: boolean;
+  prodVolume: number | null;
 
   name: string;
   tier: MvpTier;

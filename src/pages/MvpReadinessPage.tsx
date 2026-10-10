@@ -91,11 +91,17 @@ export function MvpReadinessPage() {
 
   const totals = useMemo(() => {
     const atMvp = connectors.filter((c) => c.gaps === 0).length;
+    const prod = connectors.filter((c) => c.inProd).length;
+    // Live traffic on a connector that is NOT at MVP is the number that costs
+    // money: real payments flowing through gaps nobody has closed.
+    const prodWithGaps = connectors.filter((c) => c.inProd && c.gaps > 0).length;
     const pcts = [...connectors].map((c) => c.pct).sort((a, b) => a - b);
     const median = pcts.length ? pcts[Math.floor(pcts.length / 2)] : 0;
     return {
       atMvp,
       median,
+      prod,
+      prodWithGaps,
       gaps: connectors.reduce((s, c) => s + c.gaps, 0),
       effort: connectors.reduce((s, c) => s + c.effort, 0),
     };
@@ -202,6 +208,12 @@ export function MvpReadinessPage() {
             <StatCard label="Median completeness" value={`${totals.median}%`} hint="across all connectors" />
             <StatCard label="Total gaps" value={totals.gaps} tone="warn" hint="capability cells to close" />
             <StatCard label="Effort remaining" value={`${totals.effort} pts`} hint="weighted by rubric" />
+            <StatCard
+              label="Live with gaps"
+              value={totals.prodWithGaps}
+              tone={totals.prodWithGaps ? "warn" : "default"}
+              hint={`of ${totals.prod} in production`}
+            />
           </div>
 
           {/* Band filters */}
@@ -363,6 +375,17 @@ export function MvpReadinessPage() {
                           </span>
                         ) : (
                           <TierBadge tier={c.tier} />
+                        )}
+                        {c.inProd && (
+                          <span
+                            title={`Carries live production traffic${
+                              c.prodVolume ? ` — ${c.prodVolume.toLocaleString()} attempts in the last 30 days` : ""
+                            }`}
+                            style={{ padding: "1px 6px", borderRadius: 999, fontSize: 10,
+                                     color: "#065f46", background: "#a7f3d0" }}
+                          >
+                            prod
+                          </span>
                         )}
                       </span>
                     </td>

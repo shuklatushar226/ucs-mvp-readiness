@@ -36,6 +36,9 @@ const chipStyle = (active: boolean): React.CSSProperties => ({
   border: `1px solid ${active ? T.accent : T.border}`,
 });
 
+/** A connector with no module yet: every cell blank rather than a guessed state. */
+const BLANK_CELL = { bg: "transparent", fg: T.border, mark: "·", label: "Not built yet" };
+
 function titleCase(name: string) {
   return name.replace(/_/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase());
 }
@@ -49,15 +52,42 @@ export function MvpReadinessPage() {
 
   const { capabilities, connectors } = DATA;
 
+  /**
+   * Connectors merchants have asked for that have no module in prism.
+   *
+   * Shaped to look like an MvpConnector so the table can render them, with
+   * every capability absent rather than zeroed — BLANK_CELL draws those. They
+   * are deliberately kept OUT of `totals` and out of the band/tier filters:
+   * gaps === 0 would otherwise classify them as "At MVP", which is the exact
+   * opposite of true.
+   */
+  const pipelineRows = useMemo(
+    () => (DATA.pipeline ?? []).map((p) => ({
+      name: p.name, tier: "alpha" as const, cells: {} as MvpConnector["cells"],
+      flows: [], probe: null, met: 0, gaps: 0, na: 0, scored: 0, effort: 0, pct: 0,
+      credsState: p.credsState, docsState: p.docsState, docsUrl: p.docsUrl,
+      merchant: p.merchant, inProd: false, prodVolume: null,
+      notBuilt: true,
+    })),
+    [DATA.pipeline],
+  );
+
   const rows = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return connectors.filter(
+    const built = connectors.filter(
       (c) =>
         (!q || c.name.includes(q)) &&
         (band === "all" || bandOf(c) === band) &&
         (tier === "all" || c.tier === tier),
     );
-  }, [query, band, tier, connectors]);
+    // Hidden whenever a band or tier filter is on: a connector with no module
+    // belongs to neither, so including it would be an invented answer.
+    const notBuilt =
+      band === "all" && tier === "all"
+        ? pipelineRows.filter((p) => !q || p.name.includes(q))
+        : [];
+    return [...built, ...notBuilt];
+  }, [query, band, tier, connectors, pipelineRows]);
 
   const totals = useMemo(() => {
     const atMvp = connectors.filter((c) => c.gaps === 0).length;
@@ -323,19 +353,38 @@ export function MvpReadinessPage() {
                     >
                       <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
                         {titleCase(c.name)}
-                        <TierBadge tier={c.tier} />
+                        {"notBuilt" in c ? (
+                          <span
+                            title={`No module in prism yet${c.merchant ? ` — requested by ${c.merchant}` : ""}`}
+                            style={{ padding: "1px 6px", borderRadius: 999, fontSize: 10,
+                                     color: "#7c2d12", background: "#ffedd5" }}
+                          >
+                            not built{c.merchant ? ` · ${c.merchant}` : ""}
+                          </span>
+                        ) : (
+                          <TierBadge tier={c.tier} />
+                        )}
                       </span>
                     </td>
                     <td style={{ ...tdBase, background: T.bgElev }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <ProgressBar pct={c.pct} />
-                        <span style={{ fontWeight: 700, width: 32 }}>{c.pct}%</span>
-                        <span style={{ color: T.textSubtle, fontSize: 11 }}>{c.effort}p</span>
-                      </div>
+                      {"notBuilt" in c ? (
+                        // Not 0% — that would read as "scored, and it scored
+                        // zero". Nothing has been measured at all.
+                        <span style={{ color: T.border, fontSize: 11 }}>—</span>
+                      ) : (
+                        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                          <ProgressBar pct={c.pct} />
+                          <span style={{ fontWeight: 700, width: 32 }}>{c.pct}%</span>
+                          <span style={{ color: T.textSubtle, fontSize: 11 }}>{c.effort}p</span>
+                        </div>
+                      )}
                     </td>
                     {capabilities.map((cap, i) => {
                       const state = c.cells[cap.id];
-                      const s = CELL_STYLE[state];
+                      // A pipeline connector has no cells at all — nothing is
+                      // built, so nothing is known. CELL_STYLE has no entry for
+                      // that, and indexing it would crash on s.bg.
+                      const s = CELL_STYLE[state] ?? BLANK_CELL;
                       const soft = cap.confidence === "best-effort";
                       return (
                         <td

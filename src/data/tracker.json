@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T19:11:09",
+  "generatedAt": "2026-10-12T19:21:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "authorizedotnet",
         "status": "running",
-        "startedAt": "2026-10-12T18:56:29+05:30",
+        "startedAt": "2026-10-12T19:06:57+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -21,6 +21,17 @@
   "warnings": [],
   "inReview": [
     {
+      "number": 2341,
+      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
+      "branch": "feat/worldpayraft_grace",
+      "connector": "worldpayraft",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-12T13:43:55Z",
+      "mergedAt": null
+    },
+    {
       "number": 2330,
       "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
@@ -29,17 +40,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-12T13:04:41Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2341,
-      "title": "feat(connector): [Worldpayraft] add 10 flows (Authorize, PSync, Capture, Void, Refund, ...) [ALPHA]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2341",
-      "branch": "feat/worldpayraft_grace",
-      "connector": "worldpayraft",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-12T11:10:55Z",
       "mergedAt": null
     },
     {

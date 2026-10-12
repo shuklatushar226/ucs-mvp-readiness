@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-12T16:01:09",
+  "generatedAt": "2026-10-13T04:02:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "8eaddb0",
+    "commit": "ef0d17a",
     "committedAt": "2026-10-12",
     "dirty": false
   },
@@ -382,6 +382,61 @@
       "prodVolume": 8674
     },
     {
+      "name": "stripe",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "CreateConnectorCustomer",
+        "IncrementalAuthorization",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 16,
+        "probedFlows": 34
+      },
+      "met": 12,
+      "gaps": 2,
+      "na": 0,
+      "scored": 14,
+      "effort": 10,
+      "pct": 86,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://docs.stripe.com/api",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 331155
+    },
+    {
       "name": "novalnet",
       "tier": "sandbox_tested",
       "cells": {
@@ -541,61 +596,6 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 19357
-    },
-    {
-      "name": "stripe",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "gap",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "met",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "CreateConnectorCustomer",
-        "IncrementalAuthorization",
-        "PSync",
-        "PaymentMethodToken",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 16,
-        "probedFlows": 34
-      },
-      "met": 11,
-      "gaps": 3,
-      "na": 0,
-      "scored": 14,
-      "effort": 18,
-      "pct": 79,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://docs.stripe.com/api",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 331155
     },
     {
       "name": "barclaycard",

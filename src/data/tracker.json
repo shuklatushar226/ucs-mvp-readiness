@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T16:41:08",
+  "generatedAt": "2026-10-13T16:51:10",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "stripe",
         "status": "running",
-        "startedAt": "2026-10-13T16:32:21+05:30",
+        "startedAt": "2026-10-13T16:36:10+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -20,6 +20,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-13T11:17:49Z",
+      "mergedAt": null
+    },
     {
       "number": 2515,
       "title": "feat(connector): [Authorizedotnet] close 13 field and behaviour gaps across six flows",
@@ -40,17 +51,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-13T10:21:41Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2330,
-      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
-      "branch": "feat/nuvei_grace",
-      "connector": "nuvei",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-13T09:42:25Z",
       "mergedAt": null
     },
     {

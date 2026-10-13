@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T01:51:09",
+  "generatedAt": "2026-10-14T02:01:03",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "stripe",
         "status": "running",
-        "startedAt": "2026-10-14T01:36:06+05:30",
+        "startedAt": "2026-10-14T01:46:52+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -20,6 +20,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2526,
+      "title": "chore(connector): [Stripe] GRACE run incomplete \u2014 10 flows hardened, open S0/S1 bugs unresolved",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
+      "branch": "feat/stripe_grace",
+      "connector": "stripe",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-13T20:30:11Z",
+      "mergedAt": null
+    },
     {
       "number": 2516,
       "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",

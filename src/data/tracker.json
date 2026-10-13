@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T15:41:09",
+  "generatedAt": "2026-10-13T15:50:40",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "stripe",
         "status": "running",
-        "startedAt": "2026-10-13T15:26:10+05:30",
+        "startedAt": "2026-10-13T15:36:02+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -20,6 +20,28 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-13T10:16:14Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2515,
+      "title": "feat(connector): [Authorizedotnet] close 13 field and behaviour gaps across six flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2515",
+      "branch": "feat/authorizedotnet_grace",
+      "connector": "authorizedotnet",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-13T10:15:55Z",
+      "mergedAt": null
+    },
     {
       "number": 2330,
       "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",

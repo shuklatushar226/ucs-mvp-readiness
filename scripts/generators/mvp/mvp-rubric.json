@@ -247,7 +247,10 @@
       "label": "3DS (native)",
       "description": "Connector PERFORMS the authentication itself: it implements a PreAuthenticate / Authenticate / PostAuthenticate RPC AND carries real 3DS protocol artifacts. The second condition is required because those RPCs are a generic pre/post-processing channel \u2014 flywire, grabpay, globalpay and kount use them for hosted checkout, charge-init, Confirm Transaction and risk, scoring 0-1 artifacts against 38-370 for every genuine 3DS connector. Connectors that fold 3DS into Authorize with no RPC are deliberately excluded: their artifact counts have no cliff, so any cutoff would be a knob rather than a measurement.",
       "signal": {
-        "type": "native_three_ds"
+        "type": "native_three_ds",
+        "not_supported": [
+          "authorizedotnet"
+        ]
       },
       "weight": 5,
       "confidence": "proven",

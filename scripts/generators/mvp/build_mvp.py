@@ -67,6 +67,12 @@ def evaluate(cap: dict, flows: dict, buckets: dict) -> dict:
     else:
         raise ValueError(f"unknown signal type {kind!r} for {cap['id']!r}")
 
+    # Processor limitations are not UCS implementation work. Keep explicit
+    # exceptions in the rubric so they survive every source refresh as N/A.
+    for connector in sig.get("not_supported", ()):
+        if connector in raw:
+            raw[connector] = S.NA
+
     return {c: _STATE[v] for c, v in raw.items()}
 
 

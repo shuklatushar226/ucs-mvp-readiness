@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T18:03:27",
+  "generatedAt": "2026-10-14T18:05:23",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -206,7 +206,10 @@
       "weight": 5,
       "short": "3DS native",
       "signal": {
-        "type": "native_three_ds"
+        "type": "native_three_ds",
+        "not_supported": [
+          "authorizedotnet"
+        ]
       },
       "confidence": "proven"
     },
@@ -273,6 +276,60 @@
     }
   ],
   "connectors": [
+    {
+      "name": "authorizedotnet",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "na",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateConnectorCustomer",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerSessionAuthenticationToken",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 14,
+        "probedFlows": 34
+      },
+      "met": 11,
+      "gaps": 1,
+      "na": 2,
+      "scored": 12,
+      "effort": 5,
+      "pct": 92,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 46185
+    },
     {
       "name": "adyen",
       "tier": "sandbox_tested",
@@ -436,60 +493,6 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 331155
-    },
-    {
-      "name": "authorizedotnet",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateConnectorCustomer",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerSessionAuthenticationToken",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 14,
-        "probedFlows": 34
-      },
-      "met": 11,
-      "gaps": 2,
-      "na": 1,
-      "scored": 13,
-      "effort": 10,
-      "pct": 85,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 46185
     },
     {
       "name": "novalnet",

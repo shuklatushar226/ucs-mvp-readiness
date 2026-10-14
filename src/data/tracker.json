@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T11:51:09",
+  "generatedAt": "2026-10-14T12:21:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,17 +11,6 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
-    {
-      "number": 2515,
-      "title": "feat(connector): [Authorizedotnet] close 13 field and behaviour gaps across six flows",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2515",
-      "branch": "feat/authorizedotnet_grace",
-      "connector": "authorizedotnet",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T06:18:55Z",
-      "mergedAt": null
-    },
     {
       "number": 2526,
       "title": "chore(connector): [Stripe] GRACE run incomplete \u2014 10 flows hardened, open S0/S1 bugs unresolved",
@@ -155,5 +144,17 @@
       "mergedAt": null
     }
   ],
-  "merged": []
+  "merged": [
+    {
+      "number": 2515,
+      "title": "feat(connector): [Authorizedotnet] close 13 field and behaviour gaps across six flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2515",
+      "branch": "feat/authorizedotnet_grace",
+      "connector": "authorizedotnet",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-14T06:46:59Z",
+      "mergedAt": "2026-10-14T06:46:57Z"
+    }
+  ]
 }

@@ -221,7 +221,10 @@
         "methods": [
           "process_dispute_webhook"
         ],
-        "mode": "any"
+        "mode": "any",
+        "not_supported": [
+          "authorizedotnet"
+        ]
       },
       "weight": 5,
       "confidence": "proven",

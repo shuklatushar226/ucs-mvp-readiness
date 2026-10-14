@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-14T18:05:23",
+  "generatedAt": "2026-10-14T18:13:01",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "250638e",
+    "commit": "b8993a3",
     "committedAt": "2026-10-14",
     "dirty": false
   },
@@ -180,7 +180,10 @@
         "methods": [
           "process_dispute_webhook"
         ],
-        "mode": "any"
+        "mode": "any",
+        "not_supported": [
+          "authorizedotnet"
+        ]
       },
       "confidence": "proven"
     },
@@ -291,7 +294,7 @@
         "webhooks_payment": "met",
         "webhooks_refund": "met",
         "ntid_mit": "met",
-        "chargeback_notify": "gap",
+        "chargeback_notify": "na",
         "chargeback_evidence": "na",
         "three_ds": "na",
         "auto_capture": "met",
@@ -318,11 +321,11 @@
         "probedFlows": 34
       },
       "met": 11,
-      "gaps": 1,
-      "na": 2,
-      "scored": 12,
-      "effort": 5,
-      "pct": 92,
+      "gaps": 0,
+      "na": 3,
+      "scored": 11,
+      "effort": 0,
+      "pct": 100,
       "credsState": "ready",
       "docsState": "public",
       "docsUrl": "https://developer.authorize.net/api/reference/index.html",
@@ -3619,8 +3622,8 @@
         "chargeback_evidence": "gap",
         "three_ds": "gap",
         "auto_capture": "met",
-        "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
         "googlepay_psp": "unknown",
         "googlepay_hs": "unknown"
       },

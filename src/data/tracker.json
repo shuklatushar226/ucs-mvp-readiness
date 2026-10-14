@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T12:41:08",
+  "generatedAt": "2026-10-14T15:31:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -53,17 +53,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-12T13:43:55Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2480,
-      "title": "feat(connector): [Nuvei] add PSync, Capture, Void, Refund and RSync [GRACE-INCOMPLETE]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2480",
-      "branch": "feat/nuvei_grace_full",
-      "connector": "nuvei",
-      "draft": true,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-09T07:40:18Z",
       "mergedAt": null
     },
     {

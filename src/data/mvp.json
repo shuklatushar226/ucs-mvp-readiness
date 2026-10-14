@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-14T04:02:08",
+  "generatedAt": "2026-10-14T16:03:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "07b381b",
-    "committedAt": "2026-10-13",
+    "commit": "250638e",
+    "committedAt": "2026-10-14",
     "dirty": false
   },
   "capabilities": [
@@ -437,6 +437,60 @@
       "prodVolume": 331155
     },
     {
+      "name": "authorizedotnet",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "gap",
+        "applepay_psp": "met",
+        "applepay_hs": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateConnectorCustomer",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerSessionAuthenticationToken",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 14,
+        "probedFlows": 34
+      },
+      "met": 11,
+      "gaps": 2,
+      "na": 1,
+      "scored": 13,
+      "effort": 10,
+      "pct": 85,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 46185
+    },
+    {
       "name": "novalnet",
       "tier": "sandbox_tested",
       "cells": {
@@ -760,60 +814,6 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 3490
-    },
-    {
-      "name": "authorizedotnet",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "gap",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "applepay_psp": "met",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateConnectorCustomer",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerSessionAuthenticationToken",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 14,
-        "probedFlows": 34
-      },
-      "met": 10,
-      "gaps": 3,
-      "na": 1,
-      "scored": 13,
-      "effort": 18,
-      "pct": 77,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 46185
     },
     {
       "name": "fiuu",

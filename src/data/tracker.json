@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T15:31:09",
+  "generatedAt": "2026-10-14T15:41:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -19,7 +19,18 @@
       "connector": "nuvei",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T07:08:20Z",
+      "updatedAt": "2026-10-14T10:09:24Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-14T10:01:35Z",
       "mergedAt": null
     },
     {
@@ -31,17 +42,6 @@
       "draft": true,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-13T21:04:29Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2516,
-      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
-      "branch": "feat/cybersource_grace",
-      "connector": "cybersource",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-13T16:43:31Z",
       "mergedAt": null
     },
     {

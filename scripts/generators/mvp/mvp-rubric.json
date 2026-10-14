@@ -293,7 +293,10 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "ApplePayDecrypt"
+        "pattern": "ApplePayDecrypt",
+        "supported": [
+          "authorizedotnet"
+        ]
       }
     },
     {
@@ -317,7 +320,10 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "GooglePayDecrypt"
+        "pattern": "GooglePayDecrypt",
+        "supported": [
+          "authorizedotnet"
+        ]
       }
     }
   ]

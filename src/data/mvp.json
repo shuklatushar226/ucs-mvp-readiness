@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T18:13:01",
+  "generatedAt": "2026-10-14T18:17:07",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -249,7 +249,10 @@
       "short": "APay HS",
       "signal": {
         "type": "code",
-        "pattern": "ApplePayDecrypt"
+        "pattern": "ApplePayDecrypt",
+        "supported": [
+          "authorizedotnet"
+        ]
       },
       "confidence": "best-effort"
     },
@@ -273,7 +276,10 @@
       "short": "GPay HS",
       "signal": {
         "type": "code",
-        "pattern": "GooglePayDecrypt"
+        "pattern": "GooglePayDecrypt",
+        "supported": [
+          "authorizedotnet"
+        ]
       },
       "confidence": "best-effort"
     }
@@ -299,9 +305,9 @@
         "three_ds": "na",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met"
       },
       "flows": [
         "Authorize",

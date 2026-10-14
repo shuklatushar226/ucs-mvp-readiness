@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T16:41:09",
+  "generatedAt": "2026-10-14T16:50:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,6 +12,17 @@
   "warnings": [],
   "inReview": [
     {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-14T11:19:31Z",
+      "mergedAt": null
+    },
+    {
       "number": 2526,
       "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
@@ -19,7 +30,7 @@
       "connector": "stripe",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T11:10:53Z",
+      "updatedAt": "2026-10-14T11:11:30Z",
       "mergedAt": null
     },
     {
@@ -31,17 +42,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-14T10:59:12Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2330,
-      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
-      "branch": "feat/nuvei_grace",
-      "connector": "nuvei",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T10:56:26Z",
       "mergedAt": null
     },
     {

@@ -143,7 +143,7 @@ def flows_signal(flows: dict, wanted, mode: str = "any", buckets: dict | None = 
     return out
 
 
-def code_unless(reject_pattern: str) -> dict:
+def code_unless(reject_pattern: str, accept_pattern: str | None = None) -> dict:
     """{connector: yes|no} — YES unless the source explicitly refuses.
 
     For capabilities where the UCS default IS the capability. CaptureMethod
@@ -152,7 +152,14 @@ def code_unless(reject_pattern: str) -> dict:
     dashboard so nobody reads a near-total count as that many positive confirmations.
     """
     rej = re.compile(reject_pattern)
-    return {c: (NO if rej.search(_sources(c)) else YES) for c in connector_set()}
+    accept = re.compile(accept_pattern) if accept_pattern else None
+    out = {}
+    for c in connector_set():
+        text = _sources(c)
+        # A connector-specific positive mapping is stronger evidence than a
+        # nearby generic refusal for other capture modes in the same match.
+        out[c] = YES if accept and accept.search(text) else (NO if rej.search(text) else YES)
+    return out
 
 
 def field_populated(field: str) -> dict:

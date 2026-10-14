@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T16:03:09",
+  "generatedAt": "2026-10-14T18:03:27",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -218,7 +218,8 @@
       "short": "Auto capture",
       "signal": {
         "type": "code_unless",
-        "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)"
+        "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)",
+        "accept": "CaptureMethod::Automatic\\)[\\s\\S]{0,200}?TransactionType::AuthCaptureTransaction"
       },
       "confidence": "best-effort"
     },
@@ -454,7 +455,7 @@
         "chargeback_notify": "gap",
         "chargeback_evidence": "na",
         "three_ds": "gap",
-        "auto_capture": "gap",
+        "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
         "googlepay_psp": "met",

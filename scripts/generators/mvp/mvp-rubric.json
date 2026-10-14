@@ -259,7 +259,8 @@
       "description": "Authorize-and-capture in one call. UCS defaults CaptureMethod to Automatic, so this is the ABSENCE of an explicit refusal rather than a positive confirmation \u2014 read a high count as 'not refused', not as 'verified'.",
       "signal": {
         "type": "code_unless",
-        "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)"
+        "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)",
+        "accept": "CaptureMethod::Automatic\\)[\\s\\S]{0,200}?TransactionType::AuthCaptureTransaction"
       },
       "weight": 1,
       "confidence": "best-effort",

@@ -55,7 +55,7 @@ def evaluate(cap: dict, flows: dict, buckets: dict) -> dict:
             # impossible without a precondition the flow matrix already settles.
             raw = {c: (S.NO if v == S.UNKNOWN else v) for c, v in raw.items()}
     elif kind == "code_unless":
-        raw = S.code_unless(sig["reject"])
+        raw = S.code_unless(sig["reject"], sig.get("accept"))
     elif kind == "field_populated":
         raw = S.field_populated(sig["field"])
     elif kind == "native_three_ds":

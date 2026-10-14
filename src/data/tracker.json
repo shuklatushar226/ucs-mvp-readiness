@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T18:41:09",
+  "generatedAt": "2026-10-14T19:11:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,17 +12,6 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2532,
-      "title": "chore(connector): [Paypal] preserve incomplete payment-flow implementation",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2532",
-      "branch": "feat/paypal_grace_full",
-      "connector": "paypal",
-      "draft": true,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T13:07:32Z",
-      "mergedAt": null
-    },
-    {
       "number": 2516,
       "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
@@ -30,7 +19,7 @@
       "connector": "cybersource",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T13:01:25Z",
+      "updatedAt": "2026-10-14T13:38:29Z",
       "mergedAt": null
     },
     {
@@ -41,7 +30,7 @@
       "connector": "stripe",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-14T12:24:13Z",
+      "updatedAt": "2026-10-14T13:31:36Z",
       "mergedAt": null
     },
     {

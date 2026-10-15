@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-15T19:41:08",
+  "generatedAt": "2026-10-15T19:51:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,6 +11,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2534,
+      "title": "feat(paypal): payment lifecycle and HS integration [GRACE-INCOMPLETE]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2534",
+      "branch": "feat/paypal_grace_codex_rerun",
+      "connector": "grace-incomplete",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-15T14:19:08Z",
+      "mergedAt": null
+    },
     {
       "number": 2516,
       "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
@@ -31,17 +42,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-15T14:01:21Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2534,
-      "title": "feat(paypal): payment lifecycle and HS integration [GRACE-INCOMPLETE]",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2534",
-      "branch": "feat/paypal_grace_codex_rerun",
-      "connector": "grace-incomplete",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-15T10:39:51Z",
       "mergedAt": null
     },
     {

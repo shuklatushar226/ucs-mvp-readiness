@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-14T18:17:07",
+  "generatedAt": "2026-10-15T16:05:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "b8993a3",
-    "committedAt": "2026-10-14",
+    "commit": "6a4b09b",
+    "committedAt": "2026-10-15",
     "dirty": false
   },
   "capabilities": [
@@ -2191,6 +2191,55 @@
       "prodVolume": 323
     },
     {
+      "name": "worldpayraft",
+      "tier": "alpha",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "gap",
+        "external_three_ds": "gap",
+        "webhooks_payment": "gap",
+        "webhooks_refund": "gap",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "unknown",
+        "applepay_hs": "unknown",
+        "googlepay_psp": "unknown",
+        "googlepay_hs": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 7,
+      "gaps": 6,
+      "na": 1,
+      "scored": 13,
+      "effort": 22,
+      "pct": 54,
+      "credsState": "missing",
+      "docsState": "public",
+      "docsUrl": "https://docs.worldpay.com/apis/native-raft/tokenization/api-specification",
+      "merchant": null,
+      "inProd": false,
+      "prodVolume": null
+    },
+    {
       "name": "billwerk",
       "tier": "sandbox_tested",
       "cells": {
@@ -3163,55 +3212,6 @@
       "credsState": "ready",
       "docsState": "public",
       "docsUrl": "https://dev-apac.bambora.com/guides/paymentApi__3GdiI.html",
-      "merchant": null,
-      "inProd": false,
-      "prodVolume": null
-    },
-    {
-      "name": "worldpayraft",
-      "tier": "alpha",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "gap",
-        "external_three_ds": "gap",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 6,
-      "gaps": 7,
-      "na": 1,
-      "scored": 13,
-      "effort": 25,
-      "pct": 46,
-      "credsState": "missing",
-      "docsState": "public",
-      "docsUrl": "https://docs.worldpay.com/apis/native-raft/tokenization/api-specification",
       "merchant": null,
       "inProd": false,
       "prodVolume": null

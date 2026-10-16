@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-15T16:05:09",
+  "generatedAt": "2026-10-16T16:01:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "6a4b09b",
-    "committedAt": "2026-10-15",
+    "commit": "3a5ce89",
+    "committedAt": "2026-10-16",
     "dirty": false
   },
   "capabilities": [
@@ -968,7 +968,7 @@
         "Void"
       ],
       "probe": {
-        "buildableFlows": 8,
+        "buildableFlows": 5,
         "probedFlows": 34
       },
       "met": 9,
@@ -5187,6 +5187,54 @@
       "prodVolume": null
     },
     {
+      "name": "payhere",
+      "tier": "alpha",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "gap",
+        "zero_auth": "gap",
+        "void": "gap",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "gap",
+        "webhooks_payment": "met",
+        "webhooks_refund": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "unknown",
+        "applepay_hs": "unknown",
+        "googlepay_psp": "unknown",
+        "googlepay_hs": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "PSync",
+        "RSync",
+        "Refund",
+        "ServerAuthenticationToken"
+      ],
+      "probe": {
+        "buildableFlows": 4,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 10,
+      "na": 0,
+      "scored": 14,
+      "effort": 37,
+      "pct": 29,
+      "credsState": "missing",
+      "docsState": "public",
+      "docsUrl": "https://support.payhere.lk/api-&-mobile-sdk/checkout-api",
+      "merchant": null,
+      "inProd": false,
+      "prodVolume": null
+    },
+    {
       "name": "easebuzz",
       "tier": "sandbox_tested",
       "cells": {
@@ -5975,52 +6023,6 @@
       "credsState": "missing",
       "docsState": "public",
       "docsUrl": "https://raw.githubusercontent.com/juspay/hyperswitch/connector-integration-hs/api-reference/v1/openapi_spec_v1.json",
-      "merchant": null,
-      "inProd": false,
-      "prodVolume": null
-    },
-    {
-      "name": "payhere",
-      "tier": "alpha",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "gap",
-        "zero_auth": "gap",
-        "void": "gap",
-        "refunds": "gap",
-        "refund_sync": "gap",
-        "external_three_ds": "gap",
-        "webhooks_payment": "met",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "PSync",
-        "ServerAuthenticationToken"
-      ],
-      "probe": {
-        "buildableFlows": 4,
-        "probedFlows": 34
-      },
-      "met": 2,
-      "gaps": 12,
-      "na": 0,
-      "scored": 14,
-      "effort": 40,
-      "pct": 14,
-      "credsState": "missing",
-      "docsState": "public",
-      "docsUrl": "https://support.payhere.lk/api-&-mobile-sdk/checkout-api",
       "merchant": null,
       "inProd": false,
       "prodVolume": null

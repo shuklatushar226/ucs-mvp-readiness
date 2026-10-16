@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T10:31:08",
+  "generatedAt": "2026-10-16T11:31:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,6 +12,17 @@
   "warnings": [],
   "inReview": [
     {
+      "number": 2526,
+      "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
+      "branch": "feat/stripe_grace",
+      "connector": "stripe",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-16T06:00:18Z",
+      "mergedAt": null
+    },
+    {
       "number": 2534,
       "title": "feat(paypal): payment lifecycle and HS integration [GRACE-INCOMPLETE]",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2534",
@@ -20,17 +31,6 @@
       "draft": true,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-16T04:54:08Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2526,
-      "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
-      "branch": "feat/stripe_grace",
-      "connector": "stripe",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-15T22:11:06Z",
       "mergedAt": null
     },
     {

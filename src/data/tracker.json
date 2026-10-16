@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T16:11:08",
+  "generatedAt": "2026-10-16T16:21:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -19,7 +19,7 @@
       "connector": "stripe",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-16T10:37:42Z",
+      "updatedAt": "2026-10-16T10:41:31Z",
       "mergedAt": null
     },
     {

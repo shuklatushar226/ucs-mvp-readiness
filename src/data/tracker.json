@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-17T01:11:08",
+  "generatedAt": "2026-10-17T01:21:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -19,7 +19,18 @@
       "connector": "cybersource",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-16T19:39:48Z",
+      "updatedAt": "2026-10-16T19:47:13Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-16T19:44:42Z",
       "mergedAt": null
     },
     {
@@ -31,17 +42,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-16T19:38:05Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2330,
-      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
-      "branch": "feat/nuvei_grace",
-      "connector": "nuvei",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-16T11:04:18Z",
       "mergedAt": null
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T00:31:09",
+  "generatedAt": "2026-10-19T00:41:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "adyen",
         "status": "running",
-        "startedAt": "2026-10-19T00:16:51+05:30",
+        "startedAt": "2026-10-19T00:26:09+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -16,7 +16,7 @@
       {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-19T00:16:12+05:30",
+        "startedAt": "2026-10-19T00:26:07+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -29,6 +29,17 @@
   "warnings": [],
   "inReview": [
     {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-18T19:06:31Z",
+      "mergedAt": null
+    },
+    {
       "number": 2516,
       "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
@@ -37,17 +48,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-18T18:47:52Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2330,
-      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
-      "branch": "feat/nuvei_grace",
-      "connector": "nuvei",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-18T18:19:55Z",
       "mergedAt": null
     },
     {

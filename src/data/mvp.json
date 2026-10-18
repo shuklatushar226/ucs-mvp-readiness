@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-17T04:02:09",
+  "generatedAt": "2026-10-19T04:01:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "a92a031",
-    "committedAt": "2026-10-16",
+    "commit": "675e267",
+    "committedAt": "2026-10-18",
     "dirty": false
   },
   "capabilities": [
@@ -338,6 +338,62 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 46185
+    },
+    {
+      "name": "nuvei",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "applepay_psp": "unknown",
+        "applepay_hs": "unknown",
+        "googlepay_psp": "unknown",
+        "googlepay_hs": "unknown"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "CreateOrder",
+        "PSync",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerSessionAuthenticationToken",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 13,
+        "probedFlows": 34
+      },
+      "met": 13,
+      "gaps": 0,
+      "na": 1,
+      "scored": 13,
+      "effort": 0,
+      "pct": 100,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://docs.nuvei.com/api/v2/main/docs/introduction/",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 37
     },
     {
       "name": "adyen",
@@ -2394,60 +2450,6 @@
       "merchant": null,
       "inProd": false,
       "prodVolume": null
-    },
-    {
-      "name": "nuvei",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "gap",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "CreateOrder",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerSessionAuthenticationToken",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 7,
-      "gaps": 6,
-      "na": 1,
-      "scored": 13,
-      "effort": 24,
-      "pct": 54,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://docs.nuvei.com/api/v2/main/docs/introduction/",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 37
     },
     {
       "name": "paybox",

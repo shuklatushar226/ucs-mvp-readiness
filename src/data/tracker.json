@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T23:21:08",
+  "generatedAt": "2026-10-18T23:31:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "adyen",
         "status": "running",
-        "startedAt": "2026-10-18T23:06:10+05:30",
+        "startedAt": "2026-10-18T23:16:39+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -16,7 +16,7 @@
       {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-18T23:06:50+05:30",
+        "startedAt": "2026-10-18T23:17:27+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -29,17 +29,6 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2516,
-      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
-      "branch": "feat/cybersource_grace",
-      "connector": "cybersource",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-18T17:50:11Z",
-      "mergedAt": null
-    },
-    {
       "number": 2330,
       "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
@@ -47,7 +36,18 @@
       "connector": "nuvei",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-18T17:13:00Z",
+      "updatedAt": "2026-10-18T17:54:47Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-18T17:52:56Z",
       "mergedAt": null
     },
     {

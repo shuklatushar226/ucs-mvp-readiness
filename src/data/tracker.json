@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T23:11:09",
+  "generatedAt": "2026-10-18T23:21:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "adyen",
         "status": "running",
-        "startedAt": "2026-10-18T22:56:06+05:30",
+        "startedAt": "2026-10-18T23:06:10+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -16,7 +16,7 @@
       {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-18T22:59:31+05:30",
+        "startedAt": "2026-10-18T23:06:50+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -29,14 +29,14 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2526,
-      "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
-      "branch": "feat/stripe_grace",
-      "connector": "stripe",
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-18T17:21:06Z",
+      "updatedAt": "2026-10-18T17:50:11Z",
       "mergedAt": null
     },
     {
@@ -48,17 +48,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-18T17:13:00Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2516,
-      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
-      "branch": "feat/cybersource_grace",
-      "connector": "cybersource",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-18T17:11:27Z",
       "mergedAt": null
     },
     {
@@ -151,6 +140,17 @@
     }
   ],
   "merged": [
+    {
+      "number": 2526,
+      "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
+      "branch": "feat/stripe_grace",
+      "connector": "stripe",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-18T17:45:28Z",
+      "mergedAt": "2026-10-18T17:45:26Z"
+    },
     {
       "number": 2515,
       "title": "feat(connector): [Authorizedotnet] close 13 field and behaviour gaps across six flows",

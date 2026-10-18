@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T21:21:08",
+  "generatedAt": "2026-10-18T21:31:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "adyen",
         "status": "running",
-        "startedAt": "2026-10-18T21:15:07+05:30",
+        "startedAt": "2026-10-18T21:16:11+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -16,7 +16,7 @@
       {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-18T21:14:37+05:30",
+        "startedAt": "2026-10-18T21:16:35+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -29,17 +29,6 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2516,
-      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
-      "branch": "feat/cybersource_grace",
-      "connector": "cybersource",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-17T18:05:53Z",
-      "mergedAt": null
-    },
-    {
       "number": 2526,
       "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
@@ -47,7 +36,7 @@
       "connector": "stripe",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-16T20:17:44Z",
+      "updatedAt": "2026-10-18T15:58:47Z",
       "mergedAt": null
     },
     {
@@ -58,7 +47,18 @@
       "connector": "nuvei",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-16T20:16:26Z",
+      "updatedAt": "2026-10-18T15:58:45Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-17T18:05:53Z",
       "mergedAt": null
     },
     {

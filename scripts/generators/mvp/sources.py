@@ -220,9 +220,12 @@ def native_three_ds(flows: dict) -> dict:
     artifacts against 38-370 for every genuine 3DS connector — a cliff, so the split
     is not a threshold judgement call.
 
-    Deliberately NOT counted: connectors that fold 3DS into Authorize with no RPC
-    (adyen, stripe, checkout...). Their artifact counts slide smoothly from 1 to 19
-    with no cliff, so any cutoff would be a knob, not a measurement.
+    NOT detected here: connectors that fold 3DS into Authorize with no RPC (adyen,
+    stripe, checkout...). Artifact counts across that group have no cliff (stripe
+    alone is at 88), so no cutoff separates them from pass-through connectors that
+    merely forward an auth type — it would be a knob, not a measurement. They are
+    still performing the authentication, so one is promoted only by an explicit
+    `supported` entry in the rubric, verified against source AND processor docs.
     """
     impl = flows_signal(flows, list(_AUTH_FLOWS), "any")
     out = {}

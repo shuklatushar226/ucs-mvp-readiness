@@ -1,25 +1,27 @@
 {
-  "generatedAt": "2026-10-19T12:00:53",
+  "generatedAt": "2026-10-19T12:11:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-10-05T23:08:02+05:30",
-    "rows": [
-      {
-        "connector": "paypal",
-        "status": "running",
-        "startedAt": "2026-10-19T11:52:39+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": null
-      }
-    ]
+    "rows": []
   },
   "prsOk": true,
   "blockedLabel": "GRACE-blocked",
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-19T06:34:02Z",
+      "mergedAt": null
+    },
     {
       "number": 2552,
       "title": "feat(connector): [Paypal] add RepeatPayment [GRACE-INCOMPLETE]",
@@ -40,17 +42,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-19T05:43:38Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2516,
-      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
-      "branch": "feat/cybersource_grace",
-      "connector": "cybersource",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-18T22:43:33Z",
       "mergedAt": null
     },
     {

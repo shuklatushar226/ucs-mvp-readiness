@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T11:11:08",
+  "generatedAt": "2026-10-19T11:21:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -8,7 +8,7 @@
       {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-19T10:56:37+05:30",
+        "startedAt": "2026-10-19T11:06:08+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -21,17 +21,6 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2553,
-      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
-      "branch": "feat/adyen_grace-v2",
-      "connector": "adyen",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T05:37:34Z",
-      "mergedAt": null
-    },
-    {
       "number": 2552,
       "title": "feat(connector): [Paypal] add RepeatPayment [GRACE-INCOMPLETE]",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
@@ -39,7 +28,18 @@
       "connector": "paypal",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T05:35:18Z",
+      "updatedAt": "2026-10-19T05:44:36Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2553,
+      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
+      "branch": "feat/adyen_grace-v2",
+      "connector": "adyen",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-19T05:43:38Z",
       "mergedAt": null
     },
     {

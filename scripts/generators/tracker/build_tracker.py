@@ -18,7 +18,8 @@ work, not the repository's overall throughput.
 
 Not time-boxed. A connector run takes about nine hours and a review can sit for
 days, so a Monday-to-Friday window cut the record in the middle of the work it
-was meant to show. `merged_limit` bounds the list instead.
+was meant to show. `merged_limit` bounds the list instead -- and because the
+label is applied in the query, it bounds GRACE PRs, not the repository's.
 
 Both PR columns select on the `GRACE-auto` label and nothing else. `2.8_pr_run.md` applies it on every PR this pipeline
 raises, so it marks intent rather than inference — a `feat/grace-*` branch
@@ -152,7 +153,13 @@ def main():
 
     open_prs = gh(["pr", "list", "--repo", a.repo, "--state", "open",
                    "--limit", "200", "--json", fields])
+    # --label filters server-side, so --merged-limit bounds GRACE PRs rather than
+    # the repository's merged PRs. Filtering only client-side lost runs that were
+    # raised long before they landed: nuvei #2330 was opened in September and
+    # merged on 18 Oct, by which time ~220 newer PRs had pushed it past the 50
+    # the unfiltered query returned, so a merged run went missing from the board.
     merged = gh(["pr", "list", "--repo", a.repo, "--state", "merged",
+                 "--label", GRACE_LABEL,
                  "--limit", str(a.merged_limit), "--json", fields])
     prs_ok = open_prs is not None and merged is not None
     open_prs, merged = open_prs or [], merged or []

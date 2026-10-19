@@ -1,22 +1,14 @@
 {
-  "generatedAt": "2026-10-19T11:01:08",
+  "generatedAt": "2026-10-19T11:11:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-10-05T23:08:02+05:30",
     "rows": [
       {
-        "connector": "adyen",
-        "status": "running",
-        "startedAt": "2026-10-19T10:46:09+05:30",
-        "retries": 0,
-        "error": null,
-        "slot": null
-      },
-      {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-19T10:49:13+05:30",
+        "startedAt": "2026-10-19T10:56:37+05:30",
         "retries": 0,
         "error": null,
         "slot": null
@@ -36,7 +28,7 @@
       "connector": "adyen",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T05:18:24Z",
+      "updatedAt": "2026-10-19T05:37:34Z",
       "mergedAt": null
     },
     {
@@ -47,7 +39,7 @@
       "connector": "paypal",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T05:02:10Z",
+      "updatedAt": "2026-10-19T05:35:18Z",
       "mergedAt": null
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T17:01:08",
+  "generatedAt": "2026-10-20T01:21:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,17 +12,6 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2552,
-      "title": "feat(connector): [Paypal] add RepeatPayment",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
-      "branch": "feat/paypal_grace",
-      "connector": "paypal",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T11:25:16Z",
-      "mergedAt": null
-    },
-    {
       "number": 2553,
       "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
@@ -30,7 +19,18 @@
       "connector": "adyen",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T10:33:50Z",
+      "updatedAt": "2026-10-19T19:41:38Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2552,
+      "title": "feat(connector): [Paypal] add RepeatPayment",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
+      "branch": "feat/paypal_grace",
+      "connector": "paypal",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-19T19:41:38Z",
       "mergedAt": null
     },
     {

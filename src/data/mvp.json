@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-19T15:27:46",
+  "generatedAt": "2026-10-20T04:05:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "2aa352a",
+    "commit": "ba06ea5",
     "committedAt": "2026-10-19",
     "dirty": false
   },
@@ -1293,7 +1293,7 @@
         "VoidPC"
       ],
       "probe": {
-        "buildableFlows": 12,
+        "buildableFlows": 11,
         "probedFlows": 34
       },
       "met": 9,

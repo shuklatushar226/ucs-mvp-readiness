@@ -223,7 +223,8 @@
         ],
         "mode": "any",
         "not_supported": [
-          "authorizedotnet"
+          "authorizedotnet",
+          "cybersource"
         ]
       },
       "weight": 5,

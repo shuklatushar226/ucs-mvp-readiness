@@ -1,14 +1,22 @@
 {
-  "generatedAt": "2026-10-19T09:01:08",
+  "generatedAt": "2026-10-19T09:11:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
     "updatedAt": "2026-10-05T23:08:02+05:30",
     "rows": [
       {
+        "connector": "adyen",
+        "status": "running",
+        "startedAt": "2026-10-19T09:02:13+05:30",
+        "retries": 0,
+        "error": null,
+        "slot": null
+      },
+      {
         "connector": "paypal",
         "status": "running",
-        "startedAt": "2026-10-19T08:48:48+05:30",
+        "startedAt": "2026-10-19T08:57:09+05:30",
         "retries": 0,
         "error": null,
         "slot": null

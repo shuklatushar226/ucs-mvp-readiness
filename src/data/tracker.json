@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T15:41:08",
+  "generatedAt": "2026-10-20T16:21:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,14 +12,14 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2561,
-      "title": "chore(connector): [Ecommpay] GRACE run incomplete \u2014 10 flows unresolved (ThreeDS, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
-      "branch": "feat/grace-ecommpay-0ebbb3",
-      "connector": "ecommpay",
+      "number": 2553,
+      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
+      "branch": "feat/adyen_grace-v2",
+      "connector": "adyen",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T10:06:45Z",
+      "updatedAt": "2026-10-20T10:42:26Z",
       "mergedAt": null
     },
     {
@@ -30,18 +30,18 @@
       "connector": "paypal",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T07:09:46Z",
+      "updatedAt": "2026-10-20T10:42:26Z",
       "mergedAt": null
     },
     {
-      "number": 2553,
-      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
-      "branch": "feat/adyen_grace-v2",
-      "connector": "adyen",
+      "number": 2561,
+      "title": "chore(connector): [Ecommpay] GRACE run incomplete \u2014 10 flows unresolved (ThreeDS, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
+      "branch": "feat/grace-ecommpay-0ebbb3",
+      "connector": "ecommpay",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-19T20:40:42Z",
+      "updatedAt": "2026-10-20T10:41:24Z",
       "mergedAt": null
     },
     {

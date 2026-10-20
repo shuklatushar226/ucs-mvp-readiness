@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T17:51:08",
+  "generatedAt": "2026-10-20T18:00:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,6 +12,17 @@
   "warnings": [],
   "inReview": [
     {
+      "number": 2561,
+      "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
+      "branch": "feat/grace-ecommpay-0ebbb3",
+      "connector": "ecommpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-20T12:24:50Z",
+      "mergedAt": null
+    },
+    {
       "number": 2552,
       "title": "feat(connector): [Paypal] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
@@ -19,7 +30,7 @@
       "connector": "paypal",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T12:20:38Z",
+      "updatedAt": "2026-10-20T12:21:07Z",
       "mergedAt": null
     },
     {
@@ -31,17 +42,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-20T10:42:26Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2561,
-      "title": "chore(connector): [Ecommpay] GRACE run incomplete \u2014 10 flows unresolved (ThreeDS, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
-      "branch": "feat/grace-ecommpay-0ebbb3",
-      "connector": "ecommpay",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T10:41:24Z",
       "mergedAt": null
     },
     {

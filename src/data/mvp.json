@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-20T04:05:09",
+  "generatedAt": "2026-10-20T16:04:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "ba06ea5",
-    "committedAt": "2026-10-19",
+    "commit": "c5058cb",
+    "committedAt": "2026-10-20",
     "dirty": false
   },
   "capabilities": [
@@ -2277,6 +2277,7 @@
       "flows": [
         "Authorize",
         "Capture",
+        "IncrementalAuthorization",
         "Refund",
         "RepeatPayment",
         "SetupMandate",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T22:31:08",
+  "generatedAt": "2026-10-21T05:01:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,6 +11,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2566,
+      "title": "chore(connector): [Checkout] GRACE run incomplete \u2014 13 flows implemented, none verified",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2566",
+      "branch": "feat/checkout_grace",
+      "connector": "checkout",
+      "draft": true,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-20T23:29:46Z",
+      "mergedAt": null
+    },
     {
       "number": 2552,
       "title": "feat(connector): [Paypal] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",

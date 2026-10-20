@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T18:00:09",
+  "generatedAt": "2026-10-20T18:11:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,17 +12,6 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2561,
-      "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
-      "branch": "feat/grace-ecommpay-0ebbb3",
-      "connector": "ecommpay",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T12:24:50Z",
-      "mergedAt": null
-    },
-    {
       "number": 2552,
       "title": "feat(connector): [Paypal] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
@@ -30,7 +19,7 @@
       "connector": "paypal",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T12:21:07Z",
+      "updatedAt": "2026-10-20T12:39:44Z",
       "mergedAt": null
     },
     {
@@ -41,7 +30,18 @@
       "connector": "adyen",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T10:42:26Z",
+      "updatedAt": "2026-10-20T12:36:17Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2561,
+      "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
+      "branch": "feat/grace-ecommpay-0ebbb3",
+      "connector": "ecommpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-20T12:24:50Z",
       "mergedAt": null
     },
     {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T18:51:08",
+  "generatedAt": "2026-10-20T22:11:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,6 +12,17 @@
   "warnings": [],
   "inReview": [
     {
+      "number": 2552,
+      "title": "feat(connector): [Paypal] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
+      "branch": "feat/paypal_grace",
+      "connector": "paypal",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-20T16:33:48Z",
+      "mergedAt": null
+    },
+    {
       "number": 2561,
       "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
       "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
@@ -20,17 +31,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-10-20T13:13:21Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2552,
-      "title": "feat(connector): [Paypal] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
-      "branch": "feat/paypal_grace",
-      "connector": "paypal",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-20T12:48:40Z",
       "mergedAt": null
     },
     {

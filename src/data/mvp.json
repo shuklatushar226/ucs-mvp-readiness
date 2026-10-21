@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-21T16:04:09",
+  "generatedAt": "2026-10-22T03:37:04",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "1a5f0de",
+    "commit": "c8624d7",
     "committedAt": "2026-10-21",
     "dirty": false
   },
@@ -473,7 +473,7 @@
         "webhooks_refund": "met",
         "ntid_mit": "met",
         "chargeback_notify": "met",
-        "chargeback_evidence": "gap",
+        "chargeback_evidence": "met",
         "three_ds": "met",
         "auto_capture": "met",
         "applepay_psp": "met",
@@ -482,6 +482,7 @@
         "googlepay_hs": "unknown"
       },
       "flows": [
+        "Accept",
         "Authorize",
         "Capture",
         "ClientAuthenticationToken",
@@ -493,18 +494,19 @@
         "Refund",
         "RepeatPayment",
         "SetupMandate",
+        "SubmitEvidence",
         "Void"
       ],
       "probe": {
-        "buildableFlows": 16,
+        "buildableFlows": 18,
         "probedFlows": 34
       },
-      "met": 13,
-      "gaps": 1,
+      "met": 14,
+      "gaps": 0,
       "na": 0,
       "scored": 14,
-      "effort": 5,
-      "pct": 93,
+      "effort": 0,
+      "pct": 100,
       "credsState": "ready",
       "docsState": "public",
       "docsUrl": "https://docs.stripe.com/api",

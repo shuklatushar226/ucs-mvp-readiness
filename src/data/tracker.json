@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T03:11:08",
+  "generatedAt": "2026-10-22T06:01:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,6 +11,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2577,
+      "title": "feat(connector): [Noon] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2577",
+      "branch": "feat/noon_grace",
+      "connector": "noon",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-22T00:27:45Z",
+      "mergedAt": null
+    },
     {
       "number": 2553,
       "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",

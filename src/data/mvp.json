@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-22T16:04:09",
+  "generatedAt": "2026-10-23T04:05:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "8410ae1",
+    "commit": "862c672",
     "committedAt": "2026-10-22",
     "dirty": false
   },
@@ -2271,9 +2271,9 @@
         "chargeback_evidence": "na",
         "three_ds": "gap",
         "auto_capture": "met",
-        "applepay_psp": "unknown",
+        "applepay_psp": "met",
         "applepay_hs": "unknown",
-        "googlepay_psp": "unknown",
+        "googlepay_psp": "met",
         "googlepay_hs": "unknown"
       },
       "flows": [

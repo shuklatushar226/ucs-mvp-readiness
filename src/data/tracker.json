@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T16:30:08",
+  "generatedAt": "2026-10-23T19:11:08",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -12,25 +12,14 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2561,
-      "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
-      "branch": "feat/grace-ecommpay-0ebbb3",
-      "connector": "ecommpay",
+      "number": 2587,
+      "title": "feat(connector): [Novalnet] add 11 flows (Authorize, PSync, Capture, Void, Refund, RSync)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2587",
+      "branch": "feat/grace-novalnet-5d6a4b",
+      "connector": "novalnet",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-23T10:59:02Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2553,
-      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
-      "branch": "feat/adyen_grace-v2",
-      "connector": "adyen",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-10-23T07:25:26Z",
+      "updatedAt": "2026-10-23T13:38:28Z",
       "mergedAt": null
     },
     {
@@ -41,18 +30,29 @@
       "connector": "noon",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-23T07:05:23Z",
+      "updatedAt": "2026-10-23T13:38:18Z",
       "mergedAt": null
     },
     {
-      "number": 2587,
-      "title": "feat(connector): [Novalnet] add 11 flows (Authorize, PSync, Capture, Void, Refund, RSync)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2587",
-      "branch": "feat/grace-novalnet-5d6a4b",
-      "connector": "novalnet",
+      "number": 2553,
+      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
+      "branch": "feat/adyen_grace-v2",
+      "connector": "adyen",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-10-22T20:20:27Z",
+      "updatedAt": "2026-10-23T13:38:14Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2561,
+      "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
+      "branch": "feat/grace-ecommpay-0ebbb3",
+      "connector": "ecommpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-23T13:36:58Z",
       "mergedAt": null
     },
     {

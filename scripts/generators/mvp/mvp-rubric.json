@@ -292,15 +292,37 @@
       "id": "applepay_hs",
       "label": "Apple Pay \u2014 HS decryption",
       "short": "APay HS",
-      "description": "The connector consumes an Apple Pay token already decrypted by HyperSwitch/UCS and sends the DPAN and cryptogram onward. Detected from the ApplePayDecrypt* types.",
+      "description": "The connector consumes an Apple Pay token already decrypted by HyperSwitch/UCS and sends the DPAN and cryptogram onward. This is the pre-decrypted flow: wire field apple_pay_sdk, oneof branch payment_data.decrypted_data. Detected from the domain variant ApplePayPaymentData::Decrypted and from the connector-local Decrypt*/Predecrypt* type names, since connectors spell it both ways. A connector that matches the variant only to refuse it is rejected, not counted.",
       "weight": 5,
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "ApplePayDecrypt",
-        "supported": [
-          "authorizedotnet"
-        ]
+        "pattern": "ApplePay(Decrypt|Predecrypt)|ApplePayPaymentData::Decrypted",
+        "reject": "ApplePayPaymentData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+      }
+    },
+    {
+      "id": "applepay_redirect",
+      "label": "Apple Pay \u2014 redirect",
+      "short": "APay redir",
+      "description": "The connector hosts the Apple Pay sheet on its own page and UCS returns only a redirect. ApplePayRedirectData is an empty struct \u2014 there is no token, because the merchant holds no Apple Pay credentials on this path, so the Authorize response is a redirect rather than a charge. Detected from WalletData::ApplePayRedirect.",
+      "weight": 2,
+      "confidence": "best-effort",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::ApplePayRedirect\\b"
+      }
+    },
+    {
+      "id": "applepay_sdk",
+      "label": "Apple Pay \u2014 third-party SDK",
+      "short": "APay SDK",
+      "description": "The processor's own mobile SDK runs the wallet flow in-app and hands back an opaque session reference; ApplePayThirdPartySdkData carries a single optional token and the connector never sees card data. Detected from WalletData::ApplePayThirdPartySdk.",
+      "weight": 3,
+      "confidence": "best-effort",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::ApplePayThirdPartySdk\\b"
       }
     },
     {
@@ -319,15 +341,37 @@
       "id": "googlepay_hs",
       "label": "Google Pay \u2014 HS decryption",
       "short": "GPay HS",
-      "description": "The connector consumes a Google Pay token already decrypted by HyperSwitch/UCS. Detected from the GooglePayDecrypt* types.",
+      "description": "The connector consumes a Google Pay token already decrypted by HyperSwitch/UCS. This is the pre-decrypted flow: wire field google_pay_sdk, oneof branch tokenization_data.decrypted_data. Detected from the domain variant GpayTokenizationData::Decrypted and from the connector-local Decrypt*/Predecrypt* type names, since connectors spell it both ways. A connector that matches the variant only to refuse it is rejected, not counted.",
       "weight": 5,
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "GooglePayDecrypt",
-        "supported": [
-          "authorizedotnet"
-        ]
+        "pattern": "GooglePay(Decrypt|Predecrypt)|GPay[Pp]redecrypt|GpayTokenizationData::Decrypted",
+        "reject": "GpayTokenizationData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+      }
+    },
+    {
+      "id": "googlepay_redirect",
+      "label": "Google Pay \u2014 redirect",
+      "short": "GPay redir",
+      "description": "The connector hosts the Google Pay sheet on its own page and UCS returns only a redirect. GooglePayRedirectData is an empty struct \u2014 there is no token, so the Authorize response is a redirect rather than a charge. Detected from WalletData::GooglePayRedirect.",
+      "weight": 2,
+      "confidence": "best-effort",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::GooglePayRedirect\\b"
+      }
+    },
+    {
+      "id": "googlepay_sdk",
+      "label": "Google Pay \u2014 third-party SDK",
+      "short": "GPay SDK",
+      "description": "The processor's own mobile SDK runs the wallet flow in-app and hands back an opaque session reference; GooglePayThirdPartySdkData carries a single optional token and the connector never sees card data. Detected from WalletData::GooglePayThirdPartySdk.",
+      "weight": 3,
+      "confidence": "best-effort",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::GooglePayThirdPartySdk\\b"
       }
     }
   ]

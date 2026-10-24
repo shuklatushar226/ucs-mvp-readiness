@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T00:30:09",
+  "generatedAt": "2026-10-24T08:31:09",
   "repo": "juspay/hyperswitch-prism",
   "ledger": {
     "runId": "batch-2026-09-29",
@@ -11,6 +11,17 @@
   "blockedPrs": [],
   "warnings": [],
   "inReview": [
+    {
+      "number": 2602,
+      "title": "feat(connector): [NMI] 3DS, wallets, mandates, chargeback webhooks, parity fixes [GRACE-INCOMPLETE]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2602",
+      "branch": "feat/nmi_grace_v2",
+      "connector": "nmi",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-24T02:53:51Z",
+      "mergedAt": null
+    },
     {
       "number": 2601,
       "title": "feat(connector): [Nexixpay] add 9 flows (ThreeDS, IncomingWebhook, PSync, Capture, Void, ...)",

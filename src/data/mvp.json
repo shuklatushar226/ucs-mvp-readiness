@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T21:44:47",
+  "generatedAt": "2026-11-03T21:48:09",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -180,7 +180,11 @@
         "methods": [
           "process_dispute_webhook"
         ],
-        "mode": "any"
+        "mode": "any",
+        "not_supported": [
+          "authorizedotnet",
+          "cybersource"
+        ]
       },
       "confidence": "proven"
     },
@@ -202,11 +206,17 @@
     {
       "id": "three_ds",
       "label": "3DS (native)",
-      "description": "Connector PERFORMS the authentication itself: it implements a PreAuthenticate / Authenticate / PostAuthenticate RPC AND carries real 3DS protocol artifacts. The second condition is required because those RPCs are a generic pre/post-processing channel \u2014 flywire, grabpay, globalpay and kount use them for hosted checkout, charge-init, Confirm Transaction and risk, scoring 0-1 artifacts against 38-370 for every genuine 3DS connector. Connectors that fold 3DS into Authorize with no RPC are deliberately excluded: their artifact counts have no cliff, so any cutoff would be a knob rather than a measurement.",
+      "description": "Connector PERFORMS the authentication itself: it implements a PreAuthenticate / Authenticate / PostAuthenticate RPC AND carries real 3DS protocol artifacts. The second condition is required because those RPCs are a generic pre/post-processing channel \u2014 flywire, grabpay, globalpay and kount use them for hosted checkout, charge-init, Confirm Transaction and risk, scoring 0-1 artifacts against 38-370 for every genuine 3DS connector. A connector that folds 3DS into Authorize with no RPC is NOT detectable this way \u2014 artifact counts across that group have no cliff, so any cutoff would be a knob rather than a measurement. Such a connector is still performing the authentication, so it is listed in `supported` once verified by hand against both its UCS source and the processor API docs. stripe is verified: it requests the challenge with payment_method_options[card][request_three_d_secure], answers requires_action with next_action.redirect_to_url, and reads the outcome from the intent.",
       "weight": 5,
       "short": "3DS native",
       "signal": {
-        "type": "native_three_ds"
+        "type": "native_three_ds",
+        "supported": [
+          "stripe"
+        ],
+        "not_supported": [
+          "authorizedotnet"
+        ]
       },
       "confidence": "proven"
     },
@@ -218,7 +228,8 @@
       "short": "Auto capture",
       "signal": {
         "type": "code_unless",
-        "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)"
+        "reject": "CaptureMethod::Automatic[\\s\\S]{0,300}?(?:capture_method_not_supported|NotSupported|NotImplemented)",
+        "accept": "CaptureMethod::Automatic\\)[\\s\\S]{0,200}?TransactionType::AuthCaptureTransaction"
       },
       "confidence": "best-effort"
     },
@@ -237,12 +248,37 @@
     {
       "id": "applepay_hs",
       "label": "Apple Pay \u2014 HS decryption",
-      "description": "The connector consumes an Apple Pay token already decrypted by HyperSwitch/UCS and sends the DPAN and cryptogram onward. Detected from the ApplePayDecrypt* types.",
+      "description": "The connector consumes an Apple Pay token already decrypted by HyperSwitch/UCS and sends the DPAN and cryptogram onward. This is the pre-decrypted flow: wire field apple_pay_sdk, oneof branch payment_data.decrypted_data. Detected from the domain variant ApplePayPaymentData::Decrypted and from the connector-local Decrypt*/Predecrypt* type names, since connectors spell it both ways. A connector that matches the variant only to refuse it is rejected, not counted.",
       "weight": 5,
       "short": "APay HS",
       "signal": {
         "type": "code",
-        "pattern": "ApplePayDecrypt"
+        "pattern": "ApplePay(Decrypt|Predecrypt)|ApplePayPaymentData::Decrypted",
+        "reject": "ApplePayPaymentData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+      },
+      "confidence": "best-effort"
+    },
+    {
+      "id": "applepay_redirect",
+      "label": "Apple Pay \u2014 redirect",
+      "description": "The connector hosts the Apple Pay sheet on its own page and UCS returns only a redirect. ApplePayRedirectData is an empty struct \u2014 there is no token, because the merchant holds no Apple Pay credentials on this path, so the Authorize response is a redirect rather than a charge. Detected from WalletData::ApplePayRedirect.",
+      "weight": 2,
+      "short": "APay redir",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::ApplePayRedirect\\b"
+      },
+      "confidence": "best-effort"
+    },
+    {
+      "id": "applepay_sdk",
+      "label": "Apple Pay \u2014 third-party SDK",
+      "description": "The processor's own mobile SDK runs the wallet flow in-app and hands back an opaque session reference; ApplePayThirdPartySdkData carries a single optional token and the connector never sees card data. Detected from WalletData::ApplePayThirdPartySdk.",
+      "weight": 3,
+      "short": "APay SDK",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::ApplePayThirdPartySdk\\b"
       },
       "confidence": "best-effort"
     },
@@ -261,17 +297,162 @@
     {
       "id": "googlepay_hs",
       "label": "Google Pay \u2014 HS decryption",
-      "description": "The connector consumes a Google Pay token already decrypted by HyperSwitch/UCS. Detected from the GooglePayDecrypt* types.",
+      "description": "The connector consumes a Google Pay token already decrypted by HyperSwitch/UCS. This is the pre-decrypted flow: wire field google_pay_sdk, oneof branch tokenization_data.decrypted_data. Detected from the domain variant GpayTokenizationData::Decrypted and from the connector-local Decrypt*/Predecrypt* type names, since connectors spell it both ways. A connector that matches the variant only to refuse it is rejected, not counted.",
       "weight": 5,
       "short": "GPay HS",
       "signal": {
         "type": "code",
-        "pattern": "GooglePayDecrypt"
+        "pattern": "GooglePay(Decrypt|Predecrypt)|GPay[Pp]redecrypt|GpayTokenizationData::Decrypted",
+        "reject": "GpayTokenizationData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+      },
+      "confidence": "best-effort"
+    },
+    {
+      "id": "googlepay_redirect",
+      "label": "Google Pay \u2014 redirect",
+      "description": "The connector hosts the Google Pay sheet on its own page and UCS returns only a redirect. GooglePayRedirectData is an empty struct \u2014 there is no token, so the Authorize response is a redirect rather than a charge. Detected from WalletData::GooglePayRedirect.",
+      "weight": 2,
+      "short": "GPay redir",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::GooglePayRedirect\\b"
+      },
+      "confidence": "best-effort"
+    },
+    {
+      "id": "googlepay_sdk",
+      "label": "Google Pay \u2014 third-party SDK",
+      "description": "The processor's own mobile SDK runs the wallet flow in-app and hands back an opaque session reference; GooglePayThirdPartySdkData carries a single optional token and the connector never sees card data. Detected from WalletData::GooglePayThirdPartySdk.",
+      "weight": 3,
+      "short": "GPay SDK",
+      "signal": {
+        "type": "code",
+        "pattern": "WalletData::GooglePayThirdPartySdk\\b"
       },
       "confidence": "best-effort"
     }
   ],
   "connectors": [
+    {
+      "name": "authorizedotnet",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "na",
+        "chargeback_evidence": "na",
+        "three_ds": "na",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "CreateConnectorCustomer",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "ServerSessionAuthenticationToken",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 14,
+        "probedFlows": 34
+      },
+      "met": 11,
+      "gaps": 0,
+      "na": 3,
+      "scored": 11,
+      "effort": 0,
+      "pct": 100,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 46185
+    },
+    {
+      "name": "cybersource",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "na",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
+      },
+      "flows": [
+        "Authenticate",
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "IncrementalAuthorization",
+        "MandateRevoke",
+        "PSync",
+        "PostAuthenticate",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void",
+        "VoidPC"
+      ],
+      "probe": {
+        "buildableFlows": 18,
+        "probedFlows": 34
+      },
+      "met": 12,
+      "gaps": 0,
+      "na": 2,
+      "scored": 12,
+      "effort": 0,
+      "pct": 100,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://developer.cybersource.com/api-reference-assets/index.html",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 44282
+    },
     {
       "name": "nuvei",
       "tier": "sandbox_tested",
@@ -293,8 +474,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -345,12 +530,16 @@
         "ntid_mit": "met",
         "chargeback_notify": "met",
         "chargeback_evidence": "met",
-        "three_ds": "gap",
+        "three_ds": "met",
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Accept",
@@ -372,76 +561,18 @@
         "buildableFlows": 18,
         "probedFlows": 34
       },
-      "met": 13,
-      "gaps": 1,
+      "met": 14,
+      "gaps": 0,
       "na": 0,
       "scored": 14,
-      "effort": 5,
-      "pct": 93,
+      "effort": 0,
+      "pct": 100,
       "credsState": "ready",
       "docsState": "public",
       "docsUrl": "https://docs.stripe.com/api",
       "merchant": null,
       "inProd": true,
       "prodVolume": 331155
-    },
-    {
-      "name": "cybersource",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "met",
-        "googlepay_psp": "met",
-        "googlepay_hs": "met"
-      },
-      "flows": [
-        "Authenticate",
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "IncrementalAuthorization",
-        "MandateRevoke",
-        "PSync",
-        "PostAuthenticate",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 18,
-        "probedFlows": 34
-      },
-      "met": 12,
-      "gaps": 1,
-      "na": 1,
-      "scored": 13,
-      "effort": 5,
-      "pct": 92,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://developer.cybersource.com/api-reference-assets/index.html",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 44282
     },
     {
       "name": "novalnet",
@@ -463,9 +594,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
+        "applepay_hs": "gap",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "gap",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -516,8 +651,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Accept",
@@ -572,9 +711,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -625,8 +768,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "gap",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -659,60 +806,6 @@
       "prodVolume": 1503
     },
     {
-      "name": "authorizedotnet",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "gap",
-        "applepay_psp": "met",
-        "applepay_hs": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "CreateConnectorCustomer",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "ServerSessionAuthenticationToken",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 14,
-        "probedFlows": 34
-      },
-      "met": 11,
-      "gaps": 2,
-      "na": 1,
-      "scored": 13,
-      "effort": 10,
-      "pct": 85,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://developer.authorize.net/api/reference/index.html",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 46185
-    },
-    {
       "name": "finix",
       "tier": "sandbox_tested",
       "cells": {
@@ -733,8 +826,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -786,8 +883,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -837,8 +938,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -893,8 +998,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authenticate",
@@ -947,8 +1056,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -999,8 +1112,12 @@
         "auto_capture": "gap",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -1050,8 +1167,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1100,9 +1221,13 @@
         "three_ds": "met",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1153,9 +1278,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "gap",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "gap",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -1206,8 +1335,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1257,8 +1390,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "met",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -1310,9 +1447,13 @@
         "three_ds": "met",
         "auto_capture": "gap",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -1364,8 +1505,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1417,8 +1562,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1471,8 +1620,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1522,8 +1675,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1575,8 +1732,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1630,8 +1791,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1683,8 +1848,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -1736,9 +1905,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1789,8 +1962,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1842,8 +2019,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -1892,9 +2073,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -1943,8 +2128,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -1997,8 +2186,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "gap",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -2051,8 +2244,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2102,8 +2299,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2152,8 +2353,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -2206,8 +2411,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -2258,8 +2467,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -2308,9 +2521,13 @@
         "three_ds": "gap",
         "auto_capture": "gap",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2360,8 +2577,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2413,8 +2634,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2464,8 +2689,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -2516,8 +2745,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2567,8 +2800,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2620,8 +2857,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2673,8 +2914,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2725,8 +2970,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2775,8 +3024,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2824,9 +3077,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "gap",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "gap",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2876,8 +3133,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -2926,8 +3187,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -2976,8 +3241,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3024,8 +3293,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3078,8 +3351,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3129,8 +3406,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3180,8 +3461,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "met"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3233,8 +3518,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3283,8 +3572,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3333,8 +3626,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3383,8 +3680,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3432,8 +3733,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -3482,8 +3787,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -3531,8 +3840,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -3578,8 +3891,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3627,8 +3944,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3676,8 +3997,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3725,8 +4050,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -3776,8 +4105,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3826,8 +4159,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3875,8 +4212,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3924,8 +4265,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -3972,8 +4317,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4020,8 +4369,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4069,8 +4422,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4119,8 +4476,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4168,8 +4529,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4217,8 +4582,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4266,8 +4635,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4316,8 +4689,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4365,8 +4742,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4415,8 +4796,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -4466,8 +4851,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4517,8 +4906,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4566,8 +4959,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4616,8 +5013,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4666,8 +5067,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4717,8 +5122,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4767,8 +5176,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4814,8 +5227,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authenticate",
@@ -4862,8 +5279,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -4911,8 +5332,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -4961,8 +5386,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5010,8 +5439,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5060,8 +5493,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5109,8 +5546,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5160,8 +5601,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5207,8 +5652,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5252,8 +5701,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5300,8 +5753,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5348,8 +5805,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5395,8 +5856,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5444,8 +5909,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5492,8 +5961,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5540,8 +6013,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5590,8 +6067,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5635,9 +6116,13 @@
         "three_ds": "gap",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "unknown",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5684,8 +6169,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5731,8 +6220,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5778,8 +6271,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5825,8 +6322,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -5873,8 +6374,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -5918,8 +6423,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize"
@@ -5962,8 +6471,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -6007,8 +6520,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -6054,8 +6571,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize"
@@ -6098,8 +6619,12 @@
         "auto_capture": "gap",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -6143,8 +6668,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "PSync",
@@ -6188,8 +6717,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -6233,8 +6766,12 @@
         "auto_capture": "met",
         "applepay_psp": "met",
         "applepay_hs": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -6278,8 +6815,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "Authorize",
@@ -6324,8 +6865,12 @@
         "auto_capture": "met",
         "applepay_psp": "unknown",
         "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
         "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown"
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
       },
       "flows": [
         "ServerAuthenticationToken"

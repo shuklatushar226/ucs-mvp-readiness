@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T22:49:06",
+  "generatedAt": "2026-11-03T22:55:35",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -124,6 +124,7 @@
         "type": "external_three_ds",
         "not_supported": [
           "citigate",
+          "noon",
           "novalnet",
           "paynearme",
           "saferpay"
@@ -171,7 +172,11 @@
       "signal": {
         "type": "code",
         "pattern": "MandateReferenceId::NetworkMandateId\\([a-z]|get_network_mandate_id\\(\\)",
-        "close_unknown": true
+        "close_unknown": true,
+        "not_supported": [
+          "nexixpay",
+          "noon"
+        ]
       },
       "confidence": "proven"
     },
@@ -189,7 +194,9 @@
         "mode": "any",
         "not_supported": [
           "authorizedotnet",
-          "cybersource"
+          "cybersource",
+          "nexixpay",
+          "noon"
         ]
       },
       "confidence": "proven"
@@ -248,7 +255,10 @@
       "short": "APay PSP",
       "signal": {
         "type": "code",
-        "pattern": "WalletData(?:PaymentMethod)?::ApplePay\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePay\\b",
+        "not_supported": [
+          "nexixpay"
+        ]
       },
       "confidence": "best-effort"
     },
@@ -261,7 +271,11 @@
       "signal": {
         "type": "code",
         "pattern": "ApplePay(Decrypt|Predecrypt)|ApplePayPaymentData::Decrypted",
-        "reject": "ApplePayPaymentData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+        "reject": "ApplePayPaymentData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)",
+        "not_supported": [
+          "nexixpay",
+          "novalnet"
+        ]
       },
       "confidence": "best-effort"
     },
@@ -310,7 +324,12 @@
       "signal": {
         "type": "code",
         "pattern": "GooglePay(Decrypt|Predecrypt)|GPay[Pp]redecrypt|GpayTokenizationData::Decrypted",
-        "reject": "GpayTokenizationData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+        "reject": "GpayTokenizationData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)",
+        "not_supported": [
+          "nexixpay",
+          "noon",
+          "novalnet"
+        ]
       },
       "confidence": "best-effort"
     },
@@ -461,6 +480,64 @@
       "prodVolume": 44282
     },
     {
+      "name": "nexixpay",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "na",
+        "chargeback_notify": "na",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "applepay_psp": "na",
+        "applepay_hs": "na",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "na",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "PSync",
+        "PostAuthenticate",
+        "PreAuthenticate",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 7,
+        "probedFlows": 34
+      },
+      "met": 11,
+      "gaps": 0,
+      "na": 3,
+      "scored": 11,
+      "effort": 0,
+      "pct": 100,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://developer.nexigroup.com/xpayglobal/en-EU/api/payment-api-v1/",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 1503
+    },
+    {
       "name": "novalnet",
       "tier": "sandbox_tested",
       "cells": {
@@ -480,11 +557,11 @@
         "three_ds": "met",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "gap",
+        "applepay_hs": "na",
         "applepay_redirect": "met",
         "applepay_sdk": "met",
         "googlepay_psp": "met",
-        "googlepay_hs": "gap",
+        "googlepay_hs": "na",
         "googlepay_redirect": "met",
         "googlepay_sdk": "met"
       },
@@ -638,6 +715,62 @@
       "prodVolume": 331155
     },
     {
+      "name": "noon",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "na",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "na",
+        "chargeback_notify": "na",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "gap",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
+        "googlepay_hs": "na",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "MandateRevoke",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 12,
+        "probedFlows": 34
+      },
+      "met": 9,
+      "gaps": 1,
+      "na": 4,
+      "scored": 10,
+      "effort": 5,
+      "pct": 90,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://docs.noonpayments.com/",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 52443
+    },
+    {
       "name": "adyen",
       "tier": "sandbox_tested",
       "cells": {
@@ -753,64 +886,6 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 8674
-    },
-    {
-      "name": "nexixpay",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
-        "applepay_redirect": "unknown",
-        "applepay_sdk": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "gap",
-        "googlepay_redirect": "unknown",
-        "googlepay_sdk": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "ClientAuthenticationToken",
-        "PSync",
-        "PostAuthenticate",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 7,
-        "probedFlows": 34
-      },
-      "met": 11,
-      "gaps": 2,
-      "na": 1,
-      "scored": 13,
-      "effort": 8,
-      "pct": 85,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://developer.nexigroup.com/xpayglobal/en-EU/api/payment-api-v1/",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 1503
     },
     {
       "name": "finix",
@@ -1264,62 +1339,6 @@
       "merchant": null,
       "inProd": false,
       "prodVolume": null
-    },
-    {
-      "name": "noon",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "gap",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "gap",
-        "applepay_redirect": "met",
-        "applepay_sdk": "met",
-        "googlepay_psp": "met",
-        "googlepay_hs": "gap",
-        "googlepay_redirect": "met",
-        "googlepay_sdk": "met"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "MandateRevoke",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 12,
-        "probedFlows": 34
-      },
-      "met": 9,
-      "gaps": 4,
-      "na": 1,
-      "scored": 13,
-      "effort": 21,
-      "pct": 69,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://docs.noonpayments.com/",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 52443
     },
     {
       "name": "peachpayments",

@@ -1,17 +1,167 @@
 {
-  "generatedAt": "2026-10-26T18:08:46",
+  "generatedAt": "2026-11-03T22:29:16",
   "repo": "juspay/hyperswitch-prism",
-  "ledger": {
-    "runId": "batch-2026-09-29",
-    "updatedAt": "2026-10-05T23:08:02+05:30",
-    "rows": []
-  },
-  "prsOk": false,
+  "ledger": null,
+  "prsOk": true,
   "blockedLabel": "GRACE-blocked",
   "blockedPrs": [],
-  "warnings": [
-    "gh failed (pr list --repo juspay/hyperswitch-prism): Try re-authenticating with:  gh auth refresh"
+  "warnings": [],
+  "inReview": [
+    {
+      "number": 2566,
+      "title": "feat(connector): [Checkout] live-verified card, wallet, mandate and dispute flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2566",
+      "branch": "feat/checkout_grace",
+      "connector": "checkout",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-03T16:29:20Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2553,
+      "title": "feat(connector): [Adyen] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2553",
+      "branch": "feat/adyen_grace-v2",
+      "connector": "adyen",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-03T13:42:48Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2669,
+      "title": "feat(connector): [Finix] add 3DS, dispute flows, stored-credential MIT and wallet support (alpha)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2669",
+      "branch": "feat/grace-finix-3d43e8",
+      "connector": "finix",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-02T18:58:57Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2644,
+      "title": "feat(connector): [Trustpay] add 11 flows (Capture, Void, Authorize/Card, PSync, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2644",
+      "branch": "feat/grace-trustpay-3024cf",
+      "connector": "trustpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-02T10:45:23Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2552,
+      "title": "feat(connector): [Paypal] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2552",
+      "branch": "feat/paypal_grace",
+      "connector": "paypal",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-01T21:35:55Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2658,
+      "title": "feat(connector): [Fiuu] native 3DS, NTID MIT, wallets, $0 auth and live-creds fixes",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2658",
+      "branch": "feat/grace-fiuu-69d35c",
+      "connector": "fiuu",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-30T16:01:27Z",
+      "mergedAt": null
+    }
   ],
-  "inReview": [],
-  "merged": []
+  "merged": [
+    {
+      "number": 2601,
+      "title": "feat(connector): [Nexixpay] add 9 flows (ThreeDS, IncomingWebhook, PSync, Capture, Void, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2601",
+      "branch": "feat/nexixpay_grace",
+      "connector": "nexixpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-01T22:19:02Z",
+      "mergedAt": "2026-10-30T05:57:32Z"
+    },
+    {
+      "number": 2577,
+      "title": "feat(connector): [Noon] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2577",
+      "branch": "feat/noon_grace",
+      "connector": "noon",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-01T21:36:09Z",
+      "mergedAt": "2026-10-29T10:42:54Z"
+    },
+    {
+      "number": 2561,
+      "title": "feat(connector): [Ecommpay] add card, 3DS, mandate, refund, void and webhook flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2561",
+      "branch": "feat/grace-ecommpay-0ebbb3",
+      "connector": "ecommpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-01T21:36:04Z",
+      "mergedAt": "2026-10-28T07:08:15Z"
+    },
+    {
+      "number": 2587,
+      "title": "feat(connector): [Novalnet] add 11 flows (Authorize, PSync, Capture, Void, Refund, RSync)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2587",
+      "branch": "feat/grace-novalnet-5d6a4b",
+      "connector": "novalnet",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-01T21:36:13Z",
+      "mergedAt": "2026-10-27T17:27:24Z"
+    },
+    {
+      "number": 2516,
+      "title": "feat(connector): [Cybersource] guard the 3DS authorization outcome and make webhook status capture-aware",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2516",
+      "branch": "feat/cybersource_grace",
+      "connector": "cybersource",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-19T07:38:55Z",
+      "mergedAt": "2026-10-19T07:38:53Z"
+    },
+    {
+      "number": 2330,
+      "title": "feat(connector): [Nuvei] add 10 flows (Authorize, PSync, Capture, Void, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2330",
+      "branch": "feat/nuvei_grace",
+      "connector": "nuvei",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-01T21:35:25Z",
+      "mergedAt": "2026-10-18T19:12:06Z"
+    },
+    {
+      "number": 2526,
+      "title": "feat(connector): [Stripe] harden payment flows, 3DS and webhooks",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2526",
+      "branch": "feat/stripe_grace",
+      "connector": "stripe",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-30T13:39:32Z",
+      "mergedAt": "2026-10-18T17:45:26Z"
+    },
+    {
+      "number": 2515,
+      "title": "feat(connector): [Authorizedotnet] close 13 field and behaviour gaps across six flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2515",
+      "branch": "feat/authorizedotnet_grace",
+      "connector": "authorizedotnet",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-10-14T06:46:59Z",
+      "mergedAt": "2026-10-14T06:46:57Z"
+    }
+  ]
 }

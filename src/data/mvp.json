@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T22:45:33",
+  "generatedAt": "2026-11-03T22:49:06",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -248,7 +248,7 @@
       "short": "APay PSP",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::ApplePay\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePay\\b"
       },
       "confidence": "best-effort"
     },
@@ -273,7 +273,7 @@
       "short": "APay redir",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::ApplePayRedirect\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePayRedirect\\b"
       },
       "confidence": "best-effort"
     },
@@ -285,7 +285,7 @@
       "short": "APay SDK",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::ApplePayThirdPartySdk\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePayThirdPartySdk\\b"
       },
       "confidence": "best-effort"
     },
@@ -297,7 +297,7 @@
       "short": "GPay PSP",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::GooglePay\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::GooglePay\\b"
       },
       "confidence": "best-effort"
     },
@@ -322,7 +322,7 @@
       "short": "GPay redir",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::GooglePayRedirect\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::GooglePayRedirect\\b"
       },
       "confidence": "best-effort"
     },
@@ -334,7 +334,7 @@
       "short": "GPay SDK",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::GooglePayThirdPartySdk\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::GooglePayThirdPartySdk\\b"
       },
       "confidence": "best-effort"
     }
@@ -479,14 +479,14 @@
         "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
-        "applepay_psp": "unknown",
+        "applepay_psp": "met",
         "applepay_hs": "gap",
-        "applepay_redirect": "unknown",
-        "applepay_sdk": "unknown",
-        "googlepay_psp": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
         "googlepay_hs": "gap",
-        "googlepay_redirect": "unknown",
-        "googlepay_sdk": "unknown"
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",
@@ -1967,14 +1967,14 @@
         "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
-        "applepay_psp": "unknown",
+        "applepay_psp": "met",
         "applepay_hs": "unknown",
-        "applepay_redirect": "unknown",
-        "applepay_sdk": "unknown",
-        "googlepay_psp": "unknown",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
         "googlepay_hs": "unknown",
-        "googlepay_redirect": "unknown",
-        "googlepay_sdk": "unknown"
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
       },
       "flows": [
         "Authorize",

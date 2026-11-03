@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-03T22:57:32",
+  "generatedAt": "2026-11-03T23:00:52",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "190bcef",
+    "commit": "7972dd4",
     "committedAt": "2026-11-03",
     "dirty": false
   },
@@ -226,6 +226,7 @@
         "type": "native_three_ds",
         "supported": [
           "ecommpay",
+          "noon",
           "novalnet",
           "stripe"
         ],
@@ -539,6 +540,62 @@
       "prodVolume": 1503
     },
     {
+      "name": "noon",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "na",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "na",
+        "chargeback_notify": "na",
+        "chargeback_evidence": "na",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "gap",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
+        "googlepay_hs": "na",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "MandateRevoke",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 12,
+        "probedFlows": 34
+      },
+      "met": 10,
+      "gaps": 0,
+      "na": 4,
+      "scored": 10,
+      "effort": 0,
+      "pct": 100,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://docs.noonpayments.com/",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 52443
+    },
+    {
       "name": "novalnet",
       "tier": "sandbox_tested",
       "cells": {
@@ -714,62 +771,6 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 331155
-    },
-    {
-      "name": "noon",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "na",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "na",
-        "chargeback_notify": "na",
-        "chargeback_evidence": "na",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "gap",
-        "applepay_redirect": "met",
-        "applepay_sdk": "met",
-        "googlepay_psp": "met",
-        "googlepay_hs": "na",
-        "googlepay_redirect": "met",
-        "googlepay_sdk": "met"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "MandateRevoke",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 12,
-        "probedFlows": 34
-      },
-      "met": 9,
-      "gaps": 1,
-      "na": 4,
-      "scored": 10,
-      "effort": 5,
-      "pct": 90,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "https://docs.noonpayments.com/",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 52443
     },
     {
       "name": "adyen",

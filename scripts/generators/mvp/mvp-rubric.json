@@ -165,6 +165,7 @@
         "type": "external_three_ds",
         "not_supported": [
           "citigate",
+          "noon",
           "novalnet",
           "paynearme",
           "saferpay"
@@ -212,7 +213,11 @@
       "signal": {
         "type": "code",
         "pattern": "MandateReferenceId::NetworkMandateId\\([a-z]|get_network_mandate_id\\(\\)",
-        "close_unknown": true
+        "close_unknown": true,
+        "not_supported": [
+          "nexixpay",
+          "noon"
+        ]
       },
       "weight": 3,
       "confidence": "proven",
@@ -230,7 +235,9 @@
         "mode": "any",
         "not_supported": [
           "authorizedotnet",
-          "cybersource"
+          "cybersource",
+          "nexixpay",
+          "noon"
         ]
       },
       "weight": 5,
@@ -292,7 +299,10 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData(?:PaymentMethod)?::ApplePay\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePay\\b",
+        "not_supported": [
+          "nexixpay"
+        ]
       }
     },
     {
@@ -305,7 +315,11 @@
       "signal": {
         "type": "code",
         "pattern": "ApplePay(Decrypt|Predecrypt)|ApplePayPaymentData::Decrypted",
-        "reject": "ApplePayPaymentData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+        "reject": "ApplePayPaymentData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)",
+        "not_supported": [
+          "nexixpay",
+          "novalnet"
+        ]
       }
     },
     {
@@ -354,7 +368,12 @@
       "signal": {
         "type": "code",
         "pattern": "GooglePay(Decrypt|Predecrypt)|GPay[Pp]redecrypt|GpayTokenizationData::Decrypted",
-        "reject": "GpayTokenizationData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)"
+        "reject": "GpayTokenizationData::Decrypted\\(_\\)\\s*=>\\s*(Err|\\w*not_supported)",
+        "not_supported": [
+          "nexixpay",
+          "noon",
+          "novalnet"
+        ]
       }
     },
     {

@@ -292,7 +292,7 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::ApplePay\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePay\\b"
       }
     },
     {
@@ -317,7 +317,7 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::ApplePayRedirect\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePayRedirect\\b"
       }
     },
     {
@@ -329,7 +329,7 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::ApplePayThirdPartySdk\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::ApplePayThirdPartySdk\\b"
       }
     },
     {
@@ -341,7 +341,7 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::GooglePay\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::GooglePay\\b"
       }
     },
     {
@@ -366,7 +366,7 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::GooglePayRedirect\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::GooglePayRedirect\\b"
       }
     },
     {
@@ -378,7 +378,7 @@
       "confidence": "best-effort",
       "signal": {
         "type": "code",
-        "pattern": "WalletData::GooglePayThirdPartySdk\\b"
+        "pattern": "WalletData(?:PaymentMethod)?::GooglePayThirdPartySdk\\b"
       }
     }
   ]

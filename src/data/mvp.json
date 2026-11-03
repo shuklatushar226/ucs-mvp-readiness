@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T22:55:35",
+  "generatedAt": "2026-11-03T22:57:32",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -225,6 +225,7 @@
       "signal": {
         "type": "native_three_ds",
         "supported": [
+          "ecommpay",
           "novalnet",
           "stripe"
         ],
@@ -888,6 +889,61 @@
       "prodVolume": 8674
     },
     {
+      "name": "ecommpay",
+      "tier": "alpha",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "gap",
+        "three_ds": "met",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
+        "applepay_redirect": "met",
+        "applepay_sdk": "met",
+        "googlepay_psp": "met",
+        "googlepay_hs": "met",
+        "googlepay_redirect": "met",
+        "googlepay_sdk": "met"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 11,
+        "probedFlows": 34
+      },
+      "met": 12,
+      "gaps": 2,
+      "na": 0,
+      "scored": 14,
+      "effort": 10,
+      "pct": 86,
+      "credsState": "missing",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "merchant": null,
+      "inProd": false,
+      "prodVolume": null
+    },
+    {
       "name": "finix",
       "tier": "sandbox_tested",
       "cells": {
@@ -943,61 +999,6 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 572
-    },
-    {
-      "name": "ecommpay",
-      "tier": "alpha",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "met",
-        "webhooks_refund": "met",
-        "ntid_mit": "met",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "met",
-        "applepay_redirect": "met",
-        "applepay_sdk": "met",
-        "googlepay_psp": "met",
-        "googlepay_hs": "met",
-        "googlepay_redirect": "met",
-        "googlepay_sdk": "met"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void"
-      ],
-      "probe": {
-        "buildableFlows": 11,
-        "probedFlows": 34
-      },
-      "met": 11,
-      "gaps": 3,
-      "na": 0,
-      "scored": 14,
-      "effort": 15,
-      "pct": 79,
-      "credsState": "missing",
-      "docsState": "unknown",
-      "docsUrl": null,
-      "merchant": null,
-      "inProd": false,
-      "prodVolume": null
     },
     {
       "name": "paypal",

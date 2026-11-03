@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T21:48:09",
+  "generatedAt": "2026-11-03T22:32:10",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
@@ -689,7 +689,7 @@
       "docsUrl": "https://docs.adyen.com/api-explorer/Checkout/latest/overview",
       "merchant": null,
       "inProd": true,
-      "prodVolume": 212302
+      "prodVolume": 212303
     },
     {
       "name": "checkout",

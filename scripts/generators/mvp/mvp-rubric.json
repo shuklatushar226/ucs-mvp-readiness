@@ -267,6 +267,7 @@
         "type": "native_three_ds",
         "supported": [
           "ecommpay",
+          "noon",
           "novalnet",
           "stripe"
         ],

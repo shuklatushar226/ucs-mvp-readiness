@@ -162,7 +162,13 @@
       "label": "External 3DS",
       "description": "Connector accepts a 3DS result authenticated ELSEWHERE: it reads the typed AuthenticationData (eci / cavv / ds_transaction_id) off the request instead of running the challenge itself. A typed field read, so exact.",
       "signal": {
-        "type": "external_three_ds"
+        "type": "external_three_ds",
+        "not_supported": [
+          "citigate",
+          "novalnet",
+          "paynearme",
+          "saferpay"
+        ]
       },
       "weight": 8,
       "confidence": "proven",
@@ -253,6 +259,7 @@
       "signal": {
         "type": "native_three_ds",
         "supported": [
+          "novalnet",
           "stripe"
         ],
         "not_supported": [

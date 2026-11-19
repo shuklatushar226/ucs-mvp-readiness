@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T22:29:16",
+  "generatedAt": "2026-11-19T15:48:02",
   "repo": "juspay/hyperswitch-prism",
   "ledger": null,
   "prsOk": true,
@@ -8,14 +8,58 @@
   "warnings": [],
   "inReview": [
     {
-      "number": 2566,
-      "title": "feat(connector): [Checkout] live-verified card, wallet, mandate and dispute flows",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2566",
-      "branch": "feat/checkout_grace",
-      "connector": "checkout",
+      "number": 2740,
+      "title": "feat(connector): [Redsys] add 11 flows (Authorize/Card, ThreeDS, Authorize/Wallet, PSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2740",
+      "branch": "feat/redsys_grace",
+      "connector": "redsys",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-11-03T16:29:20Z",
+      "updatedAt": "2026-11-12T21:26:09Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2431,
+      "title": "feat(connector): [Xendit] migrate to v3 payment requests, add void, mandates, webhooks and refunds",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2431",
+      "branch": "feat/xendit_grace",
+      "connector": "xendit",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-05T15:12:09Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2474,
+      "title": "feat(connector): [Rapyd] add Payments, Void, Refunds, Mandates, ThreeDS and IncomingWebhook",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2474",
+      "branch": "feat/grace-rapyd-35743f",
+      "connector": "rapyd",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-05T14:48:21Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2602,
+      "title": "feat(connector): [NMI] 3DS, wallets, mandates, chargeback webhooks, parity fixes [GRACE-INCOMPLETE]",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2602",
+      "branch": "feat/nmi_grace_v2",
+      "connector": "nmi",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-05T14:48:15Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2340,
+      "title": "feat(connector): [Shift4] add ThreeDS, PSync, Capture, Void, Refund, RSync, SetupMandate, RepeatPayment and webhooks",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2340",
+      "branch": "feat/shift4-grace-d05f4f",
+      "connector": "shift4",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-05T14:48:10Z",
       "mergedAt": null
     },
     {
@@ -26,7 +70,18 @@
       "connector": "adyen",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-11-03T13:42:48Z",
+      "updatedAt": "2026-11-04T10:10:42Z",
+      "mergedAt": null
+    },
+    {
+      "number": 2644,
+      "title": "feat(connector): [Trustpay] add 11 flows (Capture, Void, Authorize/Card, PSync, Refund, RSync, ...)",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2644",
+      "branch": "feat/grace-trustpay-3024cf",
+      "connector": "trustpay",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-04T07:07:03Z",
       "mergedAt": null
     },
     {
@@ -38,17 +93,6 @@
       "draft": false,
       "author": "shuklatushar226",
       "updatedAt": "2026-11-02T18:58:57Z",
-      "mergedAt": null
-    },
-    {
-      "number": 2644,
-      "title": "feat(connector): [Trustpay] add 11 flows (Capture, Void, Authorize/Card, PSync, Refund, RSync, ...)",
-      "url": "https://github.com/juspay/hyperswitch-prism/pull/2644",
-      "branch": "feat/grace-trustpay-3024cf",
-      "connector": "trustpay",
-      "draft": false,
-      "author": "shuklatushar226",
-      "updatedAt": "2026-11-02T10:45:23Z",
       "mergedAt": null
     },
     {
@@ -75,6 +119,17 @@
     }
   ],
   "merged": [
+    {
+      "number": 2566,
+      "title": "feat(connector): [Checkout] live-verified card, wallet, mandate and dispute flows",
+      "url": "https://github.com/juspay/hyperswitch-prism/pull/2566",
+      "branch": "feat/checkout_grace",
+      "connector": "checkout",
+      "draft": false,
+      "author": "shuklatushar226",
+      "updatedAt": "2026-11-04T19:16:33Z",
+      "mergedAt": "2026-11-04T19:16:30Z"
+    },
     {
       "number": 2601,
       "title": "feat(connector): [Nexixpay] add 9 flows (ThreeDS, IncomingWebhook, PSync, Capture, Void, ...)",
@@ -116,7 +171,7 @@
       "connector": "novalnet",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-11-01T21:36:13Z",
+      "updatedAt": "2026-11-04T07:06:49Z",
       "mergedAt": "2026-10-27T17:27:24Z"
     },
     {
@@ -138,7 +193,7 @@
       "connector": "nuvei",
       "draft": false,
       "author": "shuklatushar226",
-      "updatedAt": "2026-11-01T21:35:25Z",
+      "updatedAt": "2026-11-04T08:58:50Z",
       "mergedAt": "2026-10-18T19:12:06Z"
     },
     {

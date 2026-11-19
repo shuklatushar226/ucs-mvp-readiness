@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-03T23:00:52",
+  "generatedAt": "2026-11-19T15:47:59",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "7972dd4",
-    "committedAt": "2026-11-03",
+    "commit": "a5d7160",
+    "committedAt": "2026-11-19",
     "dirty": false
   },
   "capabilities": [
@@ -670,12 +670,12 @@
         "chargeback_evidence": "na",
         "three_ds": "met",
         "auto_capture": "met",
-        "applepay_psp": "unknown",
-        "applepay_hs": "unknown",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
         "applepay_redirect": "unknown",
         "applepay_sdk": "unknown",
-        "googlepay_psp": "unknown",
-        "googlepay_hs": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "met",
         "googlepay_redirect": "unknown",
         "googlepay_sdk": "unknown"
       },
@@ -773,6 +773,65 @@
       "prodVolume": 331155
     },
     {
+      "name": "checkout",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "met",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "met",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
+      },
+      "flows": [
+        "Accept",
+        "Authorize",
+        "Capture",
+        "DefendDispute",
+        "PSync",
+        "PaymentMethodToken",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "SubmitEvidence",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 15,
+        "probedFlows": 34
+      },
+      "met": 13,
+      "gaps": 1,
+      "na": 0,
+      "scored": 14,
+      "effort": 5,
+      "pct": 93,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://www.checkout.com/docs/payments/add-payment-methods/apple-pay/unified-payments-api",
+      "merchant": null,
+      "inProd": true,
+      "prodVolume": 8674
+    },
+    {
       "name": "adyen",
       "tier": "sandbox_tested",
       "cells": {
@@ -834,7 +893,7 @@
       "prodVolume": 212302
     },
     {
-      "name": "checkout",
+      "name": "worldpayxml",
       "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
@@ -847,13 +906,13 @@
         "external_three_ds": "met",
         "webhooks_payment": "met",
         "webhooks_refund": "met",
-        "ntid_mit": "met",
+        "ntid_mit": "gap",
         "chargeback_notify": "met",
         "chargeback_evidence": "gap",
-        "three_ds": "gap",
+        "three_ds": "met",
         "auto_capture": "met",
         "applepay_psp": "met",
-        "applepay_hs": "met",
+        "applepay_hs": "unknown",
         "applepay_redirect": "unknown",
         "applepay_sdk": "unknown",
         "googlepay_psp": "met",
@@ -865,12 +924,13 @@
         "Authorize",
         "Capture",
         "PSync",
-        "PaymentMethodToken",
+        "PreAuthenticate",
         "RSync",
         "Refund",
         "RepeatPayment",
         "SetupMandate",
-        "Void"
+        "Void",
+        "VoidPC"
       ],
       "probe": {
         "buildableFlows": 13,
@@ -880,14 +940,14 @@
       "gaps": 2,
       "na": 0,
       "scored": 14,
-      "effort": 10,
+      "effort": 8,
       "pct": 86,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://www.checkout.com/docs/payments/add-payment-methods/apple-pay/unified-payments-api",
+      "docsUrl": "http://dtd.worldpay.com/v1/ElemList.html",
       "merchant": null,
       "inProd": true,
-      "prodVolume": 8674
+      "prodVolume": 1102
     },
     {
       "name": "ecommpay",
@@ -1000,6 +1060,63 @@
       "merchant": null,
       "inProd": true,
       "prodVolume": 572
+    },
+    {
+      "name": "rapyd",
+      "tier": "sandbox_tested",
+      "cells": {
+        "cit": "met",
+        "mit": "met",
+        "manual_capture": "met",
+        "zero_auth": "met",
+        "void": "met",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "met",
+        "webhooks_payment": "met",
+        "webhooks_refund": "met",
+        "ntid_mit": "gap",
+        "chargeback_notify": "met",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "met",
+        "applepay_hs": "met",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
+        "googlepay_psp": "met",
+        "googlepay_hs": "met",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "Capture",
+        "ClientAuthenticationToken",
+        "CreateOrder",
+        "PSync",
+        "RSync",
+        "Refund",
+        "RepeatPayment",
+        "SetupMandate",
+        "Void"
+      ],
+      "probe": {
+        "buildableFlows": 14,
+        "probedFlows": 34
+      },
+      "met": 11,
+      "gaps": 3,
+      "na": 0,
+      "scored": 14,
+      "effort": 13,
+      "pct": 79,
+      "credsState": "ready",
+      "docsState": "public",
+      "docsUrl": "https://docs.rapyd.net/en/merchant-api-reference.html",
+      "merchant": null,
+      "inProd": false,
+      "prodVolume": null
     },
     {
       "name": "paypal",
@@ -1316,8 +1433,10 @@
       "flows": [
         "Authorize",
         "Capture",
+        "CreateConnectorCustomer",
         "CreateOrder",
         "PSync",
+        "PaymentMethodToken",
         "PreAuthenticate",
         "RSync",
         "Refund",
@@ -1511,63 +1630,6 @@
       "merchant": null,
       "inProd": false,
       "prodVolume": null
-    },
-    {
-      "name": "worldpayxml",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "met",
-        "manual_capture": "met",
-        "zero_auth": "met",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "met",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "met",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "unknown",
-        "applepay_redirect": "unknown",
-        "applepay_sdk": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "met",
-        "googlepay_redirect": "unknown",
-        "googlepay_sdk": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "PSync",
-        "PreAuthenticate",
-        "RSync",
-        "Refund",
-        "RepeatPayment",
-        "SetupMandate",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 11,
-        "probedFlows": 34
-      },
-      "met": 9,
-      "gaps": 5,
-      "na": 0,
-      "scored": 14,
-      "effort": 16,
-      "pct": 64,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "http://dtd.worldpay.com/v1/ElemList.html",
-      "merchant": null,
-      "inProd": true,
-      "prodVolume": 1102
     },
     {
       "name": "jpmorgan",
@@ -1829,6 +1891,7 @@
       "flows": [
         "Authorize",
         "Capture",
+        "IncrementalAuthorization",
         "PSync",
         "PostAuthenticate",
         "PreAuthenticate",
@@ -1839,7 +1902,7 @@
         "Void"
       ],
       "probe": {
-        "buildableFlows": 9,
+        "buildableFlows": 10,
         "probedFlows": 34
       },
       "met": 8,
@@ -1944,16 +2007,18 @@
       "flows": [
         "Authorize",
         "Capture",
+        "IncrementalAuthorization",
         "PSync",
         "RSync",
         "Refund",
         "RepeatPayment",
         "ServerAuthenticationToken",
         "SetupMandate",
-        "Void"
+        "Void",
+        "VoidPC"
       ],
       "probe": {
-        "buildableFlows": 7,
+        "buildableFlows": 9,
         "probedFlows": 34
       },
       "met": 8,
@@ -2177,7 +2242,7 @@
         "VoidPC"
       ],
       "probe": {
-        "buildableFlows": 12,
+        "buildableFlows": 13,
         "probedFlows": 34
       },
       "met": 8,
@@ -2565,7 +2630,8 @@
         "RepeatPayment",
         "SetupMandate",
         "Void",
-        "VoidPC"
+        "VoidPC",
+        "VoidPostRefund"
       ],
       "probe": {
         "buildableFlows": 9,
@@ -3360,20 +3426,20 @@
       "prodVolume": null
     },
     {
-      "name": "rapyd",
+      "name": "worldpayvantiv",
       "tier": "sandbox_tested",
       "cells": {
         "cit": "met",
         "mit": "met",
         "manual_capture": "met",
-        "zero_auth": "met",
+        "zero_auth": "gap",
         "void": "met",
         "refunds": "met",
         "refund_sync": "met",
         "external_three_ds": "gap",
         "webhooks_payment": "gap",
         "webhooks_refund": "gap",
-        "ntid_mit": "gap",
+        "ntid_mit": "met",
         "chargeback_notify": "gap",
         "chargeback_evidence": "gap",
         "three_ds": "gap",
@@ -3390,14 +3456,13 @@
       "flows": [
         "Authorize",
         "Capture",
-        "ClientAuthenticationToken",
-        "CreateOrder",
+        "IncrementalAuthorization",
         "PSync",
         "RSync",
         "Refund",
         "RepeatPayment",
-        "SetupMandate",
-        "Void"
+        "Void",
+        "VoidPC"
       ],
       "probe": {
         "buildableFlows": 9,
@@ -3411,7 +3476,7 @@
       "pct": 50,
       "credsState": "ready",
       "docsState": "public",
-      "docsUrl": "https://docs.rapyd.net/en/merchant-api-reference.html",
+      "docsUrl": "http://support.worldpay.com/support/CNP-API/content/introduction.htm",
       "merchant": null,
       "inProd": false,
       "prodVolume": null
@@ -5554,61 +5619,6 @@
       "prodVolume": null
     },
     {
-      "name": "worldpayvantiv",
-      "tier": "sandbox_tested",
-      "cells": {
-        "cit": "met",
-        "mit": "gap",
-        "manual_capture": "met",
-        "zero_auth": "gap",
-        "void": "met",
-        "refunds": "met",
-        "refund_sync": "met",
-        "external_three_ds": "gap",
-        "webhooks_payment": "gap",
-        "webhooks_refund": "gap",
-        "ntid_mit": "gap",
-        "chargeback_notify": "gap",
-        "chargeback_evidence": "gap",
-        "three_ds": "gap",
-        "auto_capture": "met",
-        "applepay_psp": "met",
-        "applepay_hs": "unknown",
-        "applepay_redirect": "unknown",
-        "applepay_sdk": "unknown",
-        "googlepay_psp": "met",
-        "googlepay_hs": "met",
-        "googlepay_redirect": "unknown",
-        "googlepay_sdk": "unknown"
-      },
-      "flows": [
-        "Authorize",
-        "Capture",
-        "IncrementalAuthorization",
-        "PSync",
-        "RSync",
-        "Refund",
-        "Void",
-        "VoidPC"
-      ],
-      "probe": {
-        "buildableFlows": 8,
-        "probedFlows": 34
-      },
-      "met": 5,
-      "gaps": 9,
-      "na": 0,
-      "scored": 14,
-      "effort": 37,
-      "pct": 36,
-      "credsState": "ready",
-      "docsState": "public",
-      "docsUrl": "http://support.worldpay.com/support/CNP-API/content/introduction.htm",
-      "merchant": null,
-      "inProd": false,
-      "prodVolume": null
-    },
-    {
       "name": "boost",
       "tier": "alpha",
       "cells": {
@@ -5761,6 +5771,55 @@
       "prodVolume": null
     },
     {
+      "name": "payhound",
+      "tier": "alpha",
+      "cells": {
+        "cit": "met",
+        "mit": "na",
+        "manual_capture": "na",
+        "zero_auth": "na",
+        "void": "na",
+        "refunds": "na",
+        "refund_sync": "na",
+        "external_three_ds": "gap",
+        "webhooks_payment": "met",
+        "webhooks_refund": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "na",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "unknown",
+        "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
+        "googlepay_psp": "unknown",
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "PSync"
+      ],
+      "probe": {
+        "buildableFlows": 3,
+        "probedFlows": 34
+      },
+      "met": 2,
+      "gaps": 5,
+      "na": 7,
+      "scored": 7,
+      "effort": 22,
+      "pct": 29,
+      "credsState": "missing",
+      "docsState": "gated",
+      "docsUrl": "https://payhound.com/support",
+      "merchant": "Reloadhero",
+      "inProd": false,
+      "prodVolume": null
+    },
+    {
       "name": "payhere",
       "tier": "alpha",
       "cells": {
@@ -5848,6 +5907,57 @@
       ],
       "probe": {
         "buildableFlows": 6,
+        "probedFlows": 34
+      },
+      "met": 4,
+      "gaps": 10,
+      "na": 0,
+      "scored": 14,
+      "effort": 37,
+      "pct": 29,
+      "credsState": "missing",
+      "docsState": "unknown",
+      "docsUrl": null,
+      "merchant": null,
+      "inProd": false,
+      "prodVolume": null
+    },
+    {
+      "name": "revpay",
+      "tier": "alpha",
+      "cells": {
+        "cit": "met",
+        "mit": "gap",
+        "manual_capture": "gap",
+        "zero_auth": "gap",
+        "void": "gap",
+        "refunds": "met",
+        "refund_sync": "met",
+        "external_three_ds": "gap",
+        "webhooks_payment": "met",
+        "webhooks_refund": "gap",
+        "ntid_mit": "gap",
+        "chargeback_notify": "gap",
+        "chargeback_evidence": "gap",
+        "three_ds": "gap",
+        "auto_capture": "met",
+        "applepay_psp": "unknown",
+        "applepay_hs": "unknown",
+        "applepay_redirect": "unknown",
+        "applepay_sdk": "unknown",
+        "googlepay_psp": "unknown",
+        "googlepay_hs": "unknown",
+        "googlepay_redirect": "unknown",
+        "googlepay_sdk": "unknown"
+      },
+      "flows": [
+        "Authorize",
+        "PSync",
+        "RSync",
+        "Refund"
+      ],
+      "probe": {
+        "buildableFlows": 2,
         "probedFlows": 34
       },
       "met": 4,
@@ -7047,15 +7157,6 @@
       "credsState": "missing",
       "inQueue": false,
       "merchant": "Supergroup"
-    },
-    {
-      "name": "payhound",
-      "notes": "Reloadhero \u00b7 Bluecode one-time payments \u00b7 New integration \u00b7 module exists on branch feat/grace-Payhound, not main | DOCS: docs.payhound.com returns HTTP 401; API docs on request via support@payhound.com.",
-      "docsState": "gated",
-      "docsUrl": "https://payhound.com/support",
-      "credsState": "missing",
-      "inQueue": true,
-      "merchant": "Reloadhero"
     },
     {
       "name": "paymentech",

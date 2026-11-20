@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-11-19T15:47:59",
+  "generatedAt": "2026-11-20T15:20:42",
   "source": "UCS only (hyperswitch-prism). Scored from Rust source; the field probe is a secondary signal.",
   "provenance": {
     "path": "prism-catalog",
     "branch": "main",
-    "commit": "a5d7160",
-    "committedAt": "2026-11-19",
+    "commit": "266d9bf",
+    "committedAt": "2026-11-20",
     "dirty": false
   },
   "capabilities": [
